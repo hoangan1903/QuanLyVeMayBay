@@ -169,7 +169,7 @@ namespace QuanLyBanVe
                 btnCancelChanges.Enabled = false;
                 foreach (DataGridViewRow row in QuanLy.addedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("ThemCB", connection)
@@ -183,7 +183,7 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in QuanLy.modifiedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("SuaCB", connection)
@@ -197,7 +197,7 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in QuanLy.removedRows)
                 {
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("XoaCB", connection)

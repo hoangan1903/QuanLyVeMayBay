@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnHoanVe = new System.Windows.Forms.Button();
+            this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,8 +98,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnThanhToan = new System.Windows.Forms.Button();
-            this.btnHoanVe = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -133,6 +133,28 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnHoanVe
+            // 
+            this.btnHoanVe.Enabled = false;
+            this.btnHoanVe.Location = new System.Drawing.Point(766, 396);
+            this.btnHoanVe.Name = "btnHoanVe";
+            this.btnHoanVe.Size = new System.Drawing.Size(83, 32);
+            this.btnHoanVe.TabIndex = 5;
+            this.btnHoanVe.Text = "Hoàn vé";
+            this.btnHoanVe.UseVisualStyleBackColor = true;
+            this.btnHoanVe.Click += new System.EventHandler(this.btnHoanVe_Click);
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Enabled = false;
+            this.btnThanhToan.Location = new System.Drawing.Point(673, 396);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(87, 32);
+            this.btnThanhToan.TabIndex = 4;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // btnTim
             // 
@@ -282,6 +304,8 @@
             // 
             // dateTraCuu
             // 
+            this.dateTraCuu.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dateTraCuu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTraCuu.Location = new System.Drawing.Point(244, 25);
             this.dateTraCuu.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 349);
             this.dateTraCuu.Name = "dateTraCuu";
@@ -500,7 +524,7 @@
             // 
             // departureTime
             // 
-            this.departureTime.CustomFormat = "MM/dd/yyyy HH:mm";
+            this.departureTime.CustomFormat = "dd/MM/yyyy HH:mm";
             this.departureTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.departureTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.departureTime.Location = new System.Drawing.Point(405, 47);
@@ -513,7 +537,7 @@
             // arrivalTime
             // 
             this.arrivalTime.CalendarFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.arrivalTime.CustomFormat = "MM/dd/yyyy HH:mm";
+            this.arrivalTime.CustomFormat = "dd/MM/yyyy HH:mm";
             this.arrivalTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.arrivalTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.arrivalTime.Location = new System.Drawing.Point(546, 47);
@@ -835,28 +859,6 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
-            // 
-            // btnThanhToan
-            // 
-            this.btnThanhToan.Enabled = false;
-            this.btnThanhToan.Location = new System.Drawing.Point(673, 396);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(87, 32);
-            this.btnThanhToan.TabIndex = 4;
-            this.btnThanhToan.Text = "Thanh toán";
-            this.btnThanhToan.UseVisualStyleBackColor = true;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // btnHoanVe
-            // 
-            this.btnHoanVe.Enabled = false;
-            this.btnHoanVe.Location = new System.Drawing.Point(766, 396);
-            this.btnHoanVe.Name = "btnHoanVe";
-            this.btnHoanVe.Size = new System.Drawing.Size(83, 32);
-            this.btnHoanVe.TabIndex = 5;
-            this.btnHoanVe.Text = "Hoàn vé";
-            this.btnHoanVe.UseVisualStyleBackColor = true;
-            this.btnHoanVe.Click += new System.EventHandler(this.btnHoanVe_Click);
             // 
             // Form1
             // 

@@ -23,7 +23,7 @@ namespace QuanLyBanVe
 
         private DataTable getVe()
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_VietAnh);
             con.Open();
 
             SqlCommand comm = new SqlCommand("LietKeVe", con);
@@ -41,7 +41,7 @@ namespace QuanLyBanVe
 
         private DataTable getVe(string TenHV)
         {
-            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn);
+            SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_VietAnh);
             con.Open();
 
             SqlCommand comm = new SqlCommand("ChonHangVe", con);
@@ -139,7 +139,7 @@ namespace QuanLyBanVe
                 if (dialogResult == DialogResult.Yes)                
                 {
 
-                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+                    using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
                     {
                         con.Open();
                         string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}'", txtCMND.Text);
@@ -204,7 +204,7 @@ namespace QuanLyBanVe
 
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 con.Open();
                 string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}' and HoTen = N'{1}'", txtCMND.Text, txtHoTen.Text);
