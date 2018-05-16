@@ -78,6 +78,42 @@ CREATE TABLE THAMSO
 	GIATRI INT,
 )
 
+insert into TINHTRANG values('TT000', N'CÒN TRỐNG');
+insert into TINHTRANG values('TT001', N'ĐÃ BÁN');
+insert into TINHTRANG values('TT002', N'ĐÃ ĐẶT');
+
+insert into HANGVE values('HV001', N'Vé Hạng 1')
+insert into HANGVE values('HV002', N'Vé Hạng 2')
+
+insert into  SANBAY values('SB001', N'Đà Nẵng')
+insert into  SANBAY values('SB002', N'Nội Bài')
+insert into  SANBAY values('SB003', N'Tân Sơn Nhất')
+insert into  SANBAY values('SB004', N'Phú Quốc')
+insert into  SANBAY values('SB005', N'Vinh')
+insert into  SANBAY values('SB006', N'Lai')
+insert into  SANBAY values('SB007', N'Hòa')
+insert into  SANBAY values('SB008', N'Đồng Hới')
+insert into  SANBAY values('SB009', N'Điện Biên Phủ')
+insert into  SANBAY values('SB010', N'Cà Mau')
+
+insert into HANGHK values('HHK01','Vietnam Airlines')
+insert into HANGHK values('HHK02','VietJetAir')
+insert into HANGHK values('HHK03','VASCO')
+insert into HANGHK values('HHK04','Jetstar Pacific Airlines')
+
+insert into CHUYENBAY values ('CB001','SB001','SB009','HHK01','5/15/2018','5/15/2018','50','50',1000000)
+insert into CHUYENBAY values ('CB002','SB002','SB010','HHK03','5/16/2018','5/16/2018','60','60',2000000)
+insert into CHUYENBAY values ('CB003','SB003','SB007','HHK04','12/5/2018','12/5/2018','40','40',1500000)
+
+insert into VE values('VE101','CB001','HHK01','HV001',1005000,'TT001');
+insert into VE values('VE102','CB001','HHK01','HV002',1000000,'TT002');
+insert into VE values('VE103','CB001','HHK01','HV001',1050000,'TT000');
+insert into VE values('VE201','CB002','HHK03','HV001',2100000,'TT000');
+insert into VE values('VE202','CB002','HHK03','HV001',2100000,'TT001');
+insert into VE values('VE203','CB002','HHK03','HV002',2000000,'TT002');
+insert into VE values('VE301','CB003','HHK04','HV002',1500000,'TT001');
+insert into VE values('VE302','CB003','HHK04','HV001',1575000,'TT002');
+
 CREATE PROCEDURE TaoThanhVien
 	@MaKH char(5),
 	@HoTen NVARCHAR(50),
@@ -286,4 +322,28 @@ BEGIN
 	FROM VE INNER JOIN TINHTRANG TT ON VE.MATT = TT.MATT
 	INNER JOIN PHIEUDATMUA PDM ON VE.MAVE = PDM.MAVE
 	WHERE VE.MACB = @MaCB OR VE.MAVE = @MaVe
+END
+
+CREATE PROCEDURE ThanhToan
+	@MaVe char(5)
+AS
+BEGIN
+	UPDATE PHIEUDATMUA
+	SET DATHANHTOAN ='1'
+	WHERE MAVE = @MaVe
+	UPDATE VE
+	SET MATT ='TT001'
+	WHERE MAVE= @MaVe
+END
+
+CREATE PROCEDURE HoanVe
+	@MaVe char(5)
+AS
+BEGIN 
+	UPDATE PHIEUDATMUA
+	SET DATHANHTOAN = '0'
+	WHERE MAVE = @MaVe
+	UPDATE VE
+	SET MATT = 'TT000'
+	WHERE MAVE = @MaVe
 END
