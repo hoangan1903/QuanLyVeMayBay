@@ -169,11 +169,7 @@ namespace QuanLyBanVe
                 btnCancelChanges.Enabled = false;
                 foreach (DataGridViewRow row in QuanLy.addedRows)
                 {
-<<<<<<< HEAD
                     using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
-=======
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
->>>>>>> dd28de0e5348ba65d5fabec9eb21e8519f5a1573
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("ThemCB", connection)
@@ -187,11 +183,7 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in QuanLy.modifiedRows)
                 {
-<<<<<<< HEAD
                     using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
-=======
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
->>>>>>> dd28de0e5348ba65d5fabec9eb21e8519f5a1573
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("SuaCB", connection)
@@ -204,12 +196,8 @@ namespace QuanLyBanVe
                 }
 
                 foreach (DataGridViewRow row in QuanLy.removedRows)
-                {
-<<<<<<< HEAD
+                {  
                     using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
-=======
-                    using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
->>>>>>> dd28de0e5348ba65d5fabec9eb21e8519f5a1573
                     {
                         connection.Open();
                         SqlCommand command = new SqlCommand("XoaCB", connection)
@@ -458,9 +446,8 @@ namespace QuanLyBanVe
         }
 
         private void btnBanVe2_Click(object sender, EventArgs e)
-        {
-            string maCB = getMaCB(dataGridView1);
-            BanVe formBanVe = new BanVe(maCB);
+        {          
+            BanVe formBanVe = new BanVe(getMaCB(dataGridView2));
             formBanVe.ShowDialog();
         }
 

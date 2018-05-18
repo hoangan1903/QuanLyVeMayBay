@@ -307,7 +307,6 @@
             this.dateTraCuu.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dateTraCuu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTraCuu.Location = new System.Drawing.Point(244, 25);
-            this.dateTraCuu.MinDate = new System.DateTime(2018, 5, 14, 10, 11, 0, 349);
             this.dateTraCuu.Name = "dateTraCuu";
             this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
             this.dateTraCuu.TabIndex = 2;

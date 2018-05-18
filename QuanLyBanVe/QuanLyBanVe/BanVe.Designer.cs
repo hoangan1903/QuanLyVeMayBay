@@ -28,22 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.grpBanVe = new System.Windows.Forms.GroupBox();
             this.dgvVe = new System.Windows.Forms.DataGridView();
+            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cboHangVe = new System.Windows.Forms.ComboBox();
-            this.btnXacNhan = new System.Windows.Forms.Button();
+            this.btnXacNhanMua = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
             this.lblCMND = new System.Windows.Forms.Label();
             this.btnKiemTra = new System.Windows.Forms.Button();
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
-            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnXacNhanDat = new System.Windows.Forms.Button();
             this.grpBanVe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).BeginInit();
             this.SuspendLayout();
@@ -81,39 +79,26 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVe.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chonMua});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVe.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvVe.Location = new System.Drawing.Point(6, 46);
             this.dgvVe.Name = "dgvVe";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVe.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVe.Size = new System.Drawing.Size(849, 305);
             this.dgvVe.TabIndex = 1;
+            // 
+            // chonMua
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.NullValue = false;
+            this.chonMua.DefaultCellStyle = dataGridViewCellStyle1;
+            this.chonMua.Frozen = true;
+            this.chonMua.HeaderText = "ChonMua";
+            this.chonMua.Name = "chonMua";
+            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // cboHangVe
             // 
@@ -121,7 +106,8 @@
             this.cboHangVe.FormattingEnabled = true;
             this.cboHangVe.Items.AddRange(new object[] {
             "Hạng 1",
-            "Hạng 2"});
+            "Hạng 2",
+            "Tất cả"});
             this.cboHangVe.Location = new System.Drawing.Point(6, 19);
             this.cboHangVe.Name = "cboHangVe";
             this.cboHangVe.Size = new System.Drawing.Size(121, 21);
@@ -129,16 +115,16 @@
             this.cboHangVe.Text = "Hạng vé";
             this.cboHangVe.SelectedIndexChanged += new System.EventHandler(this.cboHangVe_SelectedIndexChanged);
             // 
-            // btnXacNhan
+            // btnXacNhanMua
             // 
-            this.btnXacNhan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXacNhan.Location = new System.Drawing.Point(635, 421);
-            this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(108, 32);
-            this.btnXacNhan.TabIndex = 5;
-            this.btnXacNhan.Text = "Xác nhận đặt mua";
-            this.btnXacNhan.UseVisualStyleBackColor = true;
-            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
+            this.btnXacNhanMua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXacNhanMua.Location = new System.Drawing.Point(635, 421);
+            this.btnXacNhanMua.Name = "btnXacNhanMua";
+            this.btnXacNhanMua.Size = new System.Drawing.Size(108, 32);
+            this.btnXacNhanMua.TabIndex = 5;
+            this.btnXacNhanMua.Text = "Xác nhận mua";
+            this.btnXacNhanMua.UseVisualStyleBackColor = true;
+            this.btnXacNhanMua.Click += new System.EventHandler(this.btnXacNhanMua_Click);
             // 
             // btnHuyBo
             // 
@@ -186,29 +172,30 @@
             this.txtHoTen.Size = new System.Drawing.Size(261, 20);
             this.txtHoTen.TabIndex = 2;
             // 
-            // chonMua
+            // btnXacNhanDat
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.NullValue = false;
-            this.chonMua.DefaultCellStyle = dataGridViewCellStyle2;
-            this.chonMua.Frozen = true;
-            this.chonMua.HeaderText = "ChonMua";
-            this.chonMua.Name = "chonMua";
-            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnXacNhanDat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXacNhanDat.Location = new System.Drawing.Point(521, 421);
+            this.btnXacNhanDat.Name = "btnXacNhanDat";
+            this.btnXacNhanDat.Size = new System.Drawing.Size(108, 32);
+            this.btnXacNhanDat.TabIndex = 7;
+            this.btnXacNhanDat.Text = "Xác nhận đặt";
+            this.btnXacNhanDat.UseVisualStyleBackColor = true;
+            this.btnXacNhanDat.Click += new System.EventHandler(this.btnXacNhanDat_Click);
             // 
             // BanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(870, 465);
+            this.Controls.Add(this.btnXacNhanDat);
             this.Controls.Add(this.txtHoTen);
             this.Controls.Add(this.lblHoTen);
             this.Controls.Add(this.btnKiemTra);
             this.Controls.Add(this.lblCMND);
             this.Controls.Add(this.txtCMND);
             this.Controls.Add(this.btnHuyBo);
-            this.Controls.Add(this.btnXacNhan);
+            this.Controls.Add(this.btnXacNhanMua);
             this.Controls.Add(this.grpBanVe);
             this.Name = "BanVe";
             this.Text = "Bán vé";
@@ -225,12 +212,13 @@
         private System.Windows.Forms.ComboBox cboHangVe;
         private System.Windows.Forms.DataGridView dgvVe;
         private System.Windows.Forms.TextBox txtCMND;
-        private System.Windows.Forms.Button btnXacNhan;
+        private System.Windows.Forms.Button btnXacNhanMua;
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.Label lblCMND;
         private System.Windows.Forms.Button btnKiemTra;
         private System.Windows.Forms.Label lblHoTen;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chonMua;
+        private System.Windows.Forms.Button btnXacNhanDat;
     }
 }
