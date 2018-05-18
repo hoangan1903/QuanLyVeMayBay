@@ -64,7 +64,7 @@ namespace QuanLyBanVe
         public static void LoadDataToDataGridView(DataGridView dgv)
         {
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("LietKeCB", connection)
@@ -181,7 +181,7 @@ namespace QuanLyBanVe
 
         public static void AddParametersToCommand(SqlCommand cmd, DataGridViewRow row)
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 connection.Open();
                 SqlParameter parameter;
@@ -264,7 +264,7 @@ namespace QuanLyBanVe
 
         public static void LoadSanBay(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", conn);
@@ -279,7 +279,7 @@ namespace QuanLyBanVe
 
         public static void LoadHHK(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 conn.Open();
                 SqlCommand comm = new SqlCommand("SELECT TENHHK FROM HANGHK", conn);
@@ -296,7 +296,7 @@ namespace QuanLyBanVe
 
         public static void TraCuu(DataGridView dataGridView, ComboBox cbbDi, ComboBox cbbDen, DateTimePicker date)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 dataGridView.RowHeadersVisible = false;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -323,7 +323,7 @@ namespace QuanLyBanVe
         }
         public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen,TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -356,7 +356,7 @@ namespace QuanLyBanVe
 
         public static void BaoCaoNam(DataGridView gridView, ComboBox box, TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -385,7 +385,7 @@ namespace QuanLyBanVe
         }
         public static void CapNhatVe(DataGridView gridView, ComboBox boxMaCB, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -409,7 +409,7 @@ namespace QuanLyBanVe
         }
         public static void LoadDuLieu(ComboBox boxMaCB, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", conn);
                 DataTable datb = new DataTable();
@@ -431,7 +431,7 @@ namespace QuanLyBanVe
         }
         public static void ThanhToan(DataGridView gridView, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -467,7 +467,7 @@ namespace QuanLyBanVe
         }
         public static void HoanVe(DataGridView gridView, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;

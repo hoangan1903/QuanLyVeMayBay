@@ -2,6 +2,10 @@ CREATE DATABASE QLVeMayBay
 USE QLVeMayBay
 
 SET DATEFORMAT mdy
+
+
+-----------------------------------------
+----------- Tao Bang-------------
 CREATE TABLE KHACHHANG
 (
 	MAKH CHAR(5) PRIMARY KEY,
@@ -78,6 +82,64 @@ CREATE TABLE THAMSO
 	GIATRI INT,
 )
 
+
+
+-------------------------------------------
+------------ Insert Du lieu -----------
+Insert into HANGVE Values
+('HV001', N'Vé hạng 1'),
+('HV002', N'Vé hạng 2')
+
+Insert into CHITIETCB Values
+('CB01', 'SB02', 15, Null),
+('CB02', 'SB01', 20, Null),
+('CB03', 'SB02', 35, Null)
+
+Insert into HANGHK Values
+('HHK01', 'VietNam Airline'),
+('HHK02', 'Jetstar'),
+('HHK03','VASCO'),
+('HHK04','Jetstar Pacific Airlines')
+
+Insert into CHUYENBAY Values
+('CB01', 'SB01', 'SB02', 'HHK01', '3/5/2018 09:00:00', '5/3/2018 12:00:00', 10, 10, 100000),
+('CB02', 'SB03', 'SB02', 'HHK02', '4/5/2018 13:15:00', '5/4/2018 16:30:00',20, 20, 200000),
+('CB03', 'SB01', 'SB03', 'HHK01', '5/5/2018 03:00:00', '5/5/2018 08:10:00', 15, 15, 150000)
+
+Insert into KHACHHANG Values
+('KH01', N'Nguyễn Văn A', 15, 1, '2778194257', 'TPHCM', '0987234612'),
+('KH02', N'Trần Thị B', 17, 0, '273278135', N'Bình Dương', '0917246182'),
+('KH03', N'Lê Văn C', 16, 1, '253261268', N'Đồng Nai', '0982612341'),
+('KH05', N'Võ Thanh Minh', 35, 1, '215467289', 'BR-VT', '0643265172')
+
+Insert into SANBAY Values
+('SB01', N'Đà Nẵng'),
+('SB02', N'HCM'),
+('SB03', N'Hà Nội')
+
+Insert into TINHTRANG Values
+('TT000', N'Còn trống'),
+('TT001', N'Đã bán'),
+('TT002', N'Đã đặt')
+
+Insert into VE Values
+('VE101', 'CB01', 'HHK01', 'HV001', 1005000, 'TT000'),
+('VE102', 'CB01', 'HHK01', 'HV002', 1000000, 'TT000'),
+('VE103', 'CB01', 'HHK01', 'HV001', 1005000, 'TT000'),
+('VE201', 'CB02', 'HHK03', 'HV001', 2100000, 'TT000'),
+('VE202', 'CB02', 'HHK03', 'HV001', 2100000, 'TT000'),
+('VE203', 'CB02', 'HHK03', 'HV002', 2000000, 'TT000'),  
+('VE301', 'CB03', 'HHK04', 'HV002', 1500000, 'TT001'),
+('VE302', 'CB03', 'HHK04', 'HV001', 1575000, 'TT002')
+
+Insert into PHIEUDATMUA Values
+('VE301', 'KH01', '5/1/2018 08:00:00', 1),
+('VE302', 'KH03', '4/28/2018 23:15:05', 0)
+
+--------------------------------------------
+----------- Tao Procedure----------
+
+---------- Procedure Khach --------
 CREATE PROCEDURE TaoThanhVien
 	@MaKH char(5),
 	@HoTen NVARCHAR(50),
@@ -92,6 +154,8 @@ BEGIN
 	VALUES (@MaKH, @HoTen,@Tuoi,@GioiTinh,@CMND,@DiaChi, @SDT);
 END
 
+
+-------- Procedure Chuyen bay ---------
 CREATE PROCEDURE LietKeCB
 AS
 BEGIN
@@ -106,6 +170,8 @@ BEGIN
 	INNER JOIN CHUYENBAY CB ON CB.MASBDEN = SB.MASB) AS B ON CB.MASBDEN = B.MASBDEN
 	INNER JOIN HANGHK HHK ON CB.MAHHK = HHK.MAHHK
 END
+
+--------
 
 CREATE PROCEDURE ThemCB
 	@MaCB char(5),
@@ -126,6 +192,8 @@ BEGIN
 	(SELECT MAHHK FROM HANGHK WHERE TENHHK = @TenHHK),
 	@ThoiGianKhoiHanh, @ThoiGianDen, @SoGheHang1, @SoGheHang2, @GiaVe)
 END
+
+-----
 
 CREATE PROCEDURE SuaCB
 	@MaCB char(5),
@@ -152,6 +220,8 @@ BEGIN
 	WHERE MACB = @MaCB;
 END
 
+------
+
 CREATE PROCEDURE XoaCB
 	@MaCB char(5)
 AS
@@ -159,25 +229,7 @@ BEGIN
 	DELETE FROM CHUYENBAY WHERE MACB = @MaCB;
 END
 
-CREATE PROCEDURE UpdateTinhTrangVe
-	@MaTT char(5),
-	@MaVe char(5)
-AS
-BEGIN
-	UPDATE VE
-	SET MATT = @MaTT
-	WHERE MAVE = @MaVe
-END
-
-CREATE PROCEDURE TaoPhieuDatMua	
-	@MaVe CHAR(5),
-	@MaKH CHAR(5),
-	@ThoiGianDat SMALLDATETIME
-AS
-BEGIN
-	INSERT INTO PHIEUDATMUA
-	VALUES (@MaVe, @MaKH, @ThoiGianDat, 1)
-END
+------
 
 CREATE PROCEDURE TraCuu
 	@MaSBDi nvarchar(40),
@@ -198,6 +250,20 @@ BEGIN
 WHERE a.[SÂN BAY ĐI] = @MaSBDi AND b.[SÂN BAY ĐẾN] = @MaSBDen AND 
 		convert (date, CB.THOIGIANKHOIHANH) = @ThoiGianBay
 END
+
+
+------------- Procedure Ve -----------
+CREATE PROCEDURE UpdateTinhTrangVe
+	@MaTT char(5),
+	@MaVe char(5)
+AS
+BEGIN
+	UPDATE VE
+	SET MATT = @MaTT
+	WHERE MAVE = @MaVe
+END
+
+------
 
 CREATE PROCEDURE LietKeVe
 	@MaCB char(5)
@@ -224,6 +290,21 @@ BEGIN
 	WHERE HV.TENHANGVE = @TenHangVe and VE.MACB = @MaCB
 END
 
+------
+
+CREATE PROCEDURE LoadVe
+	@MaCB char(5) =null,
+	@MaVe char(5) =null
+AS
+BEGIN
+	SELECT VE.MAVE, VE.MACB, VE.GIATIEN AS 'GIÁ VÉ', TT.TENTINHTRANG AS 'TÌNH TRẠNG', PDM.DATHANHTOAN AS'THANH TOÁN'
+	FROM VE INNER JOIN TINHTRANG TT ON VE.MATT = TT.MATT
+	INNER JOIN PHIEUDATMUA PDM ON VE.MAVE = PDM.MAVE
+	WHERE VE.MACB = @MaCB OR VE.MAVE = @MaVe
+END
+
+
+-------------- Procedure San bay -------------
 CREATE PROCEDURE LoadSanBay
 	@MaSB char(5)
 AS
@@ -233,6 +314,21 @@ BEGIN
 	WHERE MASB = @MaSB
 END
 
+-------- Procedure Phieu dat mua ---------
+CREATE PROCEDURE TaoPhieuDatMua	
+	@MaVe CHAR(5),
+	@MaKH CHAR(5),
+	@ThoiGianDat SMALLDATETIME,
+	@DaThanhToan bit
+AS
+BEGIN
+	INSERT INTO PHIEUDATMUA
+	VALUES (@MaVe, @MaKH, @ThoiGianDat, @DaThanhToan)
+END
+
+
+
+--------- Procedure Bao cao -----------
 CREATE PROCEDURE BaoCao
 	@TuNgay smalldatetime,
 	@DenNgay smalldatetime
@@ -256,6 +352,8 @@ BEGIN
 		AND CONVERT(DATE, PDM.THOIGIANDAT) <= @DenNgay
 END
 
+-------
+
 CREATE PROCEDURE BaoCaoNam
 	@NAM INT
 AS
@@ -277,13 +375,4 @@ BEGIN
 	WHERE VE.MATT='TT001' AND DATEPART(YEAR, PDM.THOIGIANDAT) = @NAM
 END
 
-CREATE PROCEDURE LoadVe
-	@MaCB char(5) =null,
-	@MaVe char(5) =null
-AS
-BEGIN
-	SELECT VE.MAVE, VE.MACB, VE.GIATIEN AS 'GIÁ VÉ', TT.TENTINHTRANG AS 'TÌNH TRẠNG', PDM.DATHANHTOAN AS'THANH TOÁN'
-	FROM VE INNER JOIN TINHTRANG TT ON VE.MATT = TT.MATT
-	INNER JOIN PHIEUDATMUA PDM ON VE.MAVE = PDM.MAVE
-	WHERE VE.MACB = @MaCB OR VE.MAVE = @MaVe
-END
+

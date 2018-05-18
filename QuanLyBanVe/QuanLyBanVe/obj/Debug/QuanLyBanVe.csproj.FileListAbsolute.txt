@@ -81,3 +81,18 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.Cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe.config
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.exe
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.pdb
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csprojResolveAssemblyReference.cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BanVe.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCaoNam.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCao.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.DangNhap.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Form1.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.exe
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.pdb
