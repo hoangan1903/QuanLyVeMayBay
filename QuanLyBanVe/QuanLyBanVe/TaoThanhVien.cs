@@ -25,7 +25,7 @@ namespace QuanLyBanVe
             {
                 SqlConnection conn = new SqlConnection();
 
-                conn.ConnectionString = Properties.Resources.localConnectionString_CamTu;
+                conn.ConnectionString = Properties.Resources.localConnectionString_HoangAn;
                 conn.Open();
 
                 using (SqlCommand comm = new SqlCommand("TaoThanhVien", conn))

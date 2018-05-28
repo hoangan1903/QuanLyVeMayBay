@@ -98,6 +98,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitContainerTraCuu = new System.Windows.Forms.SplitContainer();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -114,6 +115,9 @@
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).BeginInit();
+            this.splitContainerTraCuu.Panel1.SuspendLayout();
+            this.splitContainerTraCuu.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -217,19 +221,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btnBanVe2);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Controls.Add(this.cbbNoiDen);
-            this.tabPage2.Controls.Add(this.cbbNoiDi);
-            this.tabPage2.Controls.Add(this.btnTraCuu);
-            this.tabPage2.Controls.Add(this.dateTraCuu);
-            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.splitContainerTraCuu);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(958, 497);
+            this.tabPage2.Size = new System.Drawing.Size(945, 447);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tra cứu";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -238,7 +234,7 @@
             // 
             this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBanVe2.Enabled = false;
-            this.btnBanVe2.Location = new System.Drawing.Point(877, 21);
+            this.btnBanVe2.Location = new System.Drawing.Point(855, 4);
             this.btnBanVe2.Name = "btnBanVe2";
             this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
             this.btnBanVe2.TabIndex = 4;
@@ -249,7 +245,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(247, 7);
+            this.label14.Location = new System.Drawing.Point(219, 2);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 15);
             this.label14.TabIndex = 9;
@@ -258,7 +254,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(142, 8);
+            this.label4.Location = new System.Drawing.Point(114, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 15);
             this.label4.TabIndex = 8;
@@ -267,7 +263,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 9);
+            this.label3.Location = new System.Drawing.Point(7, 4);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 15);
             this.label3.TabIndex = 7;
@@ -276,7 +272,7 @@
             // cbbNoiDen
             // 
             this.cbbNoiDen.FormattingEnabled = true;
-            this.cbbNoiDen.Location = new System.Drawing.Point(139, 26);
+            this.cbbNoiDen.Location = new System.Drawing.Point(111, 21);
             this.cbbNoiDen.Name = "cbbNoiDen";
             this.cbbNoiDen.Size = new System.Drawing.Size(99, 23);
             this.cbbNoiDen.TabIndex = 1;
@@ -286,7 +282,7 @@
             // 
             this.cbbNoiDi.ForeColor = System.Drawing.Color.Black;
             this.cbbNoiDi.FormattingEnabled = true;
-            this.cbbNoiDi.Location = new System.Drawing.Point(32, 27);
+            this.cbbNoiDi.Location = new System.Drawing.Point(4, 22);
             this.cbbNoiDi.Name = "cbbNoiDi";
             this.cbbNoiDi.Size = new System.Drawing.Size(100, 23);
             this.cbbNoiDi.TabIndex = 0;
@@ -294,7 +290,7 @@
             // 
             // btnTraCuu
             // 
-            this.btnTraCuu.Location = new System.Drawing.Point(453, 26);
+            this.btnTraCuu.Location = new System.Drawing.Point(425, 21);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(69, 23);
             this.btnTraCuu.TabIndex = 3;
@@ -304,13 +300,13 @@
             // 
             // dateTraCuu
             // 
-            this.dateTraCuu.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.dateTraCuu.CustomFormat = "dd/MM/yyyy";
             this.dateTraCuu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTraCuu.Location = new System.Drawing.Point(244, 25);
+            this.dateTraCuu.Location = new System.Drawing.Point(216, 20);
             this.dateTraCuu.Name = "dateTraCuu";
             this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
             this.dateTraCuu.TabIndex = 2;
-            this.dateTraCuu.Value = new System.DateTime(2018, 5, 14, 10, 11, 0, 350);
+            this.dateTraCuu.Value = new System.DateTime(2018, 5, 14, 0, 0, 0, 0);
             // 
             // dataGridView2
             // 
@@ -319,12 +315,12 @@
             this.dataGridView2.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(6, 58);
+            this.dataGridView2.Location = new System.Drawing.Point(4, 51);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(946, 320);
+            this.dataGridView2.Size = new System.Drawing.Size(926, 280);
             this.dataGridView2.TabIndex = 6;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
@@ -335,7 +331,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(958, 497);
+            this.tabPage1.Size = new System.Drawing.Size(945, 447);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Nhận lịch chuyến bay";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -366,15 +362,15 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.lblUpdateStatus);
             this.splitContainer1.Panel2MinSize = 115;
-            this.splitContainer1.Size = new System.Drawing.Size(954, 492);
-            this.splitContainer1.SplitterDistance = 346;
+            this.splitContainer1.Size = new System.Drawing.Size(941, 442);
+            this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.TabIndex = 8;
             // 
             // btnCancelChanges
             // 
             this.btnCancelChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelChanges.Enabled = false;
-            this.btnCancelChanges.Location = new System.Drawing.Point(847, 0);
+            this.btnCancelChanges.Location = new System.Drawing.Point(834, 0);
             this.btnCancelChanges.Name = "btnCancelChanges";
             this.btnCancelChanges.Size = new System.Drawing.Size(100, 27);
             this.btnCancelChanges.TabIndex = 8;
@@ -386,7 +382,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(769, 0);
+            this.btnSave.Location = new System.Drawing.Point(756, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 27);
             this.btnSave.TabIndex = 7;
@@ -441,7 +437,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 32);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(944, 311);
+            this.dataGridView1.Size = new System.Drawing.Size(931, 275);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
@@ -640,10 +636,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tabControl1.Location = new System.Drawing.Point(6, 24);
+            this.tabControl1.Location = new System.Drawing.Point(6, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(966, 525);
+            this.tabControl1.Size = new System.Drawing.Size(953, 475);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -760,7 +756,7 @@
             this.llbTaoThanhVien.BackColor = System.Drawing.Color.White;
             this.llbTaoThanhVien.DisabledLinkColor = System.Drawing.SystemColors.Control;
             this.llbTaoThanhVien.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.llbTaoThanhVien.Location = new System.Drawing.Point(894, 8);
+            this.llbTaoThanhVien.Location = new System.Drawing.Point(881, 8);
             this.llbTaoThanhVien.Name = "llbTaoThanhVien";
             this.llbTaoThanhVien.Size = new System.Drawing.Size(83, 13);
             this.llbTaoThanhVien.TabIndex = 9;
@@ -859,12 +855,33 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
+            // splitContainerTraCuu
+            // 
+            this.splitContainerTraCuu.Location = new System.Drawing.Point(6, 6);
+            this.splitContainerTraCuu.Name = "splitContainerTraCuu";
+            this.splitContainerTraCuu.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerTraCuu.Panel1
+            // 
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label4);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.dataGridView2);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnBanVe2);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.dateTraCuu);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label14);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnTraCuu);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDi);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label3);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDen);
+            this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 436);
+            this.splitContainerTraCuu.SplitterDistance = 334;
+            this.splitContainerTraCuu.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(984, 561);
+            this.ClientSize = new System.Drawing.Size(971, 511);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.llbTaoThanhVien);
             this.Controls.Add(this.tabControl1);
@@ -872,6 +889,7 @@
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 550);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lí bán vé máy bay";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -879,7 +897,6 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -896,6 +913,10 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainerTraCuu.Panel1.ResumeLayout(false);
+            this.splitContainerTraCuu.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).EndInit();
+            this.splitContainerTraCuu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -971,6 +992,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Button btnHoanVe;
         private System.Windows.Forms.Button btnThanhToan;
+        private System.Windows.Forms.SplitContainer splitContainerTraCuu;
     }
 }
 

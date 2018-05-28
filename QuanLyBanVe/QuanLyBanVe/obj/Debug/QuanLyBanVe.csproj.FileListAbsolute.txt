@@ -96,3 +96,4 @@ F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\Q
 F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache
 F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.exe
 F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache

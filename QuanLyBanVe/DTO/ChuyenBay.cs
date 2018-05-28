@@ -34,15 +34,11 @@ namespace DTO
             get { return maHHK; }
             set { maHHK = value; }
         }
-        private int thoiGianBay;
-
-        public int ThoiGianBay
-        {
-            get { return thoiGianBay; }
-            set { thoiGianBay = value; }
-        }
+        private DateTime thoiGianBay;
+        private DateTime thoiGianDen;
+        
         private int soGheHang1;
-
+        
         public int SoGheHang1
         {
             get { return soGheHang1; }
@@ -62,13 +58,17 @@ namespace DTO
             get { return giaVe; }
             set { giaVe = value; }
         }
-        public ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, int thoiGianBay, int gheHang1, int gheHang2, int gia)
+
+        public DateTime ThoiGianBay { get => thoiGianBay; set => thoiGianBay = value; }
+        public DateTime ThoiGianDen1 { get => thoiGianDen; set => thoiGianDen = value; }
+
+        public ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, DateTime thoiGianBay, DateTime thoiGianDen, int gheHang1, int gheHang2, int gia)
         {
             this.maCB = maCB;
             this.sanBayDi = sanBayDi;
             this.sanBayDen = sanBayDen;
             this.maHHK = maHHK;
-            this.thoiGianBay = thoiGianBay;
+            this.ThoiGianBay = thoiGianBay;
             this.soGheHang1 = gheHang1;
             this.soGheHang2 = gheHang2;
             this.giaVe = gia;
