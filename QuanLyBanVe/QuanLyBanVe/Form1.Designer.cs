@@ -29,25 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.btnTim = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.gridViewCapNhatVe = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbMaVe = new System.Windows.Forms.ComboBox();
             this.cbbMaCB = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnBanVe2 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
+            this.splitContainerTraCuu = new System.Windows.Forms.SplitContainer();
             this.label4 = new System.Windows.Forms.Label();
+            this.gridViewTraCuu = new System.Windows.Forms.DataGridView();
+            this.btnBanVe2 = new System.Windows.Forms.Button();
+            this.dateTraCuu = new System.Windows.Forms.DateTimePicker();
+            this.label14 = new System.Windows.Forms.Label();
+            this.btnTraCuu = new System.Windows.Forms.Button();
+            this.cbbNoiDi = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbNoiDen = new System.Windows.Forms.ComboBox();
-            this.cbbNoiDi = new System.Windows.Forms.ComboBox();
-            this.btnTraCuu = new System.Windows.Forms.Button();
-            this.dateTraCuu = new System.Windows.Forms.DateTimePicker();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnCancelChanges = new System.Windows.Forms.Button();
@@ -55,7 +57,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.gridViewLichCB = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHuy = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -98,26 +100,28 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainerTraCuu = new System.Windows.Forms.SplitContainer();
+            this.gridViewChiTiet = new System.Windows.Forms.DataGridView();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).BeginInit();
+            this.splitContainerTraCuu.Panel1.SuspendLayout();
+            this.splitContainerTraCuu.Panel2.SuspendLayout();
+            this.splitContainerTraCuu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTraCuu)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.cellContextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).BeginInit();
-            this.splitContainerTraCuu.Panel1.SuspendLayout();
-            this.splitContainerTraCuu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -125,7 +129,7 @@
             this.tabPage3.Controls.Add(this.btnHoanVe);
             this.tabPage3.Controls.Add(this.btnThanhToan);
             this.tabPage3.Controls.Add(this.btnTim);
-            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.gridViewCapNhatVe);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.cbbMaVe);
@@ -133,7 +137,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(958, 497);
+            this.tabPage3.Size = new System.Drawing.Size(945, 447);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -170,20 +174,20 @@
             this.btnTim.UseVisualStyleBackColor = true;
             this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
-            // dataGridView3
+            // gridViewCapNhatVe
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(6, 70);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(856, 320);
-            this.dataGridView3.TabIndex = 3;
-            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+            this.gridViewCapNhatVe.AllowUserToAddRows = false;
+            this.gridViewCapNhatVe.AllowUserToDeleteRows = false;
+            this.gridViewCapNhatVe.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.gridViewCapNhatVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewCapNhatVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewCapNhatVe.Location = new System.Drawing.Point(6, 70);
+            this.gridViewCapNhatVe.Name = "gridViewCapNhatVe";
+            this.gridViewCapNhatVe.ReadOnly = true;
+            this.gridViewCapNhatVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewCapNhatVe.Size = new System.Drawing.Size(856, 320);
+            this.gridViewCapNhatVe.TabIndex = 3;
+            this.gridViewCapNhatVe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             // 
             // label2
             // 
@@ -230,6 +234,57 @@
             this.tabPage2.Text = "Tra cứu";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // splitContainerTraCuu
+            // 
+            this.splitContainerTraCuu.Location = new System.Drawing.Point(6, 6);
+            this.splitContainerTraCuu.Name = "splitContainerTraCuu";
+            this.splitContainerTraCuu.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerTraCuu.Panel1
+            // 
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label4);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.gridViewTraCuu);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnBanVe2);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.dateTraCuu);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label14);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnTraCuu);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDi);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.label3);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDen);
+            // 
+            // splitContainerTraCuu.Panel2
+            // 
+            this.splitContainerTraCuu.Panel2.Controls.Add(this.gridViewChiTiet);
+            this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 436);
+            this.splitContainerTraCuu.SplitterDistance = 325;
+            this.splitContainerTraCuu.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(114, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Nơi đến";
+            // 
+            // gridViewTraCuu
+            // 
+            this.gridViewTraCuu.AllowUserToAddRows = false;
+            this.gridViewTraCuu.AllowUserToDeleteRows = false;
+            this.gridViewTraCuu.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.gridViewTraCuu.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewTraCuu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewTraCuu.Location = new System.Drawing.Point(4, 51);
+            this.gridViewTraCuu.Name = "gridViewTraCuu";
+            this.gridViewTraCuu.ReadOnly = true;
+            this.gridViewTraCuu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridViewTraCuu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewTraCuu.Size = new System.Drawing.Size(926, 280);
+            this.gridViewTraCuu.TabIndex = 6;
+            this.gridViewTraCuu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.gridViewTraCuu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            // 
             // btnBanVe2
             // 
             this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -242,6 +297,16 @@
             this.btnBanVe2.UseVisualStyleBackColor = true;
             this.btnBanVe2.Click += new System.EventHandler(this.btnBanVe2_Click);
             // 
+            // dateTraCuu
+            // 
+            this.dateTraCuu.CustomFormat = "dd/MM/yyyy";
+            this.dateTraCuu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTraCuu.Location = new System.Drawing.Point(216, 20);
+            this.dateTraCuu.Name = "dateTraCuu";
+            this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
+            this.dateTraCuu.TabIndex = 2;
+            this.dateTraCuu.Value = new System.DateTime(2018, 5, 14, 0, 0, 0, 0);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -251,14 +316,25 @@
             this.label14.TabIndex = 9;
             this.label14.Text = "Ngày khởi hành";
             // 
-            // label4
+            // btnTraCuu
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(114, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Nơi đến";
+            this.btnTraCuu.Location = new System.Drawing.Point(425, 21);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(69, 23);
+            this.btnTraCuu.TabIndex = 3;
+            this.btnTraCuu.Text = "Tìm";
+            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+            // 
+            // cbbNoiDi
+            // 
+            this.cbbNoiDi.ForeColor = System.Drawing.Color.Black;
+            this.cbbNoiDi.FormattingEnabled = true;
+            this.cbbNoiDi.Location = new System.Drawing.Point(4, 22);
+            this.cbbNoiDi.Name = "cbbNoiDi";
+            this.cbbNoiDi.Size = new System.Drawing.Size(100, 23);
+            this.cbbNoiDi.TabIndex = 0;
+            this.cbbNoiDi.DropDown += new System.EventHandler(this.cbbNoiDi_DropDown);
             // 
             // label3
             // 
@@ -277,53 +353,6 @@
             this.cbbNoiDen.Size = new System.Drawing.Size(99, 23);
             this.cbbNoiDen.TabIndex = 1;
             this.cbbNoiDen.DropDown += new System.EventHandler(this.cbbNoiDen_DropDown);
-            // 
-            // cbbNoiDi
-            // 
-            this.cbbNoiDi.ForeColor = System.Drawing.Color.Black;
-            this.cbbNoiDi.FormattingEnabled = true;
-            this.cbbNoiDi.Location = new System.Drawing.Point(4, 22);
-            this.cbbNoiDi.Name = "cbbNoiDi";
-            this.cbbNoiDi.Size = new System.Drawing.Size(100, 23);
-            this.cbbNoiDi.TabIndex = 0;
-            this.cbbNoiDi.DropDown += new System.EventHandler(this.cbbNoiDi_DropDown);
-            // 
-            // btnTraCuu
-            // 
-            this.btnTraCuu.Location = new System.Drawing.Point(425, 21);
-            this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(69, 23);
-            this.btnTraCuu.TabIndex = 3;
-            this.btnTraCuu.Text = "Tìm";
-            this.btnTraCuu.UseVisualStyleBackColor = true;
-            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
-            // 
-            // dateTraCuu
-            // 
-            this.dateTraCuu.CustomFormat = "dd/MM/yyyy";
-            this.dateTraCuu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTraCuu.Location = new System.Drawing.Point(216, 20);
-            this.dateTraCuu.Name = "dateTraCuu";
-            this.dateTraCuu.Size = new System.Drawing.Size(200, 23);
-            this.dateTraCuu.TabIndex = 2;
-            this.dateTraCuu.Value = new System.DateTime(2018, 5, 14, 0, 0, 0, 0);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 51);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(926, 280);
-            this.dataGridView2.TabIndex = 6;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // tabPage1
             // 
@@ -352,7 +381,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.btnThem);
             this.splitContainer1.Panel1.Controls.Add(this.btnSua);
             this.splitContainer1.Panel1.Controls.Add(this.btnXoa);
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.Controls.Add(this.gridViewLichCB);
             this.splitContainer1.Panel1MinSize = 280;
             // 
             // splitContainer1.Panel2
@@ -422,30 +451,30 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // dataGridView1
+            // gridViewLichCB
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridViewLichCB.AllowUserToAddRows = false;
+            this.gridViewLichCB.AllowUserToDeleteRows = false;
+            this.gridViewLichCB.AllowUserToResizeRows = false;
+            this.gridViewLichCB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridView1.Size = new System.Drawing.Size(931, 275);
-            this.dataGridView1.TabIndex = 5;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
-            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridView1.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridView1_CellStateChanged);
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
-            this.dataGridView1.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            this.gridViewLichCB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridViewLichCB.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.gridViewLichCB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewLichCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewLichCB.Location = new System.Drawing.Point(3, 32);
+            this.gridViewLichCB.Name = "gridViewLichCB";
+            this.gridViewLichCB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.gridViewLichCB.Size = new System.Drawing.Size(931, 275);
+            this.gridViewLichCB.TabIndex = 5;
+            this.gridViewLichCB.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.gridViewLichCB.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
+            this.gridViewLichCB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            this.gridViewLichCB.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dataGridView1_CellStateChanged);
+            this.gridViewLichCB.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
+            this.gridViewLichCB.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            this.gridViewLichCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // panel1
             // 
@@ -855,26 +884,21 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
-            // splitContainerTraCuu
+            // gridViewChiTiet
             // 
-            this.splitContainerTraCuu.Location = new System.Drawing.Point(6, 6);
-            this.splitContainerTraCuu.Name = "splitContainerTraCuu";
-            this.splitContainerTraCuu.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerTraCuu.Panel1
-            // 
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.label4);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.dataGridView2);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnBanVe2);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.dateTraCuu);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.label14);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnTraCuu);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDi);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.label3);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDen);
-            this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 436);
-            this.splitContainerTraCuu.SplitterDistance = 334;
-            this.splitContainerTraCuu.TabIndex = 10;
+            this.gridViewChiTiet.AllowUserToAddRows = false;
+            this.gridViewChiTiet.AllowUserToDeleteRows = false;
+            this.gridViewChiTiet.BackgroundColor = System.Drawing.Color.White;
+            this.gridViewChiTiet.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewChiTiet.GridColor = System.Drawing.Color.White;
+            this.gridViewChiTiet.Location = new System.Drawing.Point(7, 3);
+            this.gridViewChiTiet.Name = "gridViewChiTiet";
+            this.gridViewChiTiet.ReadOnly = true;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridViewChiTiet.Size = new System.Drawing.Size(926, 106);
+            this.gridViewChiTiet.TabIndex = 0;
             // 
             // Form1
             // 
@@ -895,16 +919,21 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.splitContainerTraCuu.Panel1.ResumeLayout(false);
+            this.splitContainerTraCuu.Panel1.PerformLayout();
+            this.splitContainerTraCuu.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).EndInit();
+            this.splitContainerTraCuu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewTraCuu)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -913,10 +942,7 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.splitContainerTraCuu.Panel1.ResumeLayout(false);
-            this.splitContainerTraCuu.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).EndInit();
-            this.splitContainerTraCuu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,7 +951,7 @@
         #endregion
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnTim;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView gridViewCapNhatVe;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbbMaVe;
@@ -937,7 +963,7 @@
         private System.Windows.Forms.ComboBox cbbNoiDi;
         private System.Windows.Forms.Button btnTraCuu;
         private System.Windows.Forms.DateTimePicker dateTraCuu;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView gridViewTraCuu;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label label14;
@@ -948,7 +974,7 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridViewLichCB;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Label label5;
@@ -993,6 +1019,7 @@
         private System.Windows.Forms.Button btnHoanVe;
         private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.SplitContainer splitContainerTraCuu;
+        private System.Windows.Forms.DataGridView gridViewChiTiet;
     }
 }
 

@@ -20,7 +20,7 @@ namespace QuanLyBanVe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            QuanLy.LoadDataToDataGridView(dataGridView1);
+            QuanLy.LoadDataToDataGridView(gridViewLichCB);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace QuanLyBanVe
 
         private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count != 0)
+            if (gridViewLichCB.SelectedRows.Count != 0)
             {
                 btnXoa.Enabled = true;
             }
@@ -48,9 +48,9 @@ namespace QuanLyBanVe
 
         private void dataGridView1_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
-            if (dataGridView1.SelectedCells.Count == 1)
+            if (gridViewLichCB.SelectedCells.Count == 1)
             {
-                DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
+                DataGridViewCell selectedCell = gridViewLichCB.SelectedCells[0];
                 if (selectedCell.OwningRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
                 {
                     btnSua.Enabled = true;
@@ -67,13 +67,13 @@ namespace QuanLyBanVe
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            QuanLy.AddRowToDataGridView(dataGridView1);
-            DataGridViewRow newRow = dataGridView1.Rows[dataGridView1.Rows.Count - 1];
+            QuanLy.AddRowToDataGridView(gridViewLichCB);
+            DataGridViewRow newRow = gridViewLichCB.Rows[gridViewLichCB.Rows.Count - 1];
             newRow.HeaderCell.Value = String.Format("{0}", newRow.Index + 1);
 
             QuanLy.addedRows.Add(newRow);
             newRow.DefaultCellStyle.BackColor = QuanLy.AddedRowColor;
-            dataGridView1.CurrentCell = newRow.Cells[0];
+            gridViewLichCB.CurrentCell = newRow.Cells[0];
 
             btnSave.Enabled = true;
             btnCancelChanges.Enabled = true;
@@ -81,12 +81,12 @@ namespace QuanLyBanVe
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            dataGridView1.CurrentCell = dataGridView1.SelectedCells[0];
-            if (dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[1] ||
-                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[2] ||
-                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[3] ||
-                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[4] ||
-                dataGridView1.CurrentCell.OwningColumn == dataGridView1.Columns[5])
+            gridViewLichCB.CurrentCell = gridViewLichCB.SelectedCells[0];
+            if (gridViewLichCB.CurrentCell.OwningColumn == gridViewLichCB.Columns[1] ||
+                gridViewLichCB.CurrentCell.OwningColumn == gridViewLichCB.Columns[2] ||
+                gridViewLichCB.CurrentCell.OwningColumn == gridViewLichCB.Columns[3] ||
+                gridViewLichCB.CurrentCell.OwningColumn == gridViewLichCB.Columns[4] ||
+                gridViewLichCB.CurrentCell.OwningColumn == gridViewLichCB.Columns[5])
             {
                 splitContainer1.Panel1.Enabled = false;
                 QuanLy.LoadSanBay(cbbMaSBDi);
@@ -97,13 +97,13 @@ namespace QuanLyBanVe
             }
             else
             {
-                dataGridView1.BeginEdit(true);
+                gridViewLichCB.BeginEdit(true);
             }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
             {
                 if (row.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
                 {
@@ -125,7 +125,7 @@ namespace QuanLyBanVe
                     row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
                 }
             }
-            dataGridView1.ClearSelection();
+            gridViewLichCB.ClearSelection();
             btnSave.Enabled = true;
             btnCancelChanges.Enabled = true;
         }
@@ -136,7 +136,7 @@ namespace QuanLyBanVe
             btnSave.Enabled = false;
             btnCancelChanges.Enabled = false;
 
-            DataGridViewCell modifiedCell = dataGridView1.SelectedCells[0];
+            DataGridViewCell modifiedCell = gridViewLichCB.SelectedCells[0];
             DataGridViewRow modifiedRow = modifiedCell.OwningRow;
             if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
                 modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
@@ -156,7 +156,7 @@ namespace QuanLyBanVe
         private void btnSave_Click(object sender, EventArgs e)
         {
             btnSave.Enabled = false;
-            if (!QuanLy.CheckAffectedRows(dataGridView1))
+            if (!QuanLy.CheckAffectedRows(gridViewLichCB))
             {
                 /* Show error(s) to the user */
                 MessageBox.Show("Có lỗi khi cập nhật dữ liệu vào CDSL. Vui lòng kiểm tra lại các thay đổi của bạn.", "Cập nhật không thành công");
@@ -212,7 +212,7 @@ namespace QuanLyBanVe
                 QuanLy.addedRows.Clear();
                 QuanLy.modifiedRows.Clear();
                 QuanLy.removedRows.Clear();
-                QuanLy.LoadDataToDataGridView(dataGridView1);
+                QuanLy.LoadDataToDataGridView(gridViewLichCB);
             }
         }
 
@@ -223,12 +223,12 @@ namespace QuanLyBanVe
             QuanLy.addedRows.Clear();
             QuanLy.modifiedRows.Clear();
             QuanLy.removedRows.Clear();
-            QuanLy.LoadDataToDataGridView(dataGridView1);
+            QuanLy.LoadDataToDataGridView(gridViewLichCB);
         }
 
         private void buttonOK1_Click(object sender, EventArgs e)
         {
-            DataGridViewRow modifiedRow = dataGridView1.CurrentCell.OwningRow;
+            DataGridViewRow modifiedRow = gridViewLichCB.CurrentCell.OwningRow;
             if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
                 modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
             {
@@ -261,9 +261,9 @@ namespace QuanLyBanVe
         {
             if (e.Button == MouseButtons.Right)
             {
-                dataGridView1.ClearSelection();
-                DataGridViewCell clickedCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                dataGridView1.CurrentCell = clickedCell;
+                gridViewLichCB.ClearSelection();
+                DataGridViewCell clickedCell = gridViewLichCB.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                gridViewLichCB.CurrentCell = clickedCell;
                 clickedCell.Selected = true;
                 /* Determine whether modifyCellToolStripMenuItem can be enabled */
                 if (clickedCell.OwningRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
@@ -304,12 +304,12 @@ namespace QuanLyBanVe
 
         private void selectRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.CurrentCell.OwningRow.Selected = true;
+            gridViewLichCB.CurrentCell.OwningRow.Selected = true;
         }
 
         private void copyRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow rowToCopy = dataGridView1.CurrentCell.OwningRow;
+            DataGridViewRow rowToCopy = gridViewLichCB.CurrentCell.OwningRow;
             rowToCopy.Selected = true;
             QuanLy.duplicate = (DataGridViewRow)rowToCopy.Clone();
             for (int i = 0; i < 9; i++)
@@ -322,7 +322,7 @@ namespace QuanLyBanVe
 
         private void pasteRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridViewRow modifiedRow = dataGridView1.CurrentCell.OwningRow;
+            DataGridViewRow modifiedRow = gridViewLichCB.CurrentCell.OwningRow;
             if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
                 modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
             {
@@ -333,14 +333,14 @@ namespace QuanLyBanVe
             {
                 modifiedRow.Cells[i].Value = QuanLy.duplicate.Cells[i].Value;
             }
-            dataGridView1.ClearSelection();
+            gridViewLichCB.ClearSelection();
             btnSave.Enabled = true;
             btnCancelChanges.Enabled = true;
         }
 
         private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.CurrentCell.OwningRow.Selected = true;
+            gridViewLichCB.CurrentCell.OwningRow.Selected = true;
             btnXoa_Click(sender, e);
         }
 
@@ -360,19 +360,19 @@ namespace QuanLyBanVe
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.SelectAll();
+            gridViewLichCB.SelectAll();
         }
 
         private void clearSelectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dataGridView1.ClearSelection();
+            gridViewLichCB.ClearSelection();
         }
 
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                dataGridView1.EndEdit();
+                gridViewLichCB.EndEdit();
             }
         }
 
@@ -435,7 +435,7 @@ namespace QuanLyBanVe
             }
             else
             {
-                QuanLy.TraCuu(dataGridView2, cbbNoiDi, cbbNoiDen, dateTraCuu);
+                QuanLy.TraCuu(gridViewTraCuu, cbbNoiDi, cbbNoiDen, dateTraCuu);
             }
 
         }
@@ -443,11 +443,12 @@ namespace QuanLyBanVe
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnBanVe2.Enabled = true;
+            QuanLy.ChiTietChuyenBay(gridViewChiTiet, getMaCB(gridViewTraCuu));
         }
 
         private void btnBanVe2_Click(object sender, EventArgs e)
         {          
-            BanVe formBanVe = new BanVe(getMaCB(dataGridView2));
+            BanVe formBanVe = new BanVe(getMaCB(gridViewTraCuu));
             formBanVe.ShowDialog();
         }
 
@@ -464,8 +465,8 @@ namespace QuanLyBanVe
                 if (hti.Type == DataGridViewHitTestType.Cell)
                 {
                     contextMenuStrip2.Show(MousePosition.X, MousePosition.Y);
-                    dataGridView2.ClearSelection();
-                    dataGridView2.Rows[hti.RowIndex].Selected = true;
+                    gridViewTraCuu.ClearSelection();
+                    gridViewTraCuu.Rows[hti.RowIndex].Selected = true;
                 }
             }
         }
@@ -498,7 +499,7 @@ namespace QuanLyBanVe
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -508,8 +509,8 @@ namespace QuanLyBanVe
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            QuanLy.ThanhToan(dataGridView3, cbbMaVe);
-            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+            QuanLy.ThanhToan(gridViewCapNhatVe, cbbMaVe);
+            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
         }
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -519,9 +520,9 @@ namespace QuanLyBanVe
 
         private void btnHoanVe_Click(object sender, EventArgs e)
         {
-            QuanLy.HoanVe(dataGridView3, cbbMaVe);
-            QuanLy.CapNhatVe(dataGridView3, cbbMaCB, cbbMaVe);
+            QuanLy.HoanVe(gridViewCapNhatVe, cbbMaVe);
+            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
         }
- 
+
     }
 }

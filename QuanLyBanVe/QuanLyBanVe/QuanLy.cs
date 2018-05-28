@@ -327,7 +327,7 @@ namespace QuanLyBanVe
             }
             dataGridView.ClearSelection();
         }
-        public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen,TextBox txt)
+        public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen, TextBox txt)
         {
             using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
             {
@@ -380,14 +380,14 @@ namespace QuanLyBanVe
                 dataAdapter.Fill(datb);
                 gridView.DataSource = datb;
                 int sum = 0;
-                for(int i=0; i<gridView.RowCount; i++)
+                for (int i = 0; i < gridView.RowCount; i++)
                 {
                     sum += Int32.Parse(gridView["DOANH THU", i].Value.ToString());
                     gridView["Tỉ lệ", i].Value = Math.Round(Convert.ToDouble(gridView["Tỉ lệ", i].Value), 2);
                 }
                 txt.Text = sum.ToString();
             }
-            gridView.ClearSelection();             
+            gridView.ClearSelection();
         }
         public static void CapNhatVe(DataGridView gridView, ComboBox boxMaCB, ComboBox boxMaVe)
         {
@@ -418,8 +418,8 @@ namespace QuanLyBanVe
                 {
                     gridView.DataSource = null;
                 }
-            } 
-            gridView.ClearSelection();   
+            }
+            gridView.ClearSelection();
         }
         public static void LoadDuLieu(ComboBox boxMaCB, ComboBox boxMaVe)
         {
@@ -469,7 +469,7 @@ namespace QuanLyBanVe
                 adapter.SelectCommand = comm;
 
                 int check = comm.ExecuteNonQuery();
-                if(check!= 0)
+                if (check != 0)
                 {
                     MessageBox.Show("Thanh toán vé thành công!", "Thông báo", MessageBoxButtons.OK);
                 }
@@ -490,7 +490,7 @@ namespace QuanLyBanVe
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
-                if(boxMaVe.Text != "")
+                if (boxMaVe.Text != "")
                 {
                     para = new SqlParameter("@MaVe", boxMaVe.Text);
                 }
@@ -513,6 +513,30 @@ namespace QuanLyBanVe
                 {
                     MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
                 }
+            }
+        }
+        public static void ChiTietChuyenBay(DataGridView gridView, string maCB)
+        {
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_HoangAn))
+            {
+                
+                gridView.RowHeadersVisible = false;
+                gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                conn.Open();
+                SqlCommand comm = new SqlCommand("ChiTietChuyenBay", conn);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", maCB);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                gridView.DataSource = dataTable;
+
+                gridView.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                gridView.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             }
         }
     }
