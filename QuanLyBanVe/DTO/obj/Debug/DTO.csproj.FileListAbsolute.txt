@@ -2,9 +2,9 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DTO\bin\
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DTO\bin\Debug\DTO.pdb
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DTO\obj\Debug\DTO.dll
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\DTO\obj\Debug\DTO.pdb
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\bin\Debug\DTO.dll
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\bin\Debug\DTO.pdb
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.dll
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.pdb
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\bin\Debug\DTO.dll
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\bin\Debug\DTO.pdb
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\obj\Debug\DTO.dll
+F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\DTO\obj\Debug\DTO.pdb

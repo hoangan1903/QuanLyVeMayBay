@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class TinhTrang
+    public class DTO_TinhTrang
     {
         private string maTT;
 

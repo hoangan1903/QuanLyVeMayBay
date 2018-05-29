@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ThamSo
+    public class DTO_ThamSo
     {
         private string maTS;
 
@@ -36,7 +36,7 @@ namespace DTO
             get { return ngayApDung; }
             set { ngayApDung = value; }
         }
-        public ThamSo(string maTS, string tenTS, int giaTri, DateTime ngayApDung)
+        public DTO_ThamSo(string maTS, string tenTS, int giaTri, DateTime ngayApDung)
         {
             this.maTS = maTS;
             this.tenTS = tenTS;

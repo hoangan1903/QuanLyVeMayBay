@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class ChiTietCB
+    public class DTO_ChiTietCB
     {
         private string maCB;
 
@@ -37,7 +37,7 @@ namespace DTO
             set { ghiChu = value; }
         }
 
-        public ChiTietCB(string maCB, string maSBTG, int thoiGianDung, string ghiChu)
+        public DTO_ChiTietCB(string maCB, string maSBTG, int thoiGianDung, string ghiChu)
         {
             this.maCB = maCB;
             this.maSBTG = maSBTG;

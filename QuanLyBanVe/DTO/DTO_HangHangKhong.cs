@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class HangHangKhong
+    public class DTO_HangHangKhong
     {
         private string maHHK;
 
@@ -22,7 +22,7 @@ namespace DTO
             get { return tenHHK; }
             set { tenHHK = value; }
         }         
-        public HangHangKhong(string maHHK, string tenHHK)
+        public DTO_HangHangKhong(string maHHK, string tenHHK)
         {
             this.maHHK = maHHK;
             this.tenHHK = tenHHK;

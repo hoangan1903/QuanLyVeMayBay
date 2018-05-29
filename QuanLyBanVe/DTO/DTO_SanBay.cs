@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class SanBay
+    public class DTO_SanBay
     {
         private string maSB;
 
@@ -22,7 +22,7 @@ namespace DTO
             get { return tenSB; }
             set { tenSB = value; }
         }
-        public SanBay(string maSB, string tenSB)
+        public DTO_SanBay(string maSB, string tenSB)
         {
             this.maSB = maSB;
             this.tenSB = tenSB;
