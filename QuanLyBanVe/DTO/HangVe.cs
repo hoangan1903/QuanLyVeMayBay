@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_HangVe
+    class HangVe
     {
         private string maHV;
 

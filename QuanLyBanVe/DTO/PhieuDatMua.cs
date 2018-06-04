@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_PhieuDatMua
+    class PhieuDatMua
     {
         private string maVe;
         public string MaVe
@@ -36,7 +36,7 @@ namespace DTO
             set { daThanhToan = value; }
         }
 
-        public DTO_PhieuDatMua(string maVe, string maKH, DateTime thoiGianDat, bool daThanhToan)
+        public PhieuDatMua(string maVe, string maKH, DateTime thoiGianDat, bool daThanhToan)
         {
             this.maVe = maVe;
             this.maKH = maKH;

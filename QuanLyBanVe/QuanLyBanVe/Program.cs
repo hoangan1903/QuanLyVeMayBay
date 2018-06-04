@@ -20,7 +20,7 @@ namespace QuanLyBanVe
             Application.Run(loginForm);
             if (loginForm.LoginResult == DialogResult.OK)
             {
-                Application.Run(new Form1());
+                Application.Run(new QuanLyBanVe());
             }
             else
             {

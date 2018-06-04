@@ -18,14 +18,3 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\BUS\obj\Debug\BUS.csproj.CopyComplete
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\BUS\obj\Debug\BUS.dll
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\BUS\obj\Debug\BUS.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\obj\Debug\BUS.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\obj\Debug\BUS.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\BUS.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\BUS.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\DAO.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\DTO.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\DAO.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\bin\Debug\DTO.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\BUS\obj\Debug\BUS.csproj.CopyComplete

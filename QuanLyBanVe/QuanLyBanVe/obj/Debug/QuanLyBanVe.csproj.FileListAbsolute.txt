@@ -60,7 +60,6 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCaoNam.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCao.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.DangNhap.resources
-D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Form1.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.GenerateResource.cache
@@ -97,10 +96,4 @@ F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\Q
 F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.exe
 F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.pdb
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CoreCompileInputs.cache
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\BUS.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\DAO.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\DTO.dll
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\BUS.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\DAO.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\bin\Debug\DTO.pdb
-F:\For Me\Study\4 - Nhập môn CNPM\Project\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csproj.CopyComplete
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.QuanLyBanVe.resources

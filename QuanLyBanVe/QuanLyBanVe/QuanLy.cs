@@ -65,7 +65,7 @@ namespace QuanLyBanVe
         {
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand("LietKeCB", connection)
@@ -78,24 +78,18 @@ namespace QuanLyBanVe
                 adapter.Fill(table);
                 dgv.DataSource = table;
             }
-            for (int i = 0; i < 9; i++)
+            foreach (DataGridViewColumn column in dgv.Columns)
             {
-                dgv.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                if (i == 1 || i == 2 || i == 3 || i == 4 || i == 5)
-                {
-                    dgv.Columns[i].ReadOnly = true;
-                }
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             foreach (DataGridViewRow row in dgv.Rows)
             {
-                row.Cells[0].ReadOnly = true;
                 row.Cells[0].Style.ForeColor = PrimaryKeyColor;
                 row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
             }
             dgv.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             dgv.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             dgv.ClearSelection();
-            ValueType valueType = new DateTimeKind();
         }
 
         public static DataGridViewRow FindRowInDataGridView(DataGridView dgv, string keyword)
@@ -120,6 +114,17 @@ namespace QuanLyBanVe
                 }
             }
             return null;
+        }
+        public static bool OkToCopy(DataGridViewRow row)
+        {
+            foreach (DataGridViewCell cell in row.Cells)
+            {
+                if (cell.ColumnIndex == 0)
+                    continue;
+                if (string.Empty == cell.Value.ToString())
+                    return false;
+            }
+            return true;
         }
 
         public static void AddRowToDataGridView(DataGridView dgv)
@@ -185,7 +190,7 @@ namespace QuanLyBanVe
 
         public static void AddParametersToCommand(SqlCommand cmd, DataGridViewRow row)
         {
-            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection connection = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 connection.Open();
                 SqlParameter parameter;
@@ -194,13 +199,13 @@ namespace QuanLyBanVe
                 cmd.Parameters.Add(parameter);
                 if (cmd.CommandText == "ThemCB" || cmd.CommandText == "SuaCB")
                 {
-                    parameter = new SqlParameter("@MaSBDi", row.Cells[1].Value.ToString());
+                    parameter = new SqlParameter("@TenSBDi", row.Cells[1].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@MaSBDen", row.Cells[2].Value.ToString());
+                    parameter = new SqlParameter("@TenSBDen", row.Cells[2].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
-                    parameter = new SqlParameter("@MaHHK", row.Cells[3].Value.ToString());
+                    parameter = new SqlParameter("@TenHHK", row.Cells[3].Value.ToString());
                     cmd.Parameters.Add(parameter);
 
                     parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(row.Cells[4].Value.ToString()));
@@ -266,11 +271,9 @@ namespace QuanLyBanVe
             labelToShow.Text = ChangeLog;
         }
 
-        //===================================================
-        /*
         public static void LoadSanBay(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", conn);
@@ -281,14 +284,11 @@ namespace QuanLyBanVe
                 comboBox.DisplayMember = "TENSANBAY";
                 comboBox.ValueMember = "TENSANBAY";
             }
-        } */
+        }
 
-
-            //======================================
-            /*
         public static void LoadHHK(ComboBox comboBox)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 conn.Open();
                 SqlCommand comm = new SqlCommand("SELECT TENHHK FROM HANGHK", conn);
@@ -301,11 +301,11 @@ namespace QuanLyBanVe
                 comboBox.ValueMember = "TENHHK";
 
             }
-        } */
+        }
 
         public static void TraCuu(DataGridView dataGridView, ComboBox cbbDi, ComboBox cbbDen, DateTimePicker date)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 dataGridView.RowHeadersVisible = false;
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -334,7 +334,7 @@ namespace QuanLyBanVe
         }
         public static void BaoCao(DataGridView gridView, DateTimePicker dateDi, DateTimePicker dateDen, TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -367,7 +367,7 @@ namespace QuanLyBanVe
 
         public static void BaoCaoNam(DataGridView gridView, ComboBox box, TextBox txt)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -394,14 +394,10 @@ namespace QuanLyBanVe
             }
             gridView.ClearSelection();
         }
-
-
-        //======================================================
-        /*
         public static void CapNhatVe(DataGridView gridView, ComboBox boxMaCB, ComboBox boxMaVe)
         {
 
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 try
                 {
@@ -429,14 +425,10 @@ namespace QuanLyBanVe
                 }
             }
             gridView.ClearSelection();
-        } */
-
-
-        //===============================================
-        /*
+        }
         public static void LoadDuLieu(ComboBox boxMaCB, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", conn);
                 DataTable datb = new DataTable();
@@ -455,13 +447,10 @@ namespace QuanLyBanVe
                 boxMaVe.DisplayMember = "MAVE";
                 boxMaVe.Text = null;
             }
-        }*/
-
-        //============================================
-        /*
+        }
         public static void ThanhToan(DataGridView gridView, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -494,14 +483,10 @@ namespace QuanLyBanVe
                     MessageBox.Show("Vé đã được thanh toán trước đó!", "Thông báo", MessageBoxButtons.OK);
                 }
             }
-        } */
-
-
-        //=================================================
-        /*
+        }
         public static void HoanVe(DataGridView gridView, ComboBox boxMaVe)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 gridView.RowHeadersVisible = false;
                 gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -534,10 +519,10 @@ namespace QuanLyBanVe
                     MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
                 }
             }
-        } */
+        }
         public static void ChiTietChuyenBay(DataGridView gridView, string maCB)
         {
-            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            using (SqlConnection conn = new SqlConnection(Properties.Resources.localConnectionString_VietAnh))
             {
                 
                 gridView.RowHeadersVisible = false;

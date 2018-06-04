@@ -39,12 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO_HHK.cs" />
-    <Compile Include="DAO_KhachHang.cs" />
-    <Compile Include="DAO_PhieuDatMua.cs" />
-    <Compile Include="DAO_SanBay.cs" />
-    <Compile Include="DAO_Ve.cs" />
-    <Compile Include="DBConnect.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

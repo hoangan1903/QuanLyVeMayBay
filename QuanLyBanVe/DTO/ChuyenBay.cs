@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_ChuyenBay
+    class ChuyenBay
     {
         private string maCB;
         public string MaCB
@@ -62,7 +62,7 @@ namespace DTO
         public DateTime ThoiGianBay { get => thoiGianBay; set => thoiGianBay = value; }
         public DateTime ThoiGianDen1 { get => thoiGianDen; set => thoiGianDen = value; }
 
-        public DTO_ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, DateTime thoiGianBay, DateTime thoiGianDen, int gheHang1, int gheHang2, int gia)
+        public ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, DateTime thoiGianBay, DateTime thoiGianDen, int gheHang1, int gheHang2, int gia)
         {
             this.maCB = maCB;
             this.sanBayDi = sanBayDi;

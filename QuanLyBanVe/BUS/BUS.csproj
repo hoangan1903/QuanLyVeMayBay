@@ -39,11 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS_HHK.cs" />
-    <Compile Include="BUS_KhachHang.cs" />
-    <Compile Include="BUS_PhieuDatMua.cs" />
-    <Compile Include="BUS_SanBay.cs" />
-    <Compile Include="BUS_Ve.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
