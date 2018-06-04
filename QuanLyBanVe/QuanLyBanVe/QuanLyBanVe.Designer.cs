@@ -264,8 +264,8 @@
             // splitContainerTraCuu.Panel2
             // 
             this.splitContainerTraCuu.Panel2.Controls.Add(this.gridViewChiTiet);
-            this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 436);
-            this.splitContainerTraCuu.SplitterDistance = 325;
+            this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 558);
+            this.splitContainerTraCuu.SplitterDistance = 430;
             this.splitContainerTraCuu.TabIndex = 10;
             // 
             // label4
@@ -371,12 +371,12 @@
             this.gridViewChiTiet.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridViewChiTiet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewChiTiet.GridColor = System.Drawing.Color.White;
-            this.gridViewChiTiet.Location = new System.Drawing.Point(7, 3);
+            this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gridViewChiTiet.Size = new System.Drawing.Size(926, 106);
+            this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
             // tabPage1
@@ -852,7 +852,7 @@
             this.selectAllToolStripMenuItem,
             this.clearSelectionToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 136);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(195, 114);
             // 
             // themToolStripMenuItem
             // 
@@ -963,14 +963,14 @@
             // báoCáoToolStripMenuItem1
             // 
             this.báoCáoToolStripMenuItem1.Name = "báoCáoToolStripMenuItem1";
-            this.báoCáoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.báoCáoToolStripMenuItem1.Text = "Báo cáo chuyến bay";
+            this.báoCáoToolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.báoCáoToolStripMenuItem1.Text = "Báo cáo ngày";
             this.báoCáoToolStripMenuItem1.Click += new System.EventHandler(this.báoCáoToolStripMenuItem1_Click);
             // 
             // báoCáoNămToolStripMenuItem
             // 
             this.báoCáoNămToolStripMenuItem.Name = "báoCáoNămToolStripMenuItem";
-            this.báoCáoNămToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.báoCáoNămToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.báoCáoNămToolStripMenuItem.Text = "Báo cáo năm";
             this.báoCáoNămToolStripMenuItem.Click += new System.EventHandler(this.báoCáoNămToolStripMenuItem_Click);
             // 
@@ -995,7 +995,7 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
-            // Form1
+            // QuanLyBanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1007,7 +1007,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(900, 550);
-            this.Name = "Form1";
+            this.Name = "QuanLyBanVe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lí bán vé máy bay";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BaoCaoNam;
 
 namespace QuanLyBanVe
 {
@@ -223,8 +224,8 @@ namespace QuanLyBanVe
             modifiedRow.Cells[1].Value = cbbMaSBDi.Text;
             modifiedRow.Cells[2].Value = cbbMaSBDen.Text;
             modifiedRow.Cells[3].Value = cbbHHK.Text;
-            modifiedRow.Cells[4].Value = departureTime.Text;
-            modifiedRow.Cells[5].Value = arrivalTime.Text;
+            modifiedRow.Cells[4].Value = DateTime.Parse(departureTime.Text);
+            modifiedRow.Cells[5].Value = DateTime.Parse(arrivalTime.Text);
 
             if (tbSoGheHang1.Text != string.Empty)
                 modifiedRow.Cells[6].Value = tbSoGheHang1.Text;
@@ -481,14 +482,14 @@ namespace QuanLyBanVe
 
         private void báoCáoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            BaoCao formBaoCao = new BaoCao();
-            formBaoCao.ShowDialog();
+            BaoCaoNgay.BaoCaoNgay baoCaoNgay = new BaoCaoNgay.BaoCaoNgay();
+            baoCaoNgay.Show();
         }
 
         private void báoCáoNămToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BaoCaoNam formBaoCaoNam = new BaoCaoNam();
-            formBaoCaoNam.ShowDialog();
+            BaoCaoNam.BaoCaoNam baoCaoNam = new BaoCaoNam.BaoCaoNam();
+            baoCaoNam.Show();
         }
 
         private void btnTim_Click(object sender, EventArgs e)
@@ -515,6 +516,7 @@ namespace QuanLyBanVe
         private void btnHoanVe_Click(object sender, EventArgs e)
         {
             QuanLy.HoanVe(gridViewCapNhatVe, cbbMaVe);
+            
             QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
         }
     }

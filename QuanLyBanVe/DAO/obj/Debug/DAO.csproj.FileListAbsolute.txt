@@ -14,3 +14,12 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CopyComplete
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.dll
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DTO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DTO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.pdb

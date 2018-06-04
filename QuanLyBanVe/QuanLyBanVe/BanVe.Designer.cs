@@ -198,6 +198,7 @@
             this.Controls.Add(this.btnXacNhanMua);
             this.Controls.Add(this.grpBanVe);
             this.Name = "BanVe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bán vé";
             this.Load += new System.EventHandler(this.BanVe_Load);
             this.grpBanVe.ResumeLayout(false);

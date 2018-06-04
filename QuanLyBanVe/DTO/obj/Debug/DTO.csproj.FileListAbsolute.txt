@@ -8,3 +8,9 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.dll
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\bin\Debug\DTO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\bin\Debug\DTO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DTO\obj\Debug\DTO.pdb
