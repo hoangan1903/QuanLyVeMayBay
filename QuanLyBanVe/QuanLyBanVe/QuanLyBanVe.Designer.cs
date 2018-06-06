@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -70,7 +70,7 @@
             this.tbMaCB = new System.Windows.Forms.TextBox();
             this.btnHuy = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.buttonOK = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
             this.departureTime = new System.Windows.Forms.DateTimePicker();
             this.arrivalTime = new System.Windows.Forms.DateTimePicker();
@@ -196,7 +196,7 @@
             this.gridViewCapNhatVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewCapNhatVe.Size = new System.Drawing.Size(856, 320);
             this.gridViewCapNhatVe.TabIndex = 3;
-            this.gridViewCapNhatVe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
+            this.gridViewCapNhatVe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewCapNhatVe_CellClick);
             // 
             // label2
             // 
@@ -218,6 +218,8 @@
             // 
             // cbbMaVe
             // 
+            this.cbbMaVe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbMaVe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbMaVe.FormattingEnabled = true;
             this.cbbMaVe.Location = new System.Drawing.Point(184, 32);
             this.cbbMaVe.Name = "cbbMaVe";
@@ -226,6 +228,8 @@
             // 
             // cbbMaCB
             // 
+            this.cbbMaCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbMaCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbMaCB.FormattingEnabled = true;
             this.cbbMaCB.Location = new System.Drawing.Point(35, 32);
             this.cbbMaCB.Name = "cbbMaCB";
@@ -291,7 +295,7 @@
             this.gridViewTraCuu.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewTraCuu.Size = new System.Drawing.Size(926, 280);
             this.gridViewTraCuu.TabIndex = 6;
-            this.gridViewTraCuu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.gridViewTraCuu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewTraCuu_CellClick);
             this.gridViewTraCuu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // btnBanVe2
@@ -337,13 +341,14 @@
             // 
             // cbbNoiDi
             // 
+            this.cbbNoiDi.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbNoiDi.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbNoiDi.ForeColor = System.Drawing.Color.Black;
             this.cbbNoiDi.FormattingEnabled = true;
             this.cbbNoiDi.Location = new System.Drawing.Point(4, 22);
             this.cbbNoiDi.Name = "cbbNoiDi";
             this.cbbNoiDi.Size = new System.Drawing.Size(100, 23);
             this.cbbNoiDi.TabIndex = 0;
-            this.cbbNoiDi.DropDown += new System.EventHandler(this.cbbNoiDi_DropDown);
             // 
             // label3
             // 
@@ -356,12 +361,13 @@
             // 
             // cbbNoiDen
             // 
+            this.cbbNoiDen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbNoiDen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbNoiDen.FormattingEnabled = true;
             this.cbbNoiDen.Location = new System.Drawing.Point(111, 21);
             this.cbbNoiDen.Name = "cbbNoiDen";
             this.cbbNoiDen.Size = new System.Drawing.Size(99, 23);
             this.cbbNoiDen.TabIndex = 1;
-            this.cbbNoiDen.DropDown += new System.EventHandler(this.cbbNoiDen_DropDown);
             // 
             // gridViewChiTiet
             // 
@@ -374,8 +380,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
@@ -513,7 +519,7 @@
             this.panel1.Controls.Add(this.tbMaCB);
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.buttonOK);
+            this.panel1.Controls.Add(this.btnOK);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.departureTime);
             this.panel1.Controls.Add(this.arrivalTime);
@@ -626,17 +632,17 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Cập nhật thông tin chuyến bay:";
             // 
-            // buttonOK
+            // btnOK
             // 
-            this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.buttonOK.Location = new System.Drawing.Point(634, 95);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(60, 25);
-            this.buttonOK.TabIndex = 14;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnOK.Location = new System.Drawing.Point(634, 95);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(60, 25);
+            this.btnOK.TabIndex = 14;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // label24
             // 
@@ -957,7 +963,7 @@
             this.báoCáoToolStripMenuItem1,
             this.báoCáoNămToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo...";
             // 
             // báoCáoToolStripMenuItem1
@@ -1011,7 +1017,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lí bán vé máy bay";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuanLyBanVe_KeyDown);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).EndInit();
@@ -1110,7 +1116,7 @@
         private System.Windows.Forms.TextBox tbMaCB;
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.DateTimePicker departureTime;
         private System.Windows.Forms.DateTimePicker arrivalTime;

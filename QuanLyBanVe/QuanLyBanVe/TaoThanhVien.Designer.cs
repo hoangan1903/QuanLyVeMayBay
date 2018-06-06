@@ -155,7 +155,7 @@
             // 
             // btnTaoThanhVien
             // 
-            this.btnTaoThanhVien.Location = new System.Drawing.Point(82, 185);
+            this.btnTaoThanhVien.Location = new System.Drawing.Point(83, 187);
             this.btnTaoThanhVien.Name = "btnTaoThanhVien";
             this.btnTaoThanhVien.Size = new System.Drawing.Size(96, 23);
             this.btnTaoThanhVien.TabIndex = 14;
@@ -217,7 +217,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name = "TaoThanhVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TaoThanhVien";
+            this.Text = "Tạo thành viên";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

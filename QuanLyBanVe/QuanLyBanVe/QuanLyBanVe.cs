@@ -9,11 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using BaoCaoNam;
+using BUS;
 
 namespace QuanLyBanVe
 {
     public partial class QuanLyBanVe : Form
     {
+        BUS_Ve busVe = new BUS_Ve();
+        BUS_SanBay busSanBay = new BUS_SanBay();
+        BUS_HHK busHHK = new BUS_HHK();
+        BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
+
+        // Khoi tao mau su dung trong chuong trinh
+        Color PrimaryKeyColor = Color.DarkRed;
+        Color AddedRowColor = Color.LawnGreen;
+        Color ModifiedRowColor = Color.Gold;
+        Color RemovedRowColor = Color.LightSalmon;
+        Color ErrorTextColor = Color.Red;
+        Color ChangeLogColor = Color.Black;
+
+        // Khoi tao cac List se su dung
+        List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
+        List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
+        List<DataGridViewRow> removedRows = new List<DataGridViewRow>();
+        List<string> errors = new List<string>();
+        DataGridViewRow duplicate;
+
+        string errorText = "";
+        string changeLog = "";
+
         public QuanLyBanVe()
         {
             InitializeComponent();
@@ -291,6 +315,7 @@ namespace QuanLyBanVe
             }
         }
 
+       
         private void modifyToolStripMenuItem_Click(object sender, EventArgs e) // OK
         {
             btnSua_Click(sender, e);
@@ -368,7 +393,7 @@ namespace QuanLyBanVe
             dataGridViewLichCB.ClearSelection();
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e) // OK
+        private void QuanLyBanVe_KeyDown(object sender, KeyEventArgs e)
         {
             if (panel1.Visible && e.KeyCode == Keys.Escape)
             {
@@ -412,33 +437,67 @@ namespace QuanLyBanVe
             }
         }
 
+        /// <summary>
+        /// 
+        /// Tất cả phần dưới đã chuyển qua 3 lớp
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
         /* dataGridView2 */
-        private void cbbNoiDi_DropDown(object sender, EventArgs e)
+        //private void cbbNoiDi_DropDown(object sender, EventArgs e)
+        //{
+        //    QuanLy.LoadSanBay(cbbNoiDi);
+        //}
+        //private void cbbNoiDen_DropDown(object sender, EventArgs e)
+        //{
+        //    QuanLy.LoadSanBay(cbbNoiDen);
+        //}
+        private void gridViewCapNhatVe_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            QuanLy.LoadSanBay(cbbNoiDi);
+            btnThanhToan.Enabled = true;
+            btnHoanVe.Enabled = true;
         }
-        private void cbbNoiDen_DropDown(object sender, EventArgs e)
-        {
-            QuanLy.LoadSanBay(cbbNoiDen);
-        }
-
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
-            if (cbbNoiDen.Text == cbbNoiDi.Text)
+            //if (cbbNoiDen.Text == cbbNoiDi.Text)
+            //{
+            //    MessageBox.Show("Không thể tra cứu");
+            //}
+            //else
+            //{
+            //    QuanLy.TraCuu(gridViewTraCuu, cbbNoiDi, cbbNoiDen, dateTraCuu);
+            //}
+
+            if (cbbNoiDen.Text == cbbNoiDi.Text || cbbNoiDi.Text == null || cbbNoiDen.Text == null)
             {
                 MessageBox.Show("Không thể tra cứu");
             }
             else
             {
-                QuanLy.TraCuu(gridViewTraCuu, cbbNoiDi, cbbNoiDen, dateTraCuu);
+                gridViewTraCuu.DataSource = busChuyenBay.TraCuu(cbbNoiDi.Text, cbbNoiDen.Text, dateTraCuu.Value);
+                gridViewTraCuu.RowHeadersVisible = false;
+                gridViewTraCuu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                gridViewTraCuu.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                gridViewTraCuu.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                gridViewTraCuu.ClearSelection();
             }
 
         }
 
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void gridViewTraCuu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //btnBanVe2.Enabled = true;
+            //QuanLy.ChiTietChuyenBay(gridViewChiTiet, getMaCB(gridViewTraCuu));
+
             btnBanVe2.Enabled = true;
-            QuanLy.ChiTietChuyenBay(gridViewChiTiet, getMaCB(gridViewTraCuu));
+            gridViewChiTiet.DataSource = busChuyenBay.ChiTietCB(getMaCB(gridViewTraCuu));
+
+            gridViewChiTiet.RowHeadersVisible = false;
+            gridViewChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridViewChiTiet.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            gridViewChiTiet.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
         }
 
         private void btnBanVe2_Click(object sender, EventArgs e)
@@ -494,30 +553,96 @@ namespace QuanLyBanVe
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
+            //QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
+            gridViewCapNhatVe.RowHeadersVisible = false;
+            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+            gridViewCapNhatVe.ClearSelection();
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            QuanLy.LoadDuLieu(cbbMaCB, cbbMaVe);
+            //QuanLy.LoadDuLieu(cbbMaCB, cbbMaVe);
+            cbbMaVe.DataSource = busVe.LoadMaVe();
+            cbbMaVe.ValueMember = "MAVE";
+            cbbMaVe.DisplayMember = "MAVE";
+            cbbMaVe.Text = null;
+
+            cbbNoiDi.DataSource = busSanBay.LoadSanBay();
+            cbbNoiDi.DisplayMember = "TENSANBAY";
+            cbbNoiDi.ValueMember = "TENSANBAY";
+            cbbNoiDi.Text = null;
+
+            cbbNoiDen.DataSource = busSanBay.LoadSanBay();
+            cbbNoiDen.DisplayMember = "TENSANBAY";
+            cbbNoiDen.ValueMember = "TENSANBAY";
+            cbbNoiDen.Text = null;
+
+            cbbMaCB.DataSource = busChuyenBay.LoadMaCB();
+            cbbMaCB.DisplayMember = "MACB";
+            cbbMaCB.ValueMember = "MACB";
+            cbbMaCB.Text = null;
+            // cbbMaCB.DataSource = busCB.LoadCB();
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            QuanLy.ThanhToan(gridViewCapNhatVe, cbbMaVe);
-            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
-        }
-        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnThanhToan.Enabled = true;
-            btnHoanVe.Enabled = true;            
+            gridViewCapNhatVe.RowHeadersVisible = false;
+            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            string maVe = "";
+
+            if (cbbMaVe.Text != "")
+            {
+                maVe = cbbMaVe.Text;
+            }
+            else
+            {
+                maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
+            }
+
+            if (busVe.ThanhToanVe(maVe))
+            {
+                MessageBox.Show("Thanh toán vé thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Vé đã được thanh toán trước đó!", "Thông báo", MessageBoxButtons.OK);
+            }
+
+            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+            gridViewCapNhatVe.ClearSelection();
         }
 
         private void btnHoanVe_Click(object sender, EventArgs e)
         {
-            QuanLy.HoanVe(gridViewCapNhatVe, cbbMaVe);
-            
-            QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
+
+            gridViewCapNhatVe.RowHeadersVisible = false;
+            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            string maVe = "";
+            if (cbbMaVe.Text != "")
+            {
+                maVe = cbbMaVe.Text;
+            }
+            else
+            {
+                maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
+            }
+
+            if (busVe.HoanVe(maVe))
+            {
+                MessageBox.Show("Cập nhật vé thành công!", "Thông báo", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
+            }
+
+            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+            gridViewCapNhatVe.ClearSelection();
         }
+
+      
     }
 }

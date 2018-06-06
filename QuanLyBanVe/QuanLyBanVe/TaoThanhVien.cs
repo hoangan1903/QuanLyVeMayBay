@@ -8,61 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using BUS;
 
 namespace QuanLyBanVe
 {
     public partial class TaoThanhVien : Form
     {
+        BUS_KhachHang busKhachHang = new BUS_KhachHang();
+
         public TaoThanhVien()
         {
             InitializeComponent();
-            
+
         }
 
         private void btnTaoThanhVien_Click(object sender, EventArgs e)
         {
-            try
+            bool gioiTinh = false;
+            if (rbtnNam.Checked)
+                gioiTinh = true;
+            if (busKhachHang.TaoThanhVien(txtMaKH.Text, txtHoTen.Text, txtTuoi.Text, gioiTinh, txtCMND.Text, txtDiaChi.Text, txtSDT.Text))
             {
-                SqlConnection conn = new SqlConnection();
-
-                conn.ConnectionString = Properties.Resources.localConnectionString_HoangAn;
-                conn.Open();
-
-                using (SqlCommand comm = new SqlCommand("TaoThanhVien", conn))
-                {
-                    comm.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter para = new SqlParameter("@MaKH", txtMaKH.Text);
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@HoTen", txtHoTen.Text);
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@Tuoi", Int32.Parse(txtTuoi.Text));
-                    comm.Parameters.Add(para);
-                    bool b = false; ;
-                    if (rbtnNam.Checked)
-                        b = true;
-                    para = new SqlParameter("@GioiTinh", b);
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@CMND", txtCMND.Text);
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@DiaChi", txtDiaChi.Text);
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@SDT", txtSDT.Text);
-                    comm.Parameters.Add(para);
-                    comm.ExecuteNonQuery();
-                }
-                conn.Close();
+                MessageBox.Show("Lưu thông tin thành công!", "Thông báo", MessageBoxButtons.OK);
+                Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message.ToString());
+                MessageBox.Show("Lưu thông tin không thành công!", "Thông báo", MessageBoxButtons.OK);
             }
-            Close();
         }
     }
 }

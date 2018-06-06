@@ -131,6 +131,10 @@
       <Project>{014308a6-849a-4c6a-9276-b035d1b23300}</Project>
       <Name>BaoCaoNgay</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{79869cee-5cf9-44ff-9dfc-d9e1e29431c8}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

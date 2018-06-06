@@ -67,3 +67,9 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\obj\
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\BaoCaoNgay.exe.config
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\BaoCaoNgay.exe
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\obj\Debug\BaoCaoNgay.exe
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\BUS.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\DAO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\DTO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\BUS.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\DAO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNgay\bin\Debug\DTO.pdb

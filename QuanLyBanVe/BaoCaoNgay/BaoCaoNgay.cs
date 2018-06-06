@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
 using Microsoft.Reporting.WinForms;
-
+using BUS;
 namespace BaoCaoNgay
 {
     public partial class BaoCaoNgay : Form
     {
+        
         public BaoCaoNgay()
         {
             InitializeComponent();
@@ -29,26 +29,14 @@ namespace BaoCaoNgay
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
+            BUS_BaoCao busBaoCao = new BUS_BaoCao();
             this.reportViewer1.Clear();
             this.QLVeMayBayDataSet.BaoCao.Clear();
             try
             {
                 using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-260M5KJ; Initial Catalog=QLVeMayBay; Integrated Security=True"))
                 {
-                    conn.Open();
-                    SqlCommand comm = new SqlCommand("BaoCao", conn);
-                    comm.CommandType = CommandType.StoredProcedure;
-
-                    SqlParameter para = new SqlParameter("@TuNgay", Convert.ToDateTime(dateDi.Value.ToString()));
-                    comm.Parameters.Add(para);
-
-                    para = new SqlParameter("@DenNgay", Convert.ToDateTime(dateDen.Value.ToString()));
-                    comm.Parameters.Add(para);
-
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                    dataAdapter.SelectCommand = comm;
-
-                    dataAdapter.Fill(this.QLVeMayBayDataSet.BaoCao);
+                    busBaoCao.BaoCaoNgay(Convert.ToDateTime(dateDi.Value.ToString()), Convert.ToDateTime(dateDen.Value.ToString())).Fill(this.QLVeMayBayDataSet.BaoCao);
 
                     object sum;
                     DataTable datb = this.QLVeMayBayDataSet.Tables[0];
@@ -63,10 +51,10 @@ namespace BaoCaoNgay
                     ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
                     this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
                 }
+
             }
             catch { }
             this.reportViewer1.RefreshReport();
-
             btnThongKe.Enabled = false;
         }
 

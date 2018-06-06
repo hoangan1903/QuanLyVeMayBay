@@ -86,6 +86,7 @@
             this.dgvVe.Name = "dgvVe";
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVe.Size = new System.Drawing.Size(849, 305);
             this.dgvVe.TabIndex = 1;
             // 

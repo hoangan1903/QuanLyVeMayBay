@@ -73,7 +73,6 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\QuanLyBanVe.pdb
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.csprojResolveAssemblyReference.cache
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BanVe.resources
-C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.BaoCao.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.DangNhap.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.Properties.Resources.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.TaoThanhVien.resources
@@ -142,4 +141,9 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\BaoCaoNgay.exe
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\BaoCaoNam.exe.config
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\BaoCaoNgay.exe.config
-C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.FormBaoCaoNam.resources
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\BUS.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\DAO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\DTO.dll
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\BUS.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\DAO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\DTO.pdb
