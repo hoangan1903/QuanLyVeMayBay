@@ -20,23 +20,146 @@ namespace QuanLyBanVe
         BUS_HHK busHHK = new BUS_HHK();
         BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
 
-        // Khoi tao mau su dung trong chuong trinh
-        Color PrimaryKeyColor = Color.DarkRed;
-        Color AddedRowColor = Color.LawnGreen;
-        Color ModifiedRowColor = Color.Gold;
-        Color RemovedRowColor = Color.LightSalmon;
-        Color ErrorTextColor = Color.Red;
-        Color ChangeLogColor = Color.Black;
+        // Màu sắc
+        private Color AddedRowColor
+        {
+            get { return Color.LawnGreen; }
+        }
+        private Color ModifiedRowColor
+        {
+            get { return Color.Gold; }
+        }
+        private Color RemovedRowColor
+        {
+            get { return Color.LightSalmon; }
+        }
 
-        // Khoi tao cac List se su dung
-        List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
-        List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
-        List<DataGridViewRow> removedRows = new List<DataGridViewRow>();
-        List<string> errors = new List<string>();
-        DataGridViewRow duplicate;
+        private List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
+        private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
+        private List<DataGridViewRow> removedRows = new List<DataGridViewRow>();
+        private List<string> errors = new List<string>();
+        private DataGridViewRow duplicate; // ok
+        private Point panel1_MouseDownLocation; // ok
 
-        string errorText = "";
-        string changeLog = "";
+        private string ErrorText { get; set; } = "";
+        private string ChangeLog { get; set; } = "";
+
+        private Color ChangeLogColor { get { return Color.Black; } }
+
+        #region Chuyen tu QuanLy sang
+
+        private DataGridViewRow FindRowInDataGridView(DataGridView dgv, string keyword, DataGridViewRow exceptionRow)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (!row.IsNewRow && row != exceptionRow && row.Cells[0].Value.ToString() == keyword)
+                {
+                    return row;
+                }
+            }
+            return null;
+        }
+
+        private bool CheckAffectedRows(DataGridView dgv)
+        {
+            bool saveSuccess = true;
+            foreach (DataGridViewRow row in addedRows)
+            {
+                string rowNumber = "Hàng " + (row.Index + 1).ToString() + "\n";
+                string MACB = row.Cells[0].Value.ToString();
+                if (MACB == "")
+                {
+                    saveSuccess = false;
+                    string error = rowNumber + "Không thể thêm bản ghi mới: MACB (khóa chính) bị bỏ trống.";
+                    errors.Add(error);
+                }
+                else
+                {
+                    DataGridViewRow existingRow = FindRowInDataGridView(dgv, MACB, row);
+                    if (existingRow != null)
+                    {
+                        saveSuccess = false;
+                        string error = rowNumber + "Không thể thêm bản ghi mới: Đã tồn tại bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "' trong CSDL (hàng " + (existingRow.Index + 1).ToString() + ").";
+                        errors.Add(error);
+                    }
+                }
+                for (int i = 1; i < 9; i++)
+                {
+                    if (row.Cells[i].Value.ToString() == "")
+                    {
+                        saveSuccess = false;
+                        string error = rowNumber + "Không thể thêm bản ghi mới: Có ít nhất một trường bị bỏ trống.";
+                        errors.Add(error);
+                        break;
+                    }
+                }
+            }
+            foreach (DataGridViewRow row in modifiedRows)
+            {
+                string rowNumber = "Hàng " + (row.Index + 1).ToString() + "\n";
+                for (int i = 1; i < 9; i++)
+                {
+                    if (row.Cells[i].Value.ToString() == "")
+                    {
+                        saveSuccess = false;
+                        string error = rowNumber + "Không thể sửa bản ghi: Có ít nhất một trường bị bỏ trống.";
+                        errors.Add(error);
+                        break;
+                    }
+                }
+            }
+            if (saveSuccess)
+                WriteChangeLog();
+            else WriteErrorText();
+            return saveSuccess;
+        }
+
+        private bool OkToCopy(DataGridViewRow row)
+        {
+            foreach (DataGridViewCell cell in row.Cells)
+            {
+                if (cell.ColumnIndex == 0)
+                    continue;
+                if (string.Empty == cell.Value.ToString())
+                    return false;
+            }
+            return true;
+        }
+
+        private void WriteErrorText()
+        {
+            ErrorText = "Cập nhật bảng [CHUYENBAY] không thành công - Không có thay đổi nào được lưu.\n";
+            ErrorText += errors.Count.ToString() + " lỗi đã xảy ra:\n";
+            foreach (string error in errors)
+            {
+                ErrorText += "* " + error + "\n";
+            }
+        }
+
+        private void WriteChangeLog()
+        {
+            ChangeLog = "Cập nhật bảng [CHUYENBAY] thành công - ";
+            ChangeLog += (addedRows.Count + modifiedRows.Count + removedRows.Count).ToString() + " thay đổi đã được lưu (";
+            ChangeLog += "thêm " + addedRows.Count.ToString() + " hàng, sửa " + modifiedRows.Count.ToString() + " hàng và xóa " + removedRows.Count.ToString() + " hàng).";
+            if (addedRows.Count != 0 || modifiedRows.Count != 0 || removedRows.Count != 0)
+            {
+                ChangeLog += "\nCác thay đổi:\n";
+                foreach (DataGridViewRow row in addedRows)
+                {
+                    ChangeLog += "* Đã thêm bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                }
+                foreach (DataGridViewRow row in modifiedRows)
+                {
+                    ChangeLog += "* Đã sửa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                }
+                foreach (DataGridViewRow row in removedRows)
+                {
+                    ChangeLog += "* Đã xóa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                }
+            }
+        }
+
+        #endregion
 
         public QuanLyBanVe()
         {
@@ -54,7 +177,7 @@ namespace QuanLyBanVe
             }
             foreach (DataGridViewRow row in gridViewLichCB.Rows)
             {
-                row.Cells[0].Style.ForeColor = QuanLy.PrimaryKeyColor;
+                row.Cells[0].Style.ForeColor = Color.DarkRed;
                 row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
             }
             gridViewLichCB.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
@@ -87,9 +210,9 @@ namespace QuanLyBanVe
             if (gridViewLichCB.SelectedRows.Count == 1)
             {
                 DataGridViewRow selectedRow = gridViewLichCB.SelectedRows[0];
-                if (selectedRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor || selectedRow.DefaultCellStyle.BackColor == QuanLy.ModifiedRowColor)
+                if (selectedRow.DefaultCellStyle.BackColor == AddedRowColor || selectedRow.DefaultCellStyle.BackColor == ModifiedRowColor)
                     btnSua.Enabled = true;
-                else if (selectedRow.DefaultCellStyle.BackColor == QuanLy.RemovedRowColor)
+                else if (selectedRow.DefaultCellStyle.BackColor == RemovedRowColor)
                     btnSua.Enabled = false;
                 else btnSua.Enabled = true;
             }
@@ -105,8 +228,8 @@ namespace QuanLyBanVe
             DataGridViewRow newRow = gridViewLichCB.Rows[gridViewLichCB.Rows.Count - 1];
             newRow.HeaderCell.Value = String.Format("{0}", newRow.Index + 1);
 
-            QuanLy.addedRows.Add(newRow);
-            newRow.DefaultCellStyle.BackColor = QuanLy.AddedRowColor;
+            addedRows.Add(newRow);
+            newRow.DefaultCellStyle.BackColor = AddedRowColor;
             gridViewLichCB.ClearSelection();
             newRow.Selected = true;
 
@@ -123,7 +246,7 @@ namespace QuanLyBanVe
                 tbMaCB.Text = rowToModify.Cells[0].Value.ToString();
             else
                 tbMaCB.Text = string.Empty;
-            if (rowToModify.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
+            if (rowToModify.DefaultCellStyle.BackColor == AddedRowColor)
             {
                 tbMaCB.Enabled = true;
             }
@@ -159,24 +282,24 @@ namespace QuanLyBanVe
         {
             foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
             {
-                if (row.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
+                if (row.DefaultCellStyle.BackColor != RemovedRowColor)
                 {
                     row.ReadOnly = true;
-                    if (row.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
+                    if (row.DefaultCellStyle.BackColor == AddedRowColor)
                     {
-                        row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
-                        QuanLy.addedRows.Remove(row);
+                        row.DefaultCellStyle.BackColor = RemovedRowColor;
+                        addedRows.Remove(row);
                         continue;
                     }
-                    if (row.DefaultCellStyle.BackColor == QuanLy.ModifiedRowColor)
+                    if (row.DefaultCellStyle.BackColor == ModifiedRowColor)
                     {
-                        QuanLy.removedRows.Add(row);
-                        row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
-                        QuanLy.modifiedRows.Remove(row);
+                        removedRows.Add(row);
+                        row.DefaultCellStyle.BackColor = RemovedRowColor;
+                        modifiedRows.Remove(row);
                         continue;
                     }
-                    QuanLy.removedRows.Add(row);
-                    row.DefaultCellStyle.BackColor = QuanLy.RemovedRowColor;
+                    removedRows.Add(row);
+                    row.DefaultCellStyle.BackColor = RemovedRowColor;
                 }
             }
             gridViewLichCB.ClearSelection();
@@ -188,39 +311,41 @@ namespace QuanLyBanVe
         {
             btnSave.Enabled = false;
             btnSave.Enabled = false;
-            if (!QuanLy.CheckAffectedRows(gridViewLichCB))
+            if (!CheckAffectedRows(gridViewLichCB))
             {
                 /* Show error(s) to the user */
                 MessageBox.Show("Có lỗi khi cập nhật dữ liệu vào CDSL. Vui lòng kiểm tra lại các thay đổi của bạn.", "Cập nhật không thành công");
-                QuanLy.ShowErrorText(lblUpdateStatus);
-                QuanLy.errors.Clear();
+                lblUpdateStatus.ForeColor = Color.Red;
+                lblUpdateStatus.Text = ErrorText;
+                errors.Clear();
             }
             else
             {
                 /* Save the changes */
                 btnCancelChanges.Enabled = false;
 
-                foreach (DataGridViewRow row in QuanLy.addedRows)
+                foreach (DataGridViewRow row in addedRows)
                 {
                     if (!busChuyenBay.ThemChuyenBay(row))
                         MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
 
-                foreach (DataGridViewRow row in QuanLy.modifiedRows)
+                foreach (DataGridViewRow row in modifiedRows)
                 {
                     if (!busChuyenBay.SuaChuyenBay(row))
                         MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
 
-                foreach (DataGridViewRow row in QuanLy.removedRows)
+                foreach (DataGridViewRow row in removedRows)
                 {
                     if (!busChuyenBay.XoaChuyenBay(row))
                         MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
-                QuanLy.ShowChangeLog(lblUpdateStatus);
-                QuanLy.addedRows.Clear();
-                QuanLy.modifiedRows.Clear();
-                QuanLy.removedRows.Clear();
+                lblUpdateStatus.ForeColor = ChangeLogColor;
+                lblUpdateStatus.Text = ChangeLog;
+                addedRows.Clear();
+                modifiedRows.Clear();
+                removedRows.Clear();
                 LoadDataToDataGridView(gridViewLichCB);
             }
         }
@@ -228,23 +353,23 @@ namespace QuanLyBanVe
         {
             btnSave.Enabled = false;
             btnCancelChanges.Enabled = false;
-            QuanLy.addedRows.Clear();
-            QuanLy.modifiedRows.Clear();
-            QuanLy.removedRows.Clear();
+            addedRows.Clear();
+            modifiedRows.Clear();
+            removedRows.Clear();
             LoadDataToDataGridView(gridViewLichCB);
         }
 
         private void buttonOK_Click(object sender, EventArgs e) // OK
         {
             DataGridViewRow modifiedRow = gridViewLichCB.SelectedRows[0];
-            if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
-                modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
+            if (modifiedRow.DefaultCellStyle.BackColor != AddedRowColor &&
+                modifiedRow.DefaultCellStyle.BackColor != ModifiedRowColor)
             {
-                QuanLy.modifiedRows.Add(modifiedRow);
-                modifiedRow.DefaultCellStyle.BackColor = QuanLy.ModifiedRowColor;
+                modifiedRows.Add(modifiedRow);
+                modifiedRow.DefaultCellStyle.BackColor = ModifiedRowColor;
             }
 
-            if (modifiedRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor)
+            if (modifiedRow.DefaultCellStyle.BackColor == AddedRowColor)
                 modifiedRow.Cells[0].Value = tbMaCB.Text;
             modifiedRow.Cells[1].Value = cbbMaSBDi.Text;
             modifiedRow.Cells[2].Value = cbbMaSBDen.Text;
@@ -285,17 +410,17 @@ namespace QuanLyBanVe
                 DataGridViewRow clickedRow = gridViewLichCB.Rows[e.RowIndex];
                 clickedRow.Selected = true;
                 /* Determine whether modifyCellToolStripMenuItem can be enabled */
-                if (clickedRow.DefaultCellStyle.BackColor == QuanLy.AddedRowColor || clickedRow.DefaultCellStyle.BackColor == QuanLy.ModifiedRowColor)
+                if (clickedRow.DefaultCellStyle.BackColor == AddedRowColor || clickedRow.DefaultCellStyle.BackColor == ModifiedRowColor)
                 {
                     modifyToolStripMenuItem.Enabled = true;
                 }
-                else if (clickedRow.DefaultCellStyle.BackColor == QuanLy.RemovedRowColor)
+                else if (clickedRow.DefaultCellStyle.BackColor == RemovedRowColor)
                 {
                     modifyToolStripMenuItem.Enabled = false;
                 }
                 else modifyToolStripMenuItem.Enabled = true;
                 /* Determine whether copyRowToolStripMenuItem can be enabled */
-                if (QuanLy.OkToCopy(clickedRow))
+                if (OkToCopy(clickedRow))
                 {
                     copyToolStripMenuItem.Enabled = true;
                 }
@@ -304,7 +429,7 @@ namespace QuanLyBanVe
                     copyToolStripMenuItem.Enabled = false;
                 }
                 /* Determine whether pasteRowToolStripMenuItem can be enabled */
-                if (QuanLy.duplicate != null && clickedRow.DefaultCellStyle.BackColor != QuanLy.RemovedRowColor)
+                if (duplicate != null && clickedRow.DefaultCellStyle.BackColor != RemovedRowColor)
                 {
                     pasteToolStripMenuItem.Enabled = true;
                 }
@@ -333,29 +458,29 @@ namespace QuanLyBanVe
         private void copyToolStripMenuItem_Click(object sender, EventArgs e) // OK
         {
             DataGridViewRow rowToCopy = gridViewLichCB.SelectedRows[0];
-            QuanLy.duplicate = (DataGridViewRow)rowToCopy.Clone();
+            duplicate = (DataGridViewRow)rowToCopy.Clone();
             for (int i = 0; i < 9; i++)
             {
-                QuanLy.duplicate.Cells[i].Value = rowToCopy.Cells[i].Value;
+                duplicate.Cells[i].Value = rowToCopy.Cells[i].Value;
             }
-            lblUpdateStatus.ForeColor = QuanLy.ChangeLogColor;
+            lblUpdateStatus.ForeColor = ChangeLogColor;
             lblUpdateStatus.Text = "Đã sao chép hàng " + (rowToCopy.Index + 1).ToString() + " (MACB = '" + rowToCopy.Cells[0].Value.ToString() + "').";
         }
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e) // OK
         {
             DataGridViewRow modifiedRow = gridViewLichCB.SelectedRows[0];
-            if (modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor &&
-                modifiedRow.DefaultCellStyle.BackColor != QuanLy.ModifiedRowColor)
+            if (modifiedRow.DefaultCellStyle.BackColor != AddedRowColor &&
+                modifiedRow.DefaultCellStyle.BackColor != ModifiedRowColor)
             {
-                QuanLy.modifiedRows.Add(modifiedRow);
-                modifiedRow.DefaultCellStyle.BackColor = QuanLy.ModifiedRowColor;
+                modifiedRows.Add(modifiedRow);
+                modifiedRow.DefaultCellStyle.BackColor = ModifiedRowColor;
             }
             for (int i = 0; i < 9; i++)
             {
-                if (i == 0 && modifiedRow.DefaultCellStyle.BackColor != QuanLy.AddedRowColor)
+                if (i == 0 && modifiedRow.DefaultCellStyle.BackColor != AddedRowColor)
                     continue;
-                modifiedRow.Cells[i].Value = QuanLy.duplicate.Cells[i].Value;
+                modifiedRow.Cells[i].Value = duplicate.Cells[i].Value;
             }
             gridViewLichCB.ClearSelection();
             btnSave.Enabled = true;
@@ -415,7 +540,7 @@ namespace QuanLyBanVe
         {
             if (e.Button == MouseButtons.Left)
             {
-                QuanLy.panel1_MouseDownLocation = e.Location;
+                panel1_MouseDownLocation = e.Location;
             }
         }
 
@@ -423,7 +548,7 @@ namespace QuanLyBanVe
         {
             if (e.Button == MouseButtons.Left)
             {
-                int left = e.X + panel1.Left - QuanLy.panel1_MouseDownLocation.X;
+                int left = e.X + panel1.Left - panel1_MouseDownLocation.X;
                 if (left >= 0 && left <= splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18)
                     panel1.Left = left;
                 else if (left < 0)
@@ -431,7 +556,7 @@ namespace QuanLyBanVe
                 else
                     panel1.Left = splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18;
 
-                int top = e.Y + panel1.Top - QuanLy.panel1_MouseDownLocation.Y;
+                int top = e.Y + panel1.Top - panel1_MouseDownLocation.Y;
                 if (top >= 0 && top <= splitContainer1.Panel2.Size.Height - panel1.Size.Height)
                     panel1.Top = top;
                 else if (top < 0)
@@ -657,12 +782,6 @@ namespace QuanLyBanVe
         {
             BanVe formBanVe = new BanVe(getMaCB(gridViewLichCB));
             formBanVe.ShowDialog();
-        }
-
-        private void btnThemVe_Click(object sender, EventArgs e)
-        {
-            ThemVe formThemVe = new ThemVe(getMaCB(gridViewLichCB));
-            formThemVe.ShowDialog();
         }
     }
 }

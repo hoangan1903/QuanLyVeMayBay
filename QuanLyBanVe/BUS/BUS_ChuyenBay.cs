@@ -68,16 +68,6 @@ namespace BUS
             return daoChuyenBay.XoaChuyenBay(dtoChuyenBay);
         }
 
-        public DataTable GetSanBay()
-        {
-            return daoChuyenBay.GetSanBay();
-        }
-
-        public DataTable GetHHK()
-        {
-            return daoChuyenBay.GetHHK();
-        }
-
         public DataTable TraCuu(string maSBDi, string maSBDen, DateTime datetime)
         {
             return daoChuyenBay.TraCuu(maSBDi, maSBDen, datetime);

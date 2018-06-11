@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.gridViewChiTiet = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnBanVe = new System.Windows.Forms.Button();
             this.btnCancelChanges = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
@@ -110,8 +111,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnBanVe = new System.Windows.Forms.Button();
-            this.btnThemVe = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -382,8 +381,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
@@ -409,7 +408,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.btnThemVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnBanVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelChanges);
             this.splitContainer1.Panel1.Controls.Add(this.btnSave);
@@ -429,6 +427,16 @@
             this.splitContainer1.Size = new System.Drawing.Size(954, 560);
             this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.TabIndex = 9;
+            // 
+            // btnBanVe
+            // 
+            this.btnBanVe.Location = new System.Drawing.Point(687, 0);
+            this.btnBanVe.Name = "btnBanVe";
+            this.btnBanVe.Size = new System.Drawing.Size(75, 26);
+            this.btnBanVe.TabIndex = 9;
+            this.btnBanVe.Text = "Bán vé";
+            this.btnBanVe.UseVisualStyleBackColor = true;
+            this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
             // 
             // btnCancelChanges
             // 
@@ -1006,26 +1014,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
-            // btnBanVe
-            // 
-            this.btnBanVe.Location = new System.Drawing.Point(687, 0);
-            this.btnBanVe.Name = "btnBanVe";
-            this.btnBanVe.Size = new System.Drawing.Size(75, 26);
-            this.btnBanVe.TabIndex = 9;
-            this.btnBanVe.Text = "Bán vé";
-            this.btnBanVe.UseVisualStyleBackColor = true;
-            this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
-            // 
-            // btnThemVe
-            // 
-            this.btnThemVe.Location = new System.Drawing.Point(597, 1);
-            this.btnThemVe.Name = "btnThemVe";
-            this.btnThemVe.Size = new System.Drawing.Size(75, 23);
-            this.btnThemVe.TabIndex = 10;
-            this.btnThemVe.Text = "Thêm vé";
-            this.btnThemVe.UseVisualStyleBackColor = true;
-            this.btnThemVe.Click += new System.EventHandler(this.btnThemVe_Click);
-            // 
             // QuanLyBanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1156,7 +1144,6 @@
         private System.Windows.Forms.ToolStripMenuItem themToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Button btnBanVe;
-        private System.Windows.Forms.Button btnThemVe;
     }
 }
 

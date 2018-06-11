@@ -86,48 +86,7 @@ namespace DAO
                 Connection.Close();
             }
         }
-        public DataTable GetSanBay()
-        {
-            try
-            {
-                DataTable table = new DataTable();
-
-                Connection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", Connection);
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                dataAdapter.Fill(table);
-                return table;
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                Connection.Close();
-            }
-        }
-        public DataTable GetHHK()
-        {
-            try
-            {
-                DataTable table = new DataTable();
-
-                Connection.Open();
-                SqlCommand cmd = new SqlCommand("SELECT TENHHK FROM HANGHK", Connection);
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
-                dataAdapter.Fill(table);
-                return table;
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                Connection.Close();
-            }
-        }
+        
         public bool SuaChuyenBay(DTO_ChuyenBay cb)
         {
             try

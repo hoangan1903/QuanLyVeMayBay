@@ -36,7 +36,7 @@ namespace BaoCaoNgay
             {
                 using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-260M5KJ; Initial Catalog=QLVeMayBay; Integrated Security=True"))
                 {
-                    busBaoCao.BaoCaoNgay(Convert.ToDateTime(dateDi.Value.ToString()), Convert.ToDateTime(dateDen.Value.ToString())).Fill(this.QLVeMayBayDataSet.BaoCao);
+                    busBaoCao.BaoCaoNgay(dateDi.Value, dateDen.Value).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
 
                     object sum;
                     DataTable datb = this.QLVeMayBayDataSet.Tables[0];

@@ -1,0 +1,3 @@
+﻿1. Thay đổi phải đc áp dụng thực sự vào CSDL mới báo thay đổi thành công
+
+2. Xóa: hỏi người dùng luôn, không để màu đỏ rồi phải bấm Lưu nữa.

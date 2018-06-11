@@ -26,3 +26,6 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\D
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.Properties.Resource1.resources
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.GenerateResource.cache
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.dll.config
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.dll.config
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.Properties.Resource1.resources
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.GenerateResource.cache

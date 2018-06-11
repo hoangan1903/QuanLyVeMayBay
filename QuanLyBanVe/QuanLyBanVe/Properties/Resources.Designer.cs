@@ -98,6 +98,17 @@ namespace QuanLyBanVe.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1. Thay đổi phải đc áp dụng thực sự vào CSDL mới báo thay đổi thành công
+        ///
+        ///2. Xóa: hỏi người dùng luôn, không để màu đỏ rồi phải bấm Lưu nữa..
+        /// </summary>
+        internal static string NhacNho {
+            get {
+                return ResourceManager.GetString("NhacNho", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap round_close_icon1 {
