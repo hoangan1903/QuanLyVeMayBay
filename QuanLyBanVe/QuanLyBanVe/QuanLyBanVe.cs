@@ -20,6 +20,13 @@ namespace QuanLyBanVe
         BUS_HHK busHHK = new BUS_HHK();
         BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
 
+        private List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
+        private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
+        private List<DataGridViewRow> removedRows = new List<DataGridViewRow>();
+        private List<string> errors = new List<string>();
+        private DataGridViewRow duplicate;
+        private Point panel1_MouseDownLocation;
+
         // Màu sắc
         private Color AddedRowColor
         {
@@ -33,18 +40,15 @@ namespace QuanLyBanVe
         {
             get { return Color.LightSalmon; }
         }
+        private Color ChangeLogColor
+        {
+            get { return Color.Black; }
+        }
 
-        private List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
-        private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
-        private List<DataGridViewRow> removedRows = new List<DataGridViewRow>();
-        private List<string> errors = new List<string>();
-        private DataGridViewRow duplicate; // ok
-        private Point panel1_MouseDownLocation; // ok
-
+        // Text
         private string ErrorText { get; set; } = "";
         private string ChangeLog { get; set; } = "";
 
-        private Color ChangeLogColor { get { return Color.Black; } }
 
         #region Chuyen tu QuanLy sang
 
@@ -109,8 +113,38 @@ namespace QuanLyBanVe
                 }
             }
             if (saveSuccess)
-                WriteChangeLog();
-            else WriteErrorText();
+            {
+                // The following code block (inside 'if') is previously from the function WriteChangeLog(), which was deleted.
+                ChangeLog = "Cập nhật bảng [CHUYENBAY] thành công - ";
+                ChangeLog += (addedRows.Count + modifiedRows.Count + removedRows.Count).ToString() + " thay đổi đã được lưu (";
+                ChangeLog += "thêm " + addedRows.Count.ToString() + " hàng, sửa " + modifiedRows.Count.ToString() + " hàng và xóa " + removedRows.Count.ToString() + " hàng).";
+                if (addedRows.Count != 0 || modifiedRows.Count != 0 || removedRows.Count != 0)
+                {
+                    ChangeLog += "\nCác thay đổi:\n";
+                    foreach (DataGridViewRow row in addedRows)
+                    {
+                        ChangeLog += "* Đã thêm bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                    }
+                    foreach (DataGridViewRow row in modifiedRows)
+                    {
+                        ChangeLog += "* Đã sửa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                    }
+                    foreach (DataGridViewRow row in removedRows)
+                    {
+                        ChangeLog += "* Đã xóa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
+                    }
+                }
+            }
+            else
+            {
+                // The following code block (inside 'else') is previously from the function WriteErrorText(), which was deleted.
+                ErrorText = "Cập nhật bảng [CHUYENBAY] không thành công - Không có thay đổi nào được lưu.\n";
+                ErrorText += errors.Count.ToString() + " lỗi đã xảy ra:\n";
+                foreach (string error in errors)
+                {
+                    ErrorText += "* " + error + "\n";
+                }
+            }
             return saveSuccess;
         }
 
@@ -124,39 +158,6 @@ namespace QuanLyBanVe
                     return false;
             }
             return true;
-        }
-
-        private void WriteErrorText()
-        {
-            ErrorText = "Cập nhật bảng [CHUYENBAY] không thành công - Không có thay đổi nào được lưu.\n";
-            ErrorText += errors.Count.ToString() + " lỗi đã xảy ra:\n";
-            foreach (string error in errors)
-            {
-                ErrorText += "* " + error + "\n";
-            }
-        }
-
-        private void WriteChangeLog()
-        {
-            ChangeLog = "Cập nhật bảng [CHUYENBAY] thành công - ";
-            ChangeLog += (addedRows.Count + modifiedRows.Count + removedRows.Count).ToString() + " thay đổi đã được lưu (";
-            ChangeLog += "thêm " + addedRows.Count.ToString() + " hàng, sửa " + modifiedRows.Count.ToString() + " hàng và xóa " + removedRows.Count.ToString() + " hàng).";
-            if (addedRows.Count != 0 || modifiedRows.Count != 0 || removedRows.Count != 0)
-            {
-                ChangeLog += "\nCác thay đổi:\n";
-                foreach (DataGridViewRow row in addedRows)
-                {
-                    ChangeLog += "* Đã thêm bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
-                }
-                foreach (DataGridViewRow row in modifiedRows)
-                {
-                    ChangeLog += "* Đã sửa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
-                }
-                foreach (DataGridViewRow row in removedRows)
-                {
-                    ChangeLog += "* Đã xóa bản ghi có MACB = '" + row.Cells[0].Value.ToString() + "'.\n";
-                }
-            }
         }
 
         #endregion
@@ -201,7 +202,7 @@ namespace QuanLyBanVe
             taoThanhVien.ShowDialog();
         }
 
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e) // OK
+        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             if (gridViewLichCB.SelectedRows.Count != 0)
                 btnXoa.Enabled = true;
@@ -219,7 +220,7 @@ namespace QuanLyBanVe
             else btnSua.Enabled = false;
         }
 
-        private void btnThem_Click(object sender, EventArgs e) // OK
+        private void btnThem_Click(object sender, EventArgs e)
         {
             DataTable table = (DataTable)gridViewLichCB.DataSource;
             table.Rows.Add(table.NewRow());
@@ -237,7 +238,7 @@ namespace QuanLyBanVe
             btnCancelChanges.Enabled = true;
         }
 
-        private void btnSua_Click(object sender, EventArgs e) // OK
+        private void btnSua_Click(object sender, EventArgs e)
         {
             DataGridViewRow rowToModify = gridViewLichCB.SelectedRows[0];
             splitContainer1.Panel1.Enabled = false;
@@ -278,7 +279,7 @@ namespace QuanLyBanVe
             panel1.Visible = true;
         }
 
-        private void btnXoa_Click(object sender, EventArgs e) // OK
+        private void btnXoa_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
             {
@@ -307,7 +308,7 @@ namespace QuanLyBanVe
             btnCancelChanges.Enabled = true;
         }
 
-        private void btnSave_Click(object sender, EventArgs e) // OK
+        private void btnSave_Click(object sender, EventArgs e)
         {
             btnSave.Enabled = false;
             btnSave.Enabled = false;
@@ -349,7 +350,7 @@ namespace QuanLyBanVe
                 LoadDataToDataGridView(gridViewLichCB);
             }
         }
-        private void btnCancelChanges_Click(object sender, EventArgs e) // OK
+        private void btnCancelChanges_Click(object sender, EventArgs e)
         {
             btnSave.Enabled = false;
             btnCancelChanges.Enabled = false;
@@ -359,7 +360,7 @@ namespace QuanLyBanVe
             LoadDataToDataGridView(gridViewLichCB);
         }
 
-        private void buttonOK_Click(object sender, EventArgs e) // OK
+        private void buttonOK_Click(object sender, EventArgs e)
         {
             DataGridViewRow modifiedRow = gridViewLichCB.SelectedRows[0];
             if (modifiedRow.DefaultCellStyle.BackColor != AddedRowColor &&
@@ -395,14 +396,14 @@ namespace QuanLyBanVe
             btnCancelChanges.Enabled = true;
         }
 
-        private void btnHuy_Click(object sender, EventArgs e) // OK
+        private void btnHuy_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
             splitContainer1.Panel1.Enabled = true;
         }
 
         /* cellContextMenuStrip1 */
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) // OK
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -442,20 +443,21 @@ namespace QuanLyBanVe
         }
         private void gridViewLichCB_DoubleClick(object sender, EventArgs e)
         {
-            btnSua_Click(sender, e);
+            if (gridViewLichCB.SelectedRows.Count != 0)
+                btnSua_Click(sender, e);
         }
 
-        private void modifyToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnSua_Click(sender, e);
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnXoa_Click(sender, e);
         }
 
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow rowToCopy = gridViewLichCB.SelectedRows[0];
             duplicate = (DataGridViewRow)rowToCopy.Clone();
@@ -467,7 +469,7 @@ namespace QuanLyBanVe
             lblUpdateStatus.Text = "Đã sao chép hàng " + (rowToCopy.Index + 1).ToString() + " (MACB = '" + rowToCopy.Cells[0].Value.ToString() + "').";
         }
 
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewRow modifiedRow = gridViewLichCB.SelectedRows[0];
             if (modifiedRow.DefaultCellStyle.BackColor != AddedRowColor &&
@@ -488,7 +490,7 @@ namespace QuanLyBanVe
         }
 
         /* contextMenuStrip1 */
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e) // OK
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -507,17 +509,17 @@ namespace QuanLyBanVe
             btnSave_Click(sender, e);
         }
 
-        private void refreshToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnCancelChanges_Click(sender, e);
         }
 
-        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gridViewLichCB.SelectAll();
         }
 
-        private void clearSelectionToolStripMenuItem_Click(object sender, EventArgs e) // OK
+        private void clearSelectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             gridViewLichCB.ClearSelection();
         }
@@ -536,7 +538,7 @@ namespace QuanLyBanVe
             }
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e) // OK
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -544,7 +546,7 @@ namespace QuanLyBanVe
             }
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e) // OK
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {

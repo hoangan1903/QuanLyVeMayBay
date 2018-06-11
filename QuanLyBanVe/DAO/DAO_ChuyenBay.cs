@@ -139,16 +139,26 @@ namespace DAO
         }
         public bool XoaChuyenBay(DTO_ChuyenBay cb)
         {
-            Connection.Open();
-            SqlCommand command = new SqlCommand("XoaCB", Connection)
+            try
             {
-                CommandType = CommandType.StoredProcedure
-            };
-            SqlParameter parameter = new SqlParameter("@MaCB", cb.MaCB);
-            command.Parameters.Add(parameter);
-            Connection.Close();
-            return command.ExecuteNonQuery() != 0 ? true : false;
-            
+                Connection.Open();
+                SqlCommand command = new SqlCommand("XoaCB", Connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                SqlParameter parameter = new SqlParameter("@MaCB", cb.MaCB);
+                command.Parameters.Add(parameter);
+                Connection.Close();
+                return command.ExecuteNonQuery() != 0 ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
         }
         public DataTable TraCuu(string maSBDi, string maSBDen, DateTime dateTime)
         {
