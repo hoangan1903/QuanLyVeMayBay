@@ -25,9 +25,6 @@ namespace QuanLyBanVe
             this.maCB = MaCB;
         }
 
-
-
-
         private void BanVe_Load(object sender, EventArgs e)
         {
             dgvVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;

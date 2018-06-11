@@ -9,26 +9,25 @@ using DTO;
 
 namespace DAO
 {
-    public class DAO_Ve : DBConnect
+    public class DAO_Ve:DBConnect
     {
         DTO_HangVe dtoHangVe = new DTO_HangVe();
-
+      
         public DataTable LoadMaVe()
         {
-            conn.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT MAVE FROM VE", conn);
+            Connection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT MAVE FROM VE", Connection);
             DataTable datb = new DataTable();
             adapter.Fill(datb);
-            conn.Close();
+            Connection.Close();
             return datb;
         }
-
         public DataTable LoadVeCapNhat(string maCB, string maVe)
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("LoadVeCapNhat", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("LoadVeCapNhat", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -42,7 +41,7 @@ namespace DAO
                 DataTable datb = new DataTable();
                 adapter.Fill(datb);
 
-                conn.Close();
+                Connection.Close();
 
                 return datb;
             }
@@ -51,12 +50,11 @@ namespace DAO
                 return null;
             }
         }
-
         public DataTable LietKeVe(string maCB)
         {
-            conn.Open();
+            Connection.Open();
 
-            SqlCommand comm = new SqlCommand("LietKeVe", conn);
+            SqlCommand comm = new SqlCommand("LietKeVe", Connection);
             comm.CommandType = CommandType.StoredProcedure;
             comm.Parameters.AddWithValue("@MaCB", maCB);
 
@@ -65,15 +63,14 @@ namespace DAO
             DataTable datb = new DataTable();
             adapter.Fill(datb);
 
-            conn.Close();
+            Connection.Close();
             return datb;
         }
-
         public DataTable ChonHangVe(string maHV, string maCB)
         {
-            conn.Open();
+            Connection.Open();
 
-            SqlCommand comm = new SqlCommand("ChonHangVe", conn);
+            SqlCommand comm = new SqlCommand("ChonHangVe", Connection);
             comm.CommandType = CommandType.StoredProcedure;
 
             SqlParameter para = new SqlParameter("@MaHangVe", maHV);
@@ -88,17 +85,16 @@ namespace DAO
             DataTable dt = new DataTable();
 
             adapter.Fill(dt);
-            conn.Close();
+            Connection.Close();
 
             return dt;
         }
-
         public bool ThanhToanVe(string maVe)
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("ThanhToan", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("ThanhToan", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
@@ -117,17 +113,16 @@ namespace DAO
             }
             finally
             {
-                conn.Close();
+                Connection.Close();
             }
             return false;
         }
-
         public bool HoanVe(string maVe)
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("HoanVe", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("HoanVe", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
@@ -146,18 +141,17 @@ namespace DAO
             }
             finally
             {
-                conn.Close();
+                Connection.Close();
             }
             return false;
         }
-
         public bool CapNhatVe(string maVe, string maTinhTrang)
         {
             try
             {
-                conn.Open();
+                Connection.Open();
 
-                SqlCommand cmd = new SqlCommand("UpdateTinhTrangVe", conn);
+                SqlCommand cmd = new SqlCommand("UpdateTinhTrangVe", Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@MaTT", maTinhTrang);
@@ -172,9 +166,56 @@ namespace DAO
             }
             finally
             {
-                conn.Close();
+                Connection.Close();
             }
             return false;
+        }
+
+        public DataTable DemVeHang1(string maCB)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("CountVeHang1", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", maCB);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                Connection.Close();
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public DataTable DemVeHang2(string maCB)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("CountVeHang2", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", maCB);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                Connection.Close();
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_BaoCao : DBConnect
+    public class DAO_BaoCao:DBConnect
     {
         public SqlDataAdapter BaoCaoNgay(DateTime tuNgay, DateTime denNgay)
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("BaoCao", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("BaoCao", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@TuNgay", tuNgay);
@@ -27,7 +27,7 @@ namespace DAO
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = comm;
 
-                conn.Close();
+                Connection.Close();
                 return dataAdapter;
             }
             catch
@@ -39,8 +39,8 @@ namespace DAO
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("BaoCaoNam", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("BaoCaoNam", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@NAM", Int32.Parse(nam));
@@ -49,7 +49,7 @@ namespace DAO
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = comm;
    
-                conn.Close();
+                Connection.Close();
                 return dataAdapter;
             }
             catch

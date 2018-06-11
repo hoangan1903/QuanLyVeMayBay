@@ -46,5 +46,15 @@ namespace BUS
         {
             return daoVe.CapNhatVe(maVe, maTinhTrang);
         }
+
+        public DataTable DemVeHang1(string maCB)
+        {
+            return daoVe.DemVeHang1(maCB);
+        }
+
+        public DataTable DemVeHang2(string maCB)
+        {
+            return daoVe.DemVeHang2(maCB);
+        }
     }
 }

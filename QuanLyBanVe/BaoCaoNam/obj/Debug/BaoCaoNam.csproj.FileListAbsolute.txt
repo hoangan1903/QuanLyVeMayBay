@@ -73,3 +73,4 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNam\bin\D
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNam\bin\Debug\BUS.pdb
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNam\bin\Debug\DAO.pdb
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNam\bin\Debug\DTO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\BaoCaoNam\bin\Debug\DAO.dll.config

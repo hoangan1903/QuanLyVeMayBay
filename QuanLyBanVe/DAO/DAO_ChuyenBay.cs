@@ -8,14 +8,195 @@ using System.Threading.Tasks;
 using DTO;
 namespace DAO
 {
-    public class DAO_ChuyenBay : DBConnect
+    public class DAO_ChuyenBay :DBConnect
     {
+        public DataTable GetChuyenBay()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                Connection.Open();
+                SqlCommand cmd = new SqlCommand("LietKeCB", Connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(table);
+                Connection.Close();
+                return table;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        public bool ThemChuyenBay(DTO_ChuyenBay cb)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand command = new SqlCommand("ThemCB", Connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                SqlParameter parameter;
+
+                parameter = new SqlParameter("@MaCB", cb.MaCB);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBDi", cb.MaSBDi);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBDen", cb.MaSBDen);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenHHK", cb.MaHHK);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianKhoiHanh", cb.ThoiGianKhoiHanh);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianDen", cb.ThoiGianDen);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@SoGheHang1", cb.SoGheHang1);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@SoGheHang2", cb.SoGheHang2);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@GiaVe", cb.GiaVe);
+                command.Parameters.Add(parameter);
+
+                if (command.ExecuteNonQuery() != 0)
+                    return true;
+                else return false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        public DataTable GetSanBay()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+
+                Connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", Connection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(table);
+                return table;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        public DataTable GetHHK()
+        {
+            try
+            {
+                DataTable table = new DataTable();
+
+                Connection.Open();
+                SqlCommand cmd = new SqlCommand("SELECT TENHHK FROM HANGHK", Connection);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
+                dataAdapter.Fill(table);
+                return table;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        public bool SuaChuyenBay(DTO_ChuyenBay cb)
+        {
+            try
+            {
+                Connection.Open();
+
+                SqlCommand command = new SqlCommand("SuaCB", Connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+
+                SqlParameter parameter;
+
+                parameter = new SqlParameter("@MaCB", cb.MaCB);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBDi", cb.MaSBDi);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBDen", cb.MaSBDen);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenHHK", cb.MaHHK);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianKhoiHanh", cb.ThoiGianKhoiHanh.ToString());
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianDen", cb.ThoiGianDen.ToString());
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@SoGheHang1", cb.SoGheHang1);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@SoGheHang2", cb.SoGheHang2);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@GiaVe", cb.GiaVe);
+                command.Parameters.Add(parameter);
+                return command.ExecuteNonQuery() != 0 ? true : false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+        public bool XoaChuyenBay(DTO_ChuyenBay cb)
+        {
+            Connection.Open();
+            SqlCommand command = new SqlCommand("XoaCB", Connection)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            SqlParameter parameter = new SqlParameter("@MaCB", cb.MaCB);
+            command.Parameters.Add(parameter);
+            Connection.Close();
+            return command.ExecuteNonQuery() != 0 ? true : false;
+            
+        }
         public DataTable TraCuu(string maSBDi, string maSBDen, DateTime dateTime)
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("TraCuu", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("TraCuu", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaSBDi", maSBDi);
@@ -31,12 +212,15 @@ namespace DAO
                 dataAdapter.SelectCommand = comm;
                 DataTable datb = new DataTable();
                 dataAdapter.Fill(datb);
-                conn.Close();
                 return datb;
             }
             catch (Exception)
             {
                 return null;
+            }
+            finally
+            {
+                Connection.Close();
             }
         }
 
@@ -44,8 +228,8 @@ namespace DAO
         {
             try
             {
-                conn.Open();
-                SqlCommand comm = new SqlCommand("ChiTietChuyenBay", conn);
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("ChiTietChuyenBay", Connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -55,7 +239,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                conn.Close();
+                Connection.Close();
                 return dataTable;
             }
             catch
@@ -68,12 +252,11 @@ namespace DAO
         {
             try
             {
-                conn.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", conn);
+                Connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", Connection);
                 DataTable datb = new DataTable();
-
                 adapter.Fill(datb);
-                conn.Close();
+                Connection.Close();
                 return datb;
 
             }
@@ -81,130 +264,6 @@ namespace DAO
             {
                 return null;
             }
-        }
-
-        public DataTable LietKeCB()
-        {
-            try
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("LietKeCB", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = cmd;
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-
-                conn.Close();
-
-                return table;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public bool ThemCB(DTO_ChuyenBay dtoCB)
-        {
-            try
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("ThemCB", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter parameter;
-
-                parameter = new SqlParameter("@MaCB", dtoCB.MaCB);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenSBDi", dtoCB.SanBayDi);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenSBDen", dtoCB.SanBayDen);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenHHK", dtoCB.MaHHK);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dtoCB.ThoiGianBay));
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dtoCB.ThoiGianDen1));
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@SoGheHang1", dtoCB.SoGheHang1);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@SoGheHang2", dtoCB.SoGheHang2);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@GiaVe", dtoCB.GiaVe);
-                cmd.Parameters.Add(parameter);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return false;
-        }
-
-        public bool SuaCB(DTO_ChuyenBay dtoCB)
-        {
-            try
-            {
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("SuaCB", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter parameter;
-
-                parameter = new SqlParameter("@MaCB", dtoCB.MaCB);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenSBDi", dtoCB.SanBayDi);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenSBDen", dtoCB.SanBayDen);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@TenHHK", dtoCB.MaHHK);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@ThoiGianKhoiHanh", Convert.ToDateTime(dtoCB.ThoiGianBay));
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@ThoiGianDen", Convert.ToDateTime(dtoCB.ThoiGianDen1));
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@SoGheHang1", dtoCB.SoGheHang1);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@SoGheHang2", dtoCB.SoGheHang2);
-                cmd.Parameters.Add(parameter);
-
-                parameter = new SqlParameter("@GiaVe", dtoCB.GiaVe);
-                cmd.Parameters.Add(parameter);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-            return false;
         }
     }
 }

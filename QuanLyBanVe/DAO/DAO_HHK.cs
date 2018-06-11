@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_HHK : DBConnect
+    public class DAO_HHK :DBConnect
     {
         public DataTable LoadHangHangKhong()
         {
             try
             {
-                conn.Open();
+               Connection.Open();
 
-                SqlCommand comm = new SqlCommand("SELECT TENHHK FROM HANGHK", conn);
+                SqlCommand comm = new SqlCommand("SELECT TENHHK FROM HANGHK",Connection);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = comm;
 
                 DataTable datb = new DataTable();
                 dataAdapter.Fill(datb);
-
+                
                 return datb;
             }
             catch (Exception)
@@ -31,7 +31,7 @@ namespace DAO
             }
             finally
             {
-                conn.Close();
+               Connection.Close();
             }
         }
     }

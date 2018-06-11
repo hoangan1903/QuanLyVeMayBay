@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.dataGridViewLichCB = new System.Windows.Forms.DataGridView();
+            this.gridViewLichCB = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.tbGiaVe = new System.Windows.Forms.TextBox();
@@ -110,6 +110,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnBanVe = new System.Windows.Forms.Button();
+            this.btnThemVe = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -124,7 +126,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.rowContextMenuStrip1.SuspendLayout();
@@ -380,8 +382,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
@@ -407,12 +409,14 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnThemVe);
+            this.splitContainer1.Panel1.Controls.Add(this.btnBanVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelChanges);
             this.splitContainer1.Panel1.Controls.Add(this.btnSave);
             this.splitContainer1.Panel1.Controls.Add(this.btnThem);
             this.splitContainer1.Panel1.Controls.Add(this.btnSua);
             this.splitContainer1.Panel1.Controls.Add(this.btnXoa);
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridViewLichCB);
+            this.splitContainer1.Panel1.Controls.Add(this.gridViewLichCB);
             this.splitContainer1.Panel1MinSize = 280;
             // 
             // splitContainer1.Panel2
@@ -482,28 +486,29 @@
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // dataGridViewLichCB
+            // gridViewLichCB
             // 
-            this.dataGridViewLichCB.AllowUserToAddRows = false;
-            this.dataGridViewLichCB.AllowUserToDeleteRows = false;
-            this.dataGridViewLichCB.AllowUserToResizeRows = false;
-            this.dataGridViewLichCB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridViewLichCB.AllowUserToAddRows = false;
+            this.gridViewLichCB.AllowUserToDeleteRows = false;
+            this.gridViewLichCB.AllowUserToResizeRows = false;
+            this.gridViewLichCB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewLichCB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridViewLichCB.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridViewLichCB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewLichCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewLichCB.Location = new System.Drawing.Point(0, 32);
-            this.dataGridViewLichCB.Name = "dataGridViewLichCB";
-            this.dataGridViewLichCB.ReadOnly = true;
-            this.dataGridViewLichCB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dataGridViewLichCB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLichCB.Size = new System.Drawing.Size(954, 364);
-            this.dataGridViewLichCB.TabIndex = 5;
-            this.dataGridViewLichCB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
-            this.dataGridViewLichCB.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            this.dataGridViewLichCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            this.gridViewLichCB.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gridViewLichCB.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.gridViewLichCB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewLichCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewLichCB.Location = new System.Drawing.Point(0, 32);
+            this.gridViewLichCB.Name = "gridViewLichCB";
+            this.gridViewLichCB.ReadOnly = true;
+            this.gridViewLichCB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.gridViewLichCB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewLichCB.Size = new System.Drawing.Size(954, 364);
+            this.gridViewLichCB.TabIndex = 5;
+            this.gridViewLichCB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
+            this.gridViewLichCB.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
+            this.gridViewLichCB.DoubleClick += new System.EventHandler(this.gridViewLichCB_DoubleClick);
+            this.gridViewLichCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // panel1
             // 
@@ -963,7 +968,7 @@
             this.báoCáoToolStripMenuItem1,
             this.báoCáoNămToolStripMenuItem});
             this.báoCáoToolStripMenuItem.Name = "báoCáoToolStripMenuItem";
-            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.báoCáoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.báoCáoToolStripMenuItem.Text = "Báo cáo...";
             // 
             // báoCáoToolStripMenuItem1
@@ -1001,6 +1006,26 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
+            // btnBanVe
+            // 
+            this.btnBanVe.Location = new System.Drawing.Point(687, 0);
+            this.btnBanVe.Name = "btnBanVe";
+            this.btnBanVe.Size = new System.Drawing.Size(75, 26);
+            this.btnBanVe.TabIndex = 9;
+            this.btnBanVe.Text = "Bán vé";
+            this.btnBanVe.UseVisualStyleBackColor = true;
+            this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
+            // 
+            // btnThemVe
+            // 
+            this.btnThemVe.Location = new System.Drawing.Point(597, 1);
+            this.btnThemVe.Name = "btnThemVe";
+            this.btnThemVe.Size = new System.Drawing.Size(75, 23);
+            this.btnThemVe.TabIndex = 10;
+            this.btnThemVe.Text = "Thêm vé";
+            this.btnThemVe.UseVisualStyleBackColor = true;
+            this.btnThemVe.Click += new System.EventHandler(this.btnThemVe_Click);
+            // 
             // QuanLyBanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1035,7 +1060,7 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLichCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1104,7 +1129,7 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
-        private System.Windows.Forms.DataGridView dataGridViewLichCB;
+        private System.Windows.Forms.DataGridView gridViewLichCB;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbGiaVe;
@@ -1130,6 +1155,8 @@
         private System.Windows.Forms.Label lblUpdateStatus;
         private System.Windows.Forms.ToolStripMenuItem themToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.Button btnBanVe;
+        private System.Windows.Forms.Button btnThemVe;
     }
 }
 

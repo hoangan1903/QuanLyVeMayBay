@@ -23,3 +23,6 @@ C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\D
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.CopyComplete
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.dll
 C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.pdb
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.Properties.Resource1.resources
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\obj\Debug\DAO.csproj.GenerateResource.cache
+C:\Users\Hoang An\Documents\Đồ án\QuanLyVeMayBay\QuanLyBanVe\DAO\bin\Debug\DAO.dll.config

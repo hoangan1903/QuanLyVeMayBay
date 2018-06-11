@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 using DTO;
 namespace DAO
 {
-    public class DAO_KhachHang : DBConnect
+    public class DAO_KhachHang :DBConnect
     {
+
         public DataTable LoadKhachHang(string CMND)
         {
-            conn.Open();
+            Connection.Open();
             string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}'", CMND);
 
-            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+            SqlDataAdapter da = new SqlDataAdapter(sql, Connection);
 
             DataTable dt = new DataTable();
 
             da.Fill(dt);
 
-            conn.Close();
+            Connection.Close();
 
             return dt;
         }
@@ -30,15 +31,15 @@ namespace DAO
         {
             try
             {
-                conn.Open();
+                Connection.Open();
                 string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}' and HoTen = N'{1}'", CMND, hoTen);
 
-                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                SqlDataAdapter da = new SqlDataAdapter(sql, Connection);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                conn.Close();
+                Connection.Close();
 
                 return dt;
             }
@@ -50,8 +51,8 @@ namespace DAO
 
         public bool TaoThanhVien(DTO_KhachHang dtoKhachHang)
         {
-            conn.Open();
-            SqlCommand comm = new SqlCommand("TaoThanhVien", conn);
+            Connection.Open();
+            SqlCommand comm = new SqlCommand("TaoThanhVien", Connection);
             comm.CommandType = CommandType.StoredProcedure;
 
             SqlParameter para = new SqlParameter("@MaKH", dtoKhachHang.MaKH);
@@ -76,10 +77,10 @@ namespace DAO
             comm.Parameters.Add(para);
             if (comm.ExecuteNonQuery() != 0)
             {
-                conn.Close();
+                Connection.Close();
                 return true;
             }
-            conn.Close();
+            Connection.Close();
             return false;
         }
     }

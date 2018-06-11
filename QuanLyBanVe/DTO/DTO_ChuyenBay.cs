@@ -16,17 +16,13 @@ namespace DTO
         }
 
         private string sanBayDi;
-        public string SanBayDi
+        public string MaSBDi
         {
             get { return sanBayDi; }
             set { sanBayDi = value; }
         }
-        private string sanBayDen;
-        public string SanBayDen
-        {
-            get { return sanBayDen; }
-            set { sanBayDen = value; }
-        }
+        private string maSBDen;
+       
         private string maHHK;
 
         public string MaHHK
@@ -34,7 +30,7 @@ namespace DTO
             get { return maHHK; }
             set { maHHK = value; }
         }
-        private DateTime thoiGianBay;
+        private DateTime thoiGianKhoiHanh;
         private DateTime thoiGianDen;
 
         private int soGheHang1;
@@ -59,16 +55,19 @@ namespace DTO
             set { giaVe = value; }
         }
 
-        public DateTime ThoiGianBay { get => thoiGianBay; set => thoiGianBay = value; }
-        public DateTime ThoiGianDen1 { get => thoiGianDen; set => thoiGianDen = value; }
+        public DateTime ThoiGianKhoiHanh { get => thoiGianKhoiHanh; set => thoiGianKhoiHanh = value; }
+        public DateTime ThoiGianDen { get => thoiGianDen; set => thoiGianDen = value; }
+        public string MaSBDen { get => maSBDen; set => maSBDen = value; }
 
-        public DTO_ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, DateTime thoiGianBay, DateTime thoiGianDen, int gheHang1, int gheHang2, int gia)
+        public DTO_ChuyenBay() { }
+        public DTO_ChuyenBay(string maCB, string sanBayDi, string sanBayDen, string maHHK, DateTime thoiGianKhoiHanh, DateTime thoiGianDen, int gheHang1, int gheHang2, int gia)
         {
             this.maCB = maCB;
             this.sanBayDi = sanBayDi;
-            this.sanBayDen = sanBayDen;
+            this.MaSBDen = sanBayDen;
             this.maHHK = maHHK;
-            this.ThoiGianBay = thoiGianBay;
+            this.ThoiGianKhoiHanh = thoiGianKhoiHanh;
+            this.thoiGianDen = thoiGianDen;
             this.soGheHang1 = gheHang1;
             this.soGheHang2 = gheHang2;
             this.giaVe = gia;

@@ -169,9 +169,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{79869cee-5cf9-44ff-9dfc-d9e1e29431c8}</Project>
       <Name>BUS</Name>
