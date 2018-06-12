@@ -3,6 +3,7 @@ using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -70,6 +71,11 @@ namespace BUS
         {
             DTO_Ve dtoVe = new DTO_Ve(maVe, maCB, maHHK, maHV, giaTien, maTT);
             return daoVe.ThemVe(dtoVe);
+        }
+
+        public SqlDataAdapter InVe(string maVe)
+        {
+            return daoVe.InVe(maVe);
         }
     }
 }

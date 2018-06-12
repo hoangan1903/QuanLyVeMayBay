@@ -9,10 +9,10 @@ using DTO;
 
 namespace DAO
 {
-    public class DAO_Ve:DBConnect
+    public class DAO_Ve : DBConnect
     {
         DTO_HangVe dtoHangVe = new DTO_HangVe();
-      
+
         public DataTable LoadMaVe()
         {
             Connection.Open();
@@ -303,7 +303,29 @@ namespace DAO
             {
                 Connection.Close();
             }
-            return false;
+        }
+
+        public SqlDataAdapter InVe(string maVe)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("InVe", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaVe", maVe);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = comm;
+
+                Connection.Close();
+                return dataAdapter;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -34,26 +34,25 @@ namespace BaoCaoNgay
             this.QLVeMayBayDataSet.BaoCao.Clear();
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-260M5KJ; Initial Catalog=QLVeMayBay; Integrated Security=True"))
-                {
-                    busBaoCao.BaoCaoNgay(dateDi.Value, dateDen.Value).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
+                busBaoCao.BaoCaoNgay(dateDi.Value, dateDen.Value).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
 
-                    object sum;
-                    DataTable datb = this.QLVeMayBayDataSet.Tables[0];
-                    sum = datb.Compute("Sum(DOANHTHU)", string.Empty);
+                object sum;
+                DataTable datb = this.QLVeMayBayDataSet.Tables[0];
+                sum = datb.Compute("Sum(DOANHTHU)", string.Empty);
 
-                    ReportParameter ParameterDateDi = new ReportParameter("ParameterDateDi", Text = dateDi.Text);
-                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterDateDi });
+                ReportParameter ParameterDateDi = new ReportParameter("ParameterDateDi", Text = dateDi.Text);
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterDateDi });
 
-                    ReportParameter ParameterDateDen = new ReportParameter("ParameterDateDen", Text = dateDen.Text);
-                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterDateDen });       
+                ReportParameter ParameterDateDen = new ReportParameter("ParameterDateDen", Text = dateDen.Text);
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterDateDen });
 
-                    ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
-                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
-                }
+                ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
+                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
+            }
+            catch (Exception)
+            {
 
             }
-            catch { }
             this.reportViewer1.RefreshReport();
             btnThongKe.Enabled = false;
         }

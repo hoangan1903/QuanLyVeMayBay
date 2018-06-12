@@ -34,11 +34,8 @@ namespace BaoCaoNam
             this.reportViewer1.Clear();
             this.QLVeMayBayDataSet_2.BaoCaoNam.Clear();
             try
-            {
-                using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-260M5KJ; Initial Catalog=QLVeMayBay; Integrated Security=True"))
-                {
+            {             
                     busBaoCao.BaoCaoNam(cbbNam.Text).Fill(this.QLVeMayBayDataSet_2.BaoCaoNam);
-
                     object sum;
                     DataTable datb = this.QLVeMayBayDataSet_2.Tables[0];
                     sum = datb.Compute("Sum(DOANHTHU)", string.Empty);
@@ -48,9 +45,11 @@ namespace BaoCaoNam
 
                     ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
                     this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
-                }
             }
-            catch { }
+            catch (Exception)
+            {
+
+            }
             this.reportViewer1.RefreshReport();
             btnThongKe.Enabled = false;
         }

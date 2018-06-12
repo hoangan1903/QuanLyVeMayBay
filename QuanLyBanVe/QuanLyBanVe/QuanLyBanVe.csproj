@@ -143,6 +143,10 @@
       <Project>{79869cee-5cf9-44ff-9dfc-d9e1e29431c8}</Project>
       <Name>BUS</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InVe\InVe.csproj">
+      <Project>{05f87416-d07c-4677-a0c8-0c4f69352dcd}</Project>
+      <Name>InVe</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NhacNho.txt" />

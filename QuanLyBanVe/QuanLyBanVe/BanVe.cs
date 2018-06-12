@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using BUS;
+using InVe;
 
 namespace QuanLyBanVe
 {
@@ -210,5 +211,10 @@ namespace QuanLyBanVe
             }
         }
 
+        private void btnInVe_Click(object sender, EventArgs e)
+        {
+            frmInVe frmInVe = new frmInVe();
+            frmInVe.ShowDialog();
+        }
     }
 }

@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.grpBanVe = new System.Windows.Forms.GroupBox();
             this.dgvVe = new System.Windows.Forms.DataGridView();
-            this.chonMua = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cboHangVe = new System.Windows.Forms.ComboBox();
             this.btnXacNhanMua = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
@@ -42,6 +40,7 @@
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.btnXacNhanDat = new System.Windows.Forms.Button();
+            this.btnInVe = new System.Windows.Forms.Button();
             this.grpBanVe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +60,7 @@
             // 
             this.grpBanVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBanVe.Controls.Add(this.btnInVe);
             this.grpBanVe.Controls.Add(this.dgvVe);
             this.grpBanVe.Controls.Add(this.cboHangVe);
             this.grpBanVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,26 +80,14 @@
             this.dgvVe.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chonMua});
             this.dgvVe.Location = new System.Drawing.Point(6, 46);
+            this.dgvVe.MultiSelect = false;
             this.dgvVe.Name = "dgvVe";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVe.Size = new System.Drawing.Size(849, 305);
             this.dgvVe.TabIndex = 1;
-            // 
-            // chonMua
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.NullValue = false;
-            this.chonMua.DefaultCellStyle = dataGridViewCellStyle1;
-            this.chonMua.Frozen = true;
-            this.chonMua.HeaderText = "ChonMua";
-            this.chonMua.Name = "chonMua";
-            this.chonMua.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // cboHangVe
             // 
@@ -184,6 +172,17 @@
             this.btnXacNhanDat.UseVisualStyleBackColor = true;
             this.btnXacNhanDat.Click += new System.EventHandler(this.btnXacNhanDat_Click);
             // 
+            // btnInVe
+            // 
+            this.btnInVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInVe.Location = new System.Drawing.Point(780, 17);
+            this.btnInVe.Name = "btnInVe";
+            this.btnInVe.Size = new System.Drawing.Size(75, 23);
+            this.btnInVe.TabIndex = 2;
+            this.btnInVe.Text = "In vé";
+            this.btnInVe.UseVisualStyleBackColor = true;
+            this.btnInVe.Click += new System.EventHandler(this.btnInVe_Click);
+            // 
             // BanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,7 +219,7 @@
         private System.Windows.Forms.Button btnKiemTra;
         private System.Windows.Forms.Label lblHoTen;
         private System.Windows.Forms.TextBox txtHoTen;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn chonMua;
         private System.Windows.Forms.Button btnXacNhanDat;
+        private System.Windows.Forms.Button btnInVe;
     }
 }
