@@ -10,6 +10,19 @@ namespace DAO
 {
     public class DAO_KhachHang :DBConnect
     {
+        public DataTable LoadKhachHang()
+        {
+            Connection.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter("Select * From KHACHHANG", Connection);
+            DataTable data = new DataTable();
+
+            adapter.Fill(data);
+
+            Connection.Close();
+
+            return data;
+        }
 
         public DataTable LoadKhachHang(string CMND)
         {

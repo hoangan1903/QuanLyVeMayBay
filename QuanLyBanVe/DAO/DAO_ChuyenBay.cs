@@ -126,6 +126,7 @@ namespace DAO
 
                 parameter = new SqlParameter("@GiaVe", cb.GiaVe);
                 command.Parameters.Add(parameter);
+
                 return command.ExecuteNonQuery() != 0 ? true : false;
             }
             catch
@@ -137,6 +138,7 @@ namespace DAO
                 Connection.Close();
             }
         }
+
         public bool XoaChuyenBay(DTO_ChuyenBay cb)
         {
             try
@@ -148,8 +150,10 @@ namespace DAO
                 };
                 SqlParameter parameter = new SqlParameter("@MaCB", cb.MaCB);
                 command.Parameters.Add(parameter);
-                Connection.Close();
-                return command.ExecuteNonQuery() != 0 ? true : false;
+
+                if (command.ExecuteNonQuery() != 0)
+                    return true;
+                return false;
             }
             catch
             {
@@ -160,6 +164,7 @@ namespace DAO
                 Connection.Close();
             }
         }
+
         public DataTable TraCuu(string maSBDi, string maSBDen, DateTime dateTime)
         {
             try

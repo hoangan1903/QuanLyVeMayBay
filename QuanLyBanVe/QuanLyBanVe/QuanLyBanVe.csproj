@@ -57,6 +57,12 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="DanhSachKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhSachKhachHang.Designer.cs">
+      <DependentUpon>DanhSachKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyBanVe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,7 +71,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuanLy.cs" />
     <Compile Include="TaoThanhVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhSachKhachHang.resx">
+      <DependentUpon>DanhSachKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyBanVe.resx">
       <DependentUpon>QuanLyBanVe.cs</DependentUpon>

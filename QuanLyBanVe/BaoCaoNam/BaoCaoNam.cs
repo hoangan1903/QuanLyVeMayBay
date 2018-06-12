@@ -37,16 +37,6 @@ namespace BaoCaoNam
             {
                 using (SqlConnection conn = new SqlConnection("Data Source=DESKTOP-260M5KJ; Initial Catalog=QLVeMayBay; Integrated Security=True"))
                 {
-                    //conn.Open();
-                    //SqlCommand comm = new SqlCommand("BaoCaoNam", conn);
-                    //comm.CommandType = CommandType.StoredProcedure;
-
-                    //SqlParameter para = new SqlParameter("@Nam", Int32.Parse(cbbNam.Text));
-                    //comm.Parameters.Add(para);
-
-                    //SqlDataAdapter dataAdapter = new SqlDataAdapter();
-                    //dataAdapter.SelectCommand = comm;
-
                     busBaoCao.BaoCaoNam(cbbNam.Text).Fill(this.QLVeMayBayDataSet_2.BaoCaoNam);
 
                     object sum;

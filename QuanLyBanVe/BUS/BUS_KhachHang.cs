@@ -13,6 +13,10 @@ namespace BUS
     {
         DAO_KhachHang daoKhachHang = new DAO_KhachHang();
 
+        public DataTable LoadKhachHang()
+        {
+            return daoKhachHang.LoadKhachHang();
+        }
         public DataTable LoadKhachHang(string CMND)
         {
             return daoKhachHang.LoadKhachHang(CMND);

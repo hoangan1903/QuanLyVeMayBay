@@ -43,13 +43,6 @@ namespace DTO
             get { return giaTien; }
             set { giaTien = value; }
         }
-        private DateTime thoiGianBay;
-
-        public DateTime ThoiGianBay
-        {
-            get { return thoiGianBay; }
-            set { thoiGianBay = value; }
-        }
         private string maTT;
 
         public string MaTT
@@ -57,14 +50,13 @@ namespace DTO
             get { return maTT; }
             set { maTT = value; }
         }
-        public DTO_Ve(string maVe, string maCB, string maHHK, string maHV, int giaTien, DateTime thoiGianBay, string maTT)
+        public DTO_Ve(string maVe, string maCB, string maHHK, string maHV, int giaTien, string maTT)
         {
             this.maVe = maVe;
             this.maCB = maCB;
             this.maHHK = maHHK;
             this.maHV = maHV;
             this.giaTien = giaTien;
-            this.thoiGianBay = thoiGianBay;
             this.maTT = maTT;
         }
     }

@@ -28,6 +28,7 @@ namespace DAO
 
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
+                return false;
             }
             catch (Exception)
             {
@@ -37,7 +38,6 @@ namespace DAO
             {
                 Connection.Close();
             }
-            return false;
         }
     }
 }

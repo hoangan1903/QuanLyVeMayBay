@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using BaoCaoNam;
 using BUS;
+using System.Threading;
 
 namespace QuanLyBanVe
 {
@@ -340,7 +341,7 @@ namespace QuanLyBanVe
                 foreach (DataGridViewRow row in removedRows)
                 {
                     if (!busChuyenBay.XoaChuyenBay(row))
-                        MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
+                        MessageBox.Show("Có lỗi không xác định xảy ra khi xóa dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
                 lblUpdateStatus.ForeColor = ChangeLogColor;
                 lblUpdateStatus.Text = ChangeLog;
@@ -405,6 +406,7 @@ namespace QuanLyBanVe
         /* cellContextMenuStrip1 */
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            btnThemVe.Enabled = true;
             if (e.Button == MouseButtons.Right)
             {
                 gridViewLichCB.ClearSelection();
@@ -627,10 +629,10 @@ namespace QuanLyBanVe
             gridViewChiTiet.RowHeadersVisible = false;
             gridViewChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            if (busVe.DemVeHang1(getMaCB(gridViewTraCuu)).Rows.Count != 0)
-                gridViewChiTiet.Rows[0].Cells[8].Value = busVe.DemVeHang1(getMaCB(gridViewTraCuu)).Rows[0][0].ToString();
-            if(busVe.DemVeHang2(getMaCB(gridViewTraCuu)).Rows.Count !=0)
-                gridViewChiTiet.Rows[0].Cells[9].Value = busVe.DemVeHang2(getMaCB(gridViewTraCuu)).Rows[0][0].ToString();
+            if (busVe.VeHang1Trong(getMaCB(gridViewTraCuu)).Rows.Count != 0)
+                gridViewChiTiet.Rows[0].Cells[8].Value = busVe.VeHang1Trong(getMaCB(gridViewTraCuu)).Rows[0][0].ToString();
+            if(busVe.VeHang2Trong(getMaCB(gridViewTraCuu)).Rows.Count !=0)
+                gridViewChiTiet.Rows[0].Cells[9].Value = busVe.VeHang2Trong(getMaCB(gridViewTraCuu)).Rows[0][0].ToString();
 
             gridViewChiTiet.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             gridViewChiTiet.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
@@ -724,66 +726,151 @@ namespace QuanLyBanVe
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            gridViewCapNhatVe.RowHeadersVisible = false;
-            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            string maVe = "";
-
-            if (cbbMaVe.Text != "")
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc muốn thanh toán?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                maVe = cbbMaVe.Text;
-            }
-            else
-            {
-                maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
-            }
+                gridViewCapNhatVe.RowHeadersVisible = false;
+                gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            if (busVe.ThanhToanVe(maVe))
-            {
-                MessageBox.Show("Thanh toán vé thành công!", "Thông báo", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Vé đã được thanh toán trước đó!", "Thông báo", MessageBoxButtons.OK);
-            }
+                string maVe = "";
 
-            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
-            gridViewCapNhatVe.ClearSelection();
+                if (cbbMaVe.Text != "")
+                {
+                    maVe = cbbMaVe.Text;
+                }
+                else
+                {
+                    maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
+                }
+
+                if (busVe.ThanhToanVe(maVe))
+                {
+                    MessageBox.Show("Thanh toán vé thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Vé đã được thanh toán trước đó!", "Thông báo", MessageBoxButtons.OK);
+                }
+
+                gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+                gridViewCapNhatVe.ClearSelection();
+            }
         }
 
         private void btnHoanVe_Click(object sender, EventArgs e)
         {
-
-            gridViewCapNhatVe.RowHeadersVisible = false;
-            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            string maVe = "";
-            if (cbbMaVe.Text != "")
+            DialogResult dialogResult = MessageBox.Show("Bạn chắc chắn muốn hoàn vé?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                maVe = cbbMaVe.Text;
-            }
-            else
-            {
-                maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
-            }
+                gridViewCapNhatVe.RowHeadersVisible = false;
+                gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            if (busVe.HoanVe(maVe))
-            {
-                MessageBox.Show("Cập nhật vé thành công!", "Thông báo", MessageBoxButtons.OK);
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
-            }
+                string maVe = "";
+                if (cbbMaVe.Text != "")
+                {
+                    maVe = cbbMaVe.Text;
+                }
+                else
+                {
+                    maVe = gridViewCapNhatVe.CurrentRow.Cells["MAVE"].Value.ToString();
+                }
 
-            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
-            gridViewCapNhatVe.ClearSelection();
+                if (busVe.HoanVe(maVe))
+                {
+                    MessageBox.Show("Cập nhật vé thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật vé thất bại!", "Thông báo", MessageBoxButtons.OK);
+                }
+
+                gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+                gridViewCapNhatVe.ClearSelection();
+            }
         }
 
         private void btnBanVe_Click(object sender, EventArgs e)
         {
             BanVe formBanVe = new BanVe(getMaCB(gridViewLichCB));
             formBanVe.ShowDialog();
+        }
+
+        private void btnThemVe_Click(object sender, EventArgs e)
+        {
+            panelThemVe.Visible = true;
+            splitContainer1.Panel1.Enabled = false;
+            btnThemVe.Enabled = false;
+
+            if (busVe.VeHang1Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString()) - Decimal.Parse(busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString());
+
+            if (busVe.VeHang2Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString()) - Decimal.Parse(busVe.TongVeHang2(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString());
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            string maCB = getMaCB(gridViewLichCB);
+            int tongVeTonTai1, tongVeTonTai2;
+            if (busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                tongVeTonTai1 = Int32.Parse(busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                tongVeTonTai1 = 0;
+            if (busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                tongVeTonTai2 = Int32.Parse(busVe.TongVeHang2(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                tongVeTonTai2 = 0;
+            string maHHK = gridViewLichCB.CurrentRow.Cells[3].Value.ToString();
+
+            if (numHang1.Value > 0)
+                for (int i = 1; i <= numHang1.Value; i++)
+                {
+                    if (i + tongVeTonTai1 < 10)
+                        busVe.ThemVe("VE" + maCB.Substring(3, 1) + "0" + (tongVeTonTai1 + i).ToString(), maCB,
+                            maHHK, "HV001", Int32.Parse(txtHang1.Text), "TT000");
+                    else
+                        busVe.ThemVe("VE" + maCB.Substring(3, 1) + (tongVeTonTai1 + i).ToString(), maCB,
+                           maHHK, "HV001", Int32.Parse(txtHang1.Text), "TT000");
+                    tongVeTonTai2++;
+                }
+
+            tongVeTonTai2 = tongVeTonTai2 + tongVeTonTai1;
+            if (numHang2.Value > 0)
+                for (int i = 1; i <= numHang2.Value; i++)
+                {
+                    if (i + tongVeTonTai2 < 10)
+                        busVe.ThemVe("VE" + maCB.Substring(3, 1) + "0" + (tongVeTonTai2 + i).ToString(), maCB,
+                            maHHK, "HV002", Int32.Parse(txtHang2.Text), "TT000");
+                    else
+                        busVe.ThemVe("VE" + maCB.Substring(3, 1) + (tongVeTonTai2 + i).ToString(), maCB,
+                             maHHK, "HV002", Int32.Parse(txtHang2.Text), "TT000");
+                }
+            splitContainer1.Panel1.Enabled = true;
+            panelThemVe.Visible = false;
+            numHang1.Value = 0;
+            txtHang1.Text = string.Empty;
+            numHang2.Value = 0;
+            txtHang2.Text = string.Empty;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel1.Enabled = true;
+            panelThemVe.Visible = false;
+            numHang1.Value = 0;
+            txtHang1.Text = string.Empty;
+            numHang2.Value = 0;
+            txtHang2.Text = string.Empty;
+        }
+
+        private void btnDSKhachHang_Click(object sender, EventArgs e)
+        {
+            frmDanhSachKhachHang dsKhachHang = new frmDanhSachKhachHang();
+            dsKhachHang.Show();
         }
     }
 }

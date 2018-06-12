@@ -21,14 +21,11 @@ namespace DAO
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                 DataTable table = new DataTable();
                 dataAdapter.Fill(table);
-
                 Connection.Close();
-
                 return table;
             }
             catch (Exception)
             {
-                Connection.Close();
                 return null;
             }
         }

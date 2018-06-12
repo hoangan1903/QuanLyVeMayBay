@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
@@ -53,6 +53,7 @@
             this.gridViewChiTiet = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnThemVe = new System.Windows.Forms.Button();
             this.btnBanVe = new System.Windows.Forms.Button();
             this.btnCancelChanges = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -60,6 +61,15 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.gridViewLichCB = new System.Windows.Forms.DataGridView();
+            this.panelThemVe = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.numHang2 = new System.Windows.Forms.NumericUpDown();
+            this.numHang1 = new System.Windows.Forms.NumericUpDown();
+            this.txtHang2 = new System.Windows.Forms.TextBox();
+            this.txtHang1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.tbGiaVe = new System.Windows.Forms.TextBox();
@@ -111,6 +121,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDSKhachHang = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -126,6 +137,9 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).BeginInit();
+            this.panelThemVe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHang2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHang1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.rowContextMenuStrip1.SuspendLayout();
@@ -381,8 +395,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
@@ -408,6 +422,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnDSKhachHang);
+            this.splitContainer1.Panel1.Controls.Add(this.btnThemVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnBanVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelChanges);
             this.splitContainer1.Panel1.Controls.Add(this.btnSave);
@@ -421,12 +437,24 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel2.Controls.Add(this.panelThemVe);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.lblUpdateStatus);
             this.splitContainer1.Panel2MinSize = 135;
             this.splitContainer1.Size = new System.Drawing.Size(954, 560);
             this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.TabIndex = 9;
+            // 
+            // btnThemVe
+            // 
+            this.btnThemVe.Enabled = false;
+            this.btnThemVe.Location = new System.Drawing.Point(606, 0);
+            this.btnThemVe.Name = "btnThemVe";
+            this.btnThemVe.Size = new System.Drawing.Size(75, 26);
+            this.btnThemVe.TabIndex = 10;
+            this.btnThemVe.Text = "Thêm vé";
+            this.btnThemVe.UseVisualStyleBackColor = true;
+            this.btnThemVe.Click += new System.EventHandler(this.btnThemVe_Click);
             // 
             // btnBanVe
             // 
@@ -518,6 +546,88 @@
             this.gridViewLichCB.DoubleClick += new System.EventHandler(this.gridViewLichCB_DoubleClick);
             this.gridViewLichCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
+            // panelThemVe
+            // 
+            this.panelThemVe.Controls.Add(this.btnCancel);
+            this.panelThemVe.Controls.Add(this.btnLuu);
+            this.panelThemVe.Controls.Add(this.numHang2);
+            this.panelThemVe.Controls.Add(this.numHang1);
+            this.panelThemVe.Controls.Add(this.txtHang2);
+            this.panelThemVe.Controls.Add(this.txtHang1);
+            this.panelThemVe.Controls.Add(this.label11);
+            this.panelThemVe.Controls.Add(this.label10);
+            this.panelThemVe.Location = new System.Drawing.Point(12, 29);
+            this.panelThemVe.Name = "panelThemVe";
+            this.panelThemVe.Size = new System.Drawing.Size(317, 100);
+            this.panelThemVe.TabIndex = 7;
+            this.panelThemVe.Visible = false;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(268, 51);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(46, 23);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Location = new System.Drawing.Point(268, 19);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(46, 23);
+            this.btnLuu.TabIndex = 6;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // numHang2
+            // 
+            this.numHang2.Location = new System.Drawing.Point(192, 46);
+            this.numHang2.Name = "numHang2";
+            this.numHang2.Size = new System.Drawing.Size(46, 23);
+            this.numHang2.TabIndex = 5;
+            // 
+            // numHang1
+            // 
+            this.numHang1.Location = new System.Drawing.Point(192, 19);
+            this.numHang1.Name = "numHang1";
+            this.numHang1.Size = new System.Drawing.Size(46, 23);
+            this.numHang1.TabIndex = 4;
+            // 
+            // txtHang2
+            // 
+            this.txtHang2.Location = new System.Drawing.Point(91, 46);
+            this.txtHang2.Name = "txtHang2";
+            this.txtHang2.Size = new System.Drawing.Size(80, 23);
+            this.txtHang2.TabIndex = 3;
+            // 
+            // txtHang1
+            // 
+            this.txtHang1.Location = new System.Drawing.Point(91, 19);
+            this.txtHang1.Name = "txtHang1";
+            this.txtHang1.Size = new System.Drawing.Size(80, 23);
+            this.txtHang1.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 15);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Giá vé hạng 2:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 15);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Giá vé hạng 1:";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -544,7 +654,7 @@
             this.panel1.Controls.Add(this.cbbMaSBDi);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.panel1.Location = new System.Drawing.Point(163, 4);
+            this.panel1.Location = new System.Drawing.Point(161, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(773, 131);
             this.panel1.TabIndex = 6;
@@ -568,7 +678,7 @@
             this.tbGiaVe.Location = new System.Drawing.Point(211, 94);
             this.tbGiaVe.Name = "tbGiaVe";
             this.tbGiaVe.Size = new System.Drawing.Size(90, 23);
-            this.tbGiaVe.TabIndex = 40;
+            this.tbGiaVe.TabIndex = 42;
             // 
             // label8
             // 
@@ -586,7 +696,7 @@
             this.tbSoGheHang2.Location = new System.Drawing.Point(115, 94);
             this.tbSoGheHang2.Name = "tbSoGheHang2";
             this.tbSoGheHang2.Size = new System.Drawing.Size(90, 23);
-            this.tbSoGheHang2.TabIndex = 38;
+            this.tbSoGheHang2.TabIndex = 41;
             // 
             // label7
             // 
@@ -604,7 +714,7 @@
             this.tbSoGheHang1.Location = new System.Drawing.Point(19, 94);
             this.tbSoGheHang1.Name = "tbSoGheHang1";
             this.tbSoGheHang1.Size = new System.Drawing.Size(90, 23);
-            this.tbSoGheHang1.TabIndex = 36;
+            this.tbSoGheHang1.TabIndex = 40;
             // 
             // label6
             // 
@@ -630,7 +740,7 @@
             this.btnHuy.Location = new System.Drawing.Point(700, 95);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(60, 25);
-            this.btnHuy.TabIndex = 33;
+            this.btnHuy.TabIndex = 44;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -652,7 +762,7 @@
             this.btnOK.Location = new System.Drawing.Point(634, 95);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(60, 25);
-            this.btnOK.TabIndex = 14;
+            this.btnOK.TabIndex = 43;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -677,7 +787,7 @@
             this.departureTime.MinDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             this.departureTime.Name = "departureTime";
             this.departureTime.Size = new System.Drawing.Size(130, 23);
-            this.departureTime.TabIndex = 30;
+            this.departureTime.TabIndex = 38;
             this.departureTime.Value = new System.DateTime(2018, 5, 13, 18, 55, 14, 203);
             // 
             // arrivalTime
@@ -690,7 +800,7 @@
             this.arrivalTime.MinDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             this.arrivalTime.Name = "arrivalTime";
             this.arrivalTime.Size = new System.Drawing.Size(130, 23);
-            this.arrivalTime.TabIndex = 31;
+            this.arrivalTime.TabIndex = 39;
             this.arrivalTime.Value = new System.DateTime(2018, 5, 13, 18, 55, 14, 208);
             // 
             // cbbHHK
@@ -702,7 +812,7 @@
             this.cbbHHK.Location = new System.Drawing.Point(347, 48);
             this.cbbHHK.Name = "cbbHHK";
             this.cbbHHK.Size = new System.Drawing.Size(133, 23);
-            this.cbbHHK.TabIndex = 11;
+            this.cbbHHK.TabIndex = 37;
             // 
             // label18
             // 
@@ -735,7 +845,7 @@
             this.cbbMaSBDen.Location = new System.Drawing.Point(231, 48);
             this.cbbMaSBDen.Name = "cbbMaSBDen";
             this.cbbMaSBDen.Size = new System.Drawing.Size(110, 23);
-            this.cbbMaSBDen.TabIndex = 10;
+            this.cbbMaSBDen.TabIndex = 36;
             // 
             // label20
             // 
@@ -757,7 +867,7 @@
             this.cbbMaSBDi.Location = new System.Drawing.Point(115, 48);
             this.cbbMaSBDi.Name = "cbbMaSBDi";
             this.cbbMaSBDi.Size = new System.Drawing.Size(110, 23);
-            this.cbbMaSBDi.TabIndex = 9;
+            this.cbbMaSBDi.TabIndex = 35;
             // 
             // label21
             // 
@@ -1014,6 +1124,16 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.aboutToolStripMenuItem.Text = "About us";
             // 
+            // btnDSKhachHang
+            // 
+            this.btnDSKhachHang.Location = new System.Drawing.Point(491, 0);
+            this.btnDSKhachHang.Name = "btnDSKhachHang";
+            this.btnDSKhachHang.Size = new System.Drawing.Size(99, 26);
+            this.btnDSKhachHang.TabIndex = 11;
+            this.btnDSKhachHang.Text = "DS Khách hàng";
+            this.btnDSKhachHang.UseVisualStyleBackColor = true;
+            this.btnDSKhachHang.Click += new System.EventHandler(this.btnDSKhachHang_Click);
+            // 
             // QuanLyBanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,6 +1169,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).EndInit();
+            this.panelThemVe.ResumeLayout(false);
+            this.panelThemVe.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHang2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numHang1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1144,6 +1268,17 @@
         private System.Windows.Forms.ToolStripMenuItem themToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Button btnBanVe;
+        private System.Windows.Forms.Panel panelThemVe;
+        private System.Windows.Forms.NumericUpDown numHang2;
+        private System.Windows.Forms.NumericUpDown numHang1;
+        private System.Windows.Forms.TextBox txtHang2;
+        private System.Windows.Forms.TextBox txtHang1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnThemVe;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnDSKhachHang;
     }
 }
 

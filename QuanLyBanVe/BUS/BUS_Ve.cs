@@ -1,4 +1,5 @@
 ﻿using DAO;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,14 +48,28 @@ namespace BUS
             return daoVe.CapNhatVe(maVe, maTinhTrang);
         }
 
-        public DataTable DemVeHang1(string maCB)
+        public DataTable VeHang1Trong(string maCB)
         {
-            return daoVe.DemVeHang1(maCB);
+            return daoVe.VeHang1Trong(maCB);
         }
 
-        public DataTable DemVeHang2(string maCB)
+        public DataTable VeHang2Trong(string maCB)
         {
-            return daoVe.DemVeHang2(maCB);
+            return daoVe.VeHang2Trong(maCB);
+        }
+        
+        public DataTable TongVeHang1(string maCB)
+        {
+            return daoVe.TongVeHang1(maCB);
+        }
+        public DataTable TongVeHang2(string maCB)
+        {
+            return daoVe.TongVeHang2(maCB);
+        }
+        public bool ThemVe(string maVe, string maCB, string maHHK, string maHV, int giaTien, string maTT)
+        {
+            DTO_Ve dtoVe = new DTO_Ve(maVe, maCB, maHHK, maHV, giaTien, maTT);
+            return daoVe.ThemVe(dtoVe);
         }
     }
 }

@@ -22,16 +22,12 @@ namespace DAO
 
                 DataTable datb = new DataTable();
                 dataAdapter.Fill(datb);
-                
+                Connection.Close();
                 return datb;
             }
             catch (Exception)
             {
                 return null;
-            }
-            finally
-            {
-               Connection.Close();
             }
         }
     }

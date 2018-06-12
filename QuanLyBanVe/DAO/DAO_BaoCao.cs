@@ -35,6 +35,7 @@ namespace DAO
                 return null;
             }
         }
+
         public SqlDataAdapter BaoCaoNam(string nam)
         {
             try

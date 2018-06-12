@@ -171,7 +171,54 @@ namespace DAO
             return false;
         }
 
-        public DataTable DemVeHang1(string maCB)
+        public DataTable VeHang1Trong(string maCB)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("VeHang1Trong", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", maCB);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                Connection.Close();
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public DataTable VeHang2Trong(string maCB)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("VeHang2Trong", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", maCB);
+                comm.Parameters.Add(para);
+
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                adapter.SelectCommand = comm;
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                Connection.Close();
+                return dataTable;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public DataTable TongVeHang1(string maCB)
         {
             try
             {
@@ -194,7 +241,8 @@ namespace DAO
                 return null;
             }
         }
-        public DataTable DemVeHang2(string maCB)
+
+        public DataTable TongVeHang2(string maCB)
         {
             try
             {
@@ -216,6 +264,46 @@ namespace DAO
             {
                 return null;
             }
+        }
+        public bool ThemVe(DTO_Ve dtoVe)
+        {
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("ThemVe", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter para = new SqlParameter("@MaCB", dtoVe.MaCB);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@MaVe", dtoVe.MaVe);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@TenHHK", dtoVe.MaHHK);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@MaHV", dtoVe.MaHV);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@GiaTien", dtoVe.GiaTien);
+                comm.Parameters.Add(para);
+
+                para = new SqlParameter("@MaTT", dtoVe.MaTT);
+                comm.Parameters.Add(para);
+
+                if (comm.ExecuteNonQuery() != 0)
+                    return true;
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+            return false;
         }
     }
 }
