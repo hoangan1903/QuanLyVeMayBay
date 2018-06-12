@@ -282,31 +282,64 @@ namespace QuanLyBanVe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa " + gridViewLichCB.SelectedRows.Count + " hàng đã chọn? Thay đổi này không thể hoàn tác.", "Xóa chuyến bay", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (row.DefaultCellStyle.BackColor != RemovedRowColor)
+                addedRows.Clear();
+                modifiedRows.Clear();
+
+                int succeeded = 0, failed = 0;
+                string tempLog = "";
+
+                ChangeLog = "Cập nhật bảng [CHUYENBAY] - ";
+                foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
                 {
-                    row.ReadOnly = true;
                     if (row.DefaultCellStyle.BackColor == AddedRowColor)
-                    {
-                        row.DefaultCellStyle.BackColor = RemovedRowColor;
-                        addedRows.Remove(row);
                         continue;
-                    }
-                    if (row.DefaultCellStyle.BackColor == ModifiedRowColor)
+
+                    if (busChuyenBay.XoaChuyenBay(row))
                     {
-                        removedRows.Add(row);
-                        row.DefaultCellStyle.BackColor = RemovedRowColor;
-                        modifiedRows.Remove(row);
-                        continue;
+                        succeeded++;
+                        tempLog += "* Đã xóa chuyến bay '" + row.Cells[0].Value.ToString() + "'.\n";
                     }
-                    removedRows.Add(row);
-                    row.DefaultCellStyle.BackColor = RemovedRowColor;
+                    else
+                    {
+                        failed++;
+                        tempLog += "* Xóa chuyến bay '" + row.Cells[0].Value.ToString() + "' không thành công.\n";
+                    }
                 }
+                ChangeLog += "Xóa " + (succeeded + failed).ToString() + " hàng (" + succeeded + " thành công và " + failed + " không thành công).\n" + tempLog;
+                lblUpdateStatus.ForeColor = ChangeLogColor;
+                lblUpdateStatus.Text = ChangeLog;
+                LoadDataToDataGridView(gridViewLichCB);
+                btnSave.Enabled = false;
+                saveToolStripMenuItem.Enabled = false;
             }
-            gridViewLichCB.ClearSelection();
-            btnSave.Enabled = true;
-            btnCancelChanges.Enabled = true;
+
+            //foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
+            //{
+            //    if (row.DefaultCellStyle.BackColor != RemovedRowColor)
+            //    {
+            //        row.ReadOnly = true;
+            //        if (row.DefaultCellStyle.BackColor == AddedRowColor)
+            //        {
+            //            row.DefaultCellStyle.BackColor = RemovedRowColor;
+            //            addedRows.Remove(row);
+            //            continue;
+            //        }
+            //        if (row.DefaultCellStyle.BackColor == ModifiedRowColor)
+            //        {
+            //            removedRows.Add(row);
+            //            row.DefaultCellStyle.BackColor = RemovedRowColor;
+            //            modifiedRows.Remove(row);
+            //            continue;
+            //        }
+            //        removedRows.Add(row);
+            //        row.DefaultCellStyle.BackColor = RemovedRowColor;
+            //    }
+            //}
+            //gridViewLichCB.ClearSelection();
+            //btnSave.Enabled = true;
+            //btnCancelChanges.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
