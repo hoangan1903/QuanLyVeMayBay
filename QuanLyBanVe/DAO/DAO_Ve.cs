@@ -276,9 +276,6 @@ namespace DAO
                 SqlParameter para = new SqlParameter("@MaCB", dtoVe.MaCB);
                 comm.Parameters.Add(para);
 
-                para = new SqlParameter("@MaVe", dtoVe.MaVe);
-                comm.Parameters.Add(para);
-
                 para = new SqlParameter("@TenHHK", dtoVe.MaHHK);
                 comm.Parameters.Add(para);
 

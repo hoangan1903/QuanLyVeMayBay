@@ -64,37 +64,50 @@ namespace DAO
 
         public bool TaoThanhVien(DTO_KhachHang dtoKhachHang)
         {
-            Connection.Open();
-            SqlCommand comm = new SqlCommand("TaoThanhVien", Connection);
-            comm.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                Connection.Open();
+                SqlCommand comm = new SqlCommand("TaoThanhVien", Connection);
+                comm.CommandType = CommandType.StoredProcedure;
 
-            SqlParameter para = new SqlParameter("@MaKH", dtoKhachHang.MaKH);
-            comm.Parameters.Add(para);
+                SqlParameter para = new SqlParameter("@HoTen", dtoKhachHang.HoTen);
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@HoTen", dtoKhachHang.HoTen);
-            comm.Parameters.Add(para);
+                para = new SqlParameter("@Tuoi", dtoKhachHang.Tuoi);
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@Tuoi", dtoKhachHang.Tuoi);
-            comm.Parameters.Add(para);
+                if (dtoKhachHang.GioiTinh == true)
+                {
+                    para = new SqlParameter("@GioiTinh", 1);
+                }
+                else
+                {
+                    para = new SqlParameter("@GioiTinh", 0);
+                }
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@GioiTinh", dtoKhachHang.GioiTinh);
-            comm.Parameters.Add(para);
+                para = new SqlParameter("@CMND", dtoKhachHang.CMND);
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@CMND", dtoKhachHang.CMND);
-            comm.Parameters.Add(para);
+                para = new SqlParameter("@DiaChi", dtoKhachHang.DiaChi);
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@DiaChi", dtoKhachHang.DiaChi);
-            comm.Parameters.Add(para);
+                para = new SqlParameter("@SDT", dtoKhachHang.SDT);
+                comm.Parameters.Add(para);
 
-            para = new SqlParameter("@SDT", dtoKhachHang.SDT);
-            comm.Parameters.Add(para);
-            if (comm.ExecuteNonQuery() != 0)
+                if (comm.ExecuteNonQuery() > 0)
+                    return true;
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
             {
                 Connection.Close();
-                return true;
             }
-            Connection.Close();
-            return false;
         }
     }
 }

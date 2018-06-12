@@ -26,7 +26,7 @@ namespace BUS
         public bool ThemChuyenBay(DataGridViewRow row)
         {
             DTO_ChuyenBay dtoChuyenBay = new DTO_ChuyenBay();
-            dtoChuyenBay.MaCB = row.Cells[0].Value.ToString();
+            dtoChuyenBay.MaCB = string.Empty;
             dtoChuyenBay.MaSBDi = row.Cells[1].Value.ToString();
             dtoChuyenBay.MaSBDen = row.Cells[2].Value.ToString();
             dtoChuyenBay.MaHHK = row.Cells[3].Value.ToString();
@@ -83,23 +83,5 @@ namespace BUS
             return daoChuyenBay.LoadMaCB();
         }
 
-        ////public DataTable LietKeCB()
-        ////{
-        ////    return daoChuyenBay.LietKeCB();
-        ////}
-
-        ////public bool ThemCB(string maCB, string sanBayDi, string sanBayDen, string HHK, DateTime thoiGianKhoiHanh, DateTime thoiGianDen, int soGheHang1, int soGheHang2, int giaVe)
-        ////{
-        ////    DTO_ChuyenBay dtoCB = new DTO_ChuyenBay(maCB, sanBayDi, sanBayDen, HHK, thoiGianKhoiHanh, thoiGianDen, soGheHang1, soGheHang2, giaVe);
-
-        ////    return daoChuyenBay.ThemCB(dtoCB);
-        ////}
-
-        ////public bool SuaCB(string maCB, string sanBayDi, string sanBayDen, string HHK, DateTime thoiGianKhoiHanh, DateTime thoiGianDen, int soGheHang1, int soGheHang2, int giaVe)
-        ////{
-        ////    DTO_ChuyenBay dtoCB = new DTO_ChuyenBay(maCB, sanBayDi, sanBayDen, HHK, thoiGianKhoiHanh, thoiGianDen, soGheHang1, soGheHang2, giaVe);
-
-        ////    return daoChuyenBay.SuaCB(dtoCB);
-        ////}
     }
 }

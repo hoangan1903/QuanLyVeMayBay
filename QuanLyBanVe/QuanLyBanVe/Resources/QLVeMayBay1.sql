@@ -10,12 +10,13 @@ CREATE TABLE KHACHHANG
 (
 	MAKH CHAR(5) PRIMARY KEY,
 	HOTEN NVARCHAR(50),
-	TUOI INT,
+	NAMSINH INT,
 	GIOITINH BIT,
 	CMND CHAR(15),
 	DIACHI NVARCHAR(50),
 	SDT CHAR(15),
 )
+
 CREATE TABLE HANGHK
 (
 	MAHHK CHAR(5) PRIMARY KEY,
@@ -74,12 +75,13 @@ CREATE TABLE PHIEUDATMUA
 	DATHANHTOAN BIT
 	PRIMARY KEY (MAVE, MAKH)
 )
-CREATE TABLE THAMSO
+Create Table QUYDINH
 (
-	MATS CHAR(5),
-	NGAYAPDUNG SMALLDATETIME,
-	TENTS NVARCHAR(20),
-	GIATRI INT,
+	MaQuyDinh varchar(50),
+	TenQuyDinh nvarchar(100),
+	GiaTri int,
+	NgayApDung smalldatetime
+	Primary key (MaQuyDinh, NgayApDung)
 )
 
 
@@ -102,15 +104,15 @@ Insert into HANGHK Values
 ('HHK04','Jetstar Pacific Airlines')
 
 Insert into CHUYENBAY Values
-('CB01', 'SB01', 'SB02', 'HHK01', '3/5/2018 09:00:00', '3/5/2018 12:00:00', 10, 10, 100000),
-('CB02', 'SB03', 'SB02', 'HHK02', '4/5/2018 13:15:00', '4/5/2018 16:30:00', 20, 20, 200000),
-('CB03', 'SB01', 'SB03', 'HHK01', '15/5/2018 03:00:00', '5/5/2018 08:10:00', 15, 15, 150000)
+('CB000', 'SB01', 'SB02', 'HHK01', '3/5/2018 09:00:00', '3/5/2018 12:00:00', 10, 10, 100000),
+('CB001', 'SB03', 'SB02', 'HHK02', '4/5/2018 13:15:00', '4/5/2018 16:30:00', 20, 20, 200000),
+('CB002', 'SB01', 'SB03', 'HHK01', '15/5/2018 03:00:00', '5/5/2018 08:10:00', 15, 15, 150000)
 
 Insert into KHACHHANG Values
-('KH01', N'Nguyễn Văn A', 15, 1, '2778194257', 'TPHCM', '0987234612'),
-('KH02', N'Trần Thị B', 17, 0, '273278135', N'Bình Dương', '0917246182'),
-('KH03', N'Lê Văn C', 16, 1, '253261268', N'Đồng Nai', '0982612341'),
-('KH05', N'Võ Thanh Minh', 35, 1, '215467289', 'BR-VT', '0643265172')
+('KH000', N'Nguyễn Văn A', 1998, 1, '2778194257', 'TPHCM', '0987234612'),
+('KH001', N'Trần Thị B', 1988, 0, '273278135', N'Bình Dương', '0917246182'),
+('KH002', N'Lê Văn C', 1978, 1, '253261268', N'Đồng Nai', '0982612341'),
+('KH003', N'Võ Thanh Minh', 1968, 1, '215467289', 'BR-VT', '0643265172')
 
 Insert into SANBAY Values
 ('SB01', N'Đà Nẵng'),
@@ -123,27 +125,54 @@ Insert into TINHTRANG Values
 ('TT002', N'Đã đặt')
 
 Insert into VE Values
-('VE101', 'CB01', 'HHK01', 'HV001', 1005000, 'TT000'),
-('VE102', 'CB01', 'HHK01', 'HV002', 1000000, 'TT000'),
-('VE103', 'CB01', 'HHK01', 'HV001', 1005000, 'TT000'),
-('VE201', 'CB02', 'HHK03', 'HV001', 2100000, 'TT000'),
-('VE202', 'CB02', 'HHK03', 'HV001', 2100000, 'TT000'),
-('VE203', 'CB02', 'HHK03', 'HV002', 2000000, 'TT000'),  
-('VE301', 'CB03', 'HHK04', 'HV002', 1500000, 'TT001'),
-('VE302', 'CB03', 'HHK04', 'HV001', 1575000, 'TT002')
+('VE101', 'CB000', 'HHK01', 'HV001', 1005000, 'TT000'),
+('VE102', 'CB001', 'HHK01', 'HV002', 1000000, 'TT000'),
+('VE103', 'CB001', 'HHK01', 'HV001', 1005000, 'TT000'),
+('VE201', 'CB002', 'HHK03', 'HV001', 2100000, 'TT000'),
+('VE202', 'CB002', 'HHK03', 'HV001', 2100000, 'TT000'),
+('VE203', 'CB002', 'HHK03', 'HV002', 2000000, 'TT000'),  
+('VE301', 'CB003', 'HHK04', 'HV002', 1500000, 'TT001'),
+('VE302', 'CB003', 'HHK04', 'HV001', 1575000, 'TT002')
 
 Insert into PHIEUDATMUA Values
-('VE301', 'KH01', '1/5/2018 08:00:00', 1),
-('VE302', 'KH03', '28/4/2018 23:15:05', 0)
+('VE301', 'KH000', '1/5/2018 08:00:00', 1),
+('VE302', 'KH003', '28/4/2018 23:15:05', 0)
 
-
+Insert into QuyDinh Values
+('ThoiGianBayMin', N'Thời gian bay tối thiểu (phút)', 30, '12/6/2018'),
+('SoSanBayTrungGianMax', N'Số sân bay trung gian tối đa', 2, '12/6/2018'),
+('ThoiGianDungMin', N'Thời gian dừng sân bay trung gian tối thiểu (phút)', 10, '12/6/2018'),
+('ThoiGianDungMax', N'Thời gian dừng sân bay trung gian tối đa (phút)', 20, '12/6/2018'),
+('SoLuongHangVe', N'Số lượng hạng vé', 2, '12/6/2018'),
+('GioiHanNgayDatVe', N'Số ngày đặt vé chậm nhất trước ngày khởi hành', 1, '12/06/2018')
 
 --------------------------------------------
 ----------- Tao Procedure----------
 
 ---------- Procedure Khach --------
+Create Function AutoID_KH()
+	Returns varchar(5)
+As
+Begin	
+	Declare @ID varchar(5)
+	If (Select Count(MAKH) From KHACHHANG) = 0
+		Begin
+			Set @ID = 'KH000' 
+		End		
+	Else
+		Begin
+			Declare @tempID varchar(5)
+			Select @tempID = Max(Right(MAKH, 3)) From KHACHHANG
+			Select @ID = Case
+				When @tempID + 1 <= 9 Then 'KH00' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 99 Then 'KH0' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 999 Then 'KH' + Convert(char, Convert(int, @tempID)+1)			
+			End
+		End
+	Return @ID
+End
+
 CREATE PROCEDURE TaoThanhVien
-	@MaKH char(5),
 	@HoTen NVARCHAR(50),
 	@Tuoi INT,
 	@GioiTinh BIT,
@@ -152,10 +181,11 @@ CREATE PROCEDURE TaoThanhVien
 	@SDT CHAR(15)
 AS
 BEGIN
+	DECLARE @MaKH char(5)
+	SELECT @MaKH = dbo.AutoID_KH()
 	INSERT INTO KHACHHANG(MaKH, HoTen,Tuoi,GioiTinh,CMND,DiaChi, SDT)
-	VALUES (@MaKH, @HoTen,@Tuoi,@GioiTinh,@CMND,@DiaChi, @SDT);
+	VALUES (@MaKH, @HoTen,@Tuoi,@GioiTinh,@CMND,@DiaChi, @SDT)
 END
-
 
 -------- Procedure Chuyen bay ---------
 CREATE PROCEDURE LietKeCB
@@ -176,8 +206,29 @@ END
 
 --------
 
-CREATE PROCEDURE ThemCB
-	@MaCB char(5),
+Create Function AutoID_CB()
+	Returns varchar(5)
+As
+Begin	
+	Declare @ID varchar(5)
+	If (Select Count(MACB) From CHUYENBAY) = 0
+		Begin
+			Set @ID = 'CB000' 
+		End		
+	Else
+		Begin
+			Declare @tempID varchar(5)
+			Select @tempID = Max(Right(MACB, 3)) From CHUYENBAY
+			Select @ID = Case
+				When @tempID + 1 <= 9 Then 'CB00' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 99 Then 'CB0' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 999 Then 'CB' + Convert(char, Convert(int, @tempID)+1)			
+			End
+		End
+	Return @ID
+End
+
+CREATE PROCEDURE ThemCB	
 	@TenSBDi nvarCHAR(30),
 	@TenSBDen nvarCHAR(30),
 	@TenHHK nvarCHAR(30),
@@ -188,6 +239,9 @@ CREATE PROCEDURE ThemCB
 	@GiaVe INT
 AS
 BEGIN
+	DECLARE @MaCB char(5)
+	SELECT @MaCB = dbo.AutoID_CB()
+
 	INSERT INTO CHUYENBAY(MACB, MASBDI, MASBDEN, MAHHK, THOIGIANKHOIHANH,THOIGIANDEN, SOGHEHANG1, SOGHEHANG2, GIAVE)
 	VALUES (@MaCB,
 	(SELECT MASB FROM SANBAY WHERE TENSANBAY = @TenSBDi),
@@ -276,8 +330,29 @@ BEGIN
 	WHERE CB.MACB = @MaCB
 END
 ------------- Procedure Ve -----------
+Create Function AutoID_VE()
+	Returns varchar(5)
+As
+Begin	
+	Declare @ID varchar(5)
+	If (Select Count(MAVE) From VE) = 0
+		Begin
+			Set @ID = 'VE000' 
+		End		
+	Else
+		Begin
+			Declare @tempID varchar(5)
+			Select @tempID = Max(Right(MAVE, 3)) From VE
+			Select @ID = Case
+				When @tempID + 1 <= 9 Then 'VE00' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 99 Then 'VE0' + Convert(char, Convert(int, @tempID)+1)
+				When @tempID + 1 <= 999 Then 'VE' + Convert(char, Convert(int, @tempID)+1)			
+			End
+		End
+	Return @ID
+End
+
 CREATE PROCEDURE ThemVe
-	@MaVe char(5),
 	@MaCB char(5),
 	@TenHHK nvarchar(30),
 	@MaHV char(5),
@@ -285,30 +360,12 @@ CREATE PROCEDURE ThemVe
 	@MaTT char(5)
 AS
 BEGIN
+	DECLARE @MaVe char(5)
+	SELECT @MaVe = dbo.AutoID_VE()
 	INSERT INTO VE(MAVE, MACB, MAHHK, MAHV, GIATIEN, MATT)
 	VALUES (@MaVe, @MaCB, 
 			(SELECT MAHHK FROM HANGHK WHERE HANGHK.TENHHK = @TenHHK),
 			@MaHV, @GiaTien, @MaTT)
-END
-
-CREATE PROCEDURE ThemCB
-	@MaCB char(5),
-	@TenSBDi nvarCHAR(30),
-	@TenSBDen nvarCHAR(30),
-	@TenHHK nvarCHAR(30),
-	@ThoiGianKhoiHanh SMALLDATETIME,
-	@ThoiGianDen SMALLDATETIME,
-	@SoGheHang1 INT,
-	@SoGheHang2 INT,
-	@GiaVe INT
-AS
-BEGIN
-	INSERT INTO CHUYENBAY(MACB, MASBDI, MASBDEN, MAHHK, THOIGIANKHOIHANH,THOIGIANDEN, SOGHEHANG1, SOGHEHANG2, GIAVE)
-	VALUES (@MaCB,
-	(SELECT MASB FROM SANBAY WHERE TENSANBAY = @TenSBDi),
-	(SELECT MASB FROM SANBAY WHERE TENSANBAY = @TenSBDen),
-	(SELECT MAHHK FROM HANGHK WHERE TENHHK = @TenHHK),
-	@ThoiGianKhoiHanh, @ThoiGianDen, @SoGheHang1, @SoGheHang2, @GiaVe)
 END
 
 
@@ -522,4 +579,39 @@ BEGIN
 	UPDATE VE
 	SET MATT = 'TT000'
 	WHERE MAVE = @MaVe
+END
+
+----Procedure QuyDinh
+CREATE PROCEDURE GetQuyDinh
+	@MaQuyDinh varchar(50)
+AS
+BEGIN
+	SELECT TOP 1 GiaTri
+	FROM QUYDINH
+	WHERE (MaQuyDinh = @MaQuyDinh)
+	ORDER BY NgayApDung DESC
+		 
+END
+
+CREATE PROCEDURE GetNgayApDungQuyDinh
+	@MaQuyDinh varchar(50)
+AS
+BEGIN
+	SELECT TOP 1 NgayApDung
+	FROM QUYDINH
+	WHERE (MaQuyDinh = @MaQuyDinh)
+	ORDER BY NgayApDung DESC
+		 
+END
+
+CREATE PROCEDURE CapNhatQuyDinh
+	@MaQuyDinh VARCHAR(50),
+	@GiaTri INT,
+	@NgayApDung smalldatetime
+AS
+BEGIN
+	DECLARE @TenQuyDinh NVARCHAR(50)
+	SELECT @TenQuyDinh = (SELECT DISTINCT TenQuyDinh FROM QUYDINH WHERE MaQuyDinh = @MaQuyDinh)
+
+	INSERT INTO QUYDINH VALUES (@MaQuyDinh, @TenQuyDinh, @GiaTri, @NgayApDung)
 END

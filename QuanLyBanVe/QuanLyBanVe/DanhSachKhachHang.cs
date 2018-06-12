@@ -24,7 +24,6 @@ namespace QuanLyBanVe
             dgvDanhSachKhachHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDanhSachKhachHang.DataSource = busKhachHang.LoadKhachHang();
             dgvDanhSachKhachHang.ClearSelection();
-
             dgvDanhSachKhachHang_RenameColumn();
         }
         private void dgvDanhSachKhachHang_RenameColumn()

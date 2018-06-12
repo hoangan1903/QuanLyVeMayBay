@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDanhSachKhachHang = new System.Windows.Forms.Label();
             this.dgvDanhSachKhachHang = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachKhachHang)).BeginInit();
@@ -50,7 +52,24 @@
             this.dgvDanhSachKhachHang.AllowUserToResizeColumns = false;
             this.dgvDanhSachKhachHang.AllowUserToResizeRows = false;
             this.dgvDanhSachKhachHang.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDanhSachKhachHang.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDanhSachKhachHang.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDanhSachKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDanhSachKhachHang.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDanhSachKhachHang.Location = new System.Drawing.Point(6, 59);
             this.dgvDanhSachKhachHang.Name = "dgvDanhSachKhachHang";
             this.dgvDanhSachKhachHang.ReadOnly = true;
@@ -67,6 +86,7 @@
             this.Controls.Add(this.lblDanhSachKhachHang);
             this.Controls.Add(this.dgvDanhSachKhachHang);
             this.Name = "frmDanhSachKhachHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách khách hàng";
             this.Load += new System.EventHandler(this.frmDanhSachKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachKhachHang)).EndInit();

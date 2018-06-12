@@ -31,7 +31,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtCMND = new System.Windows.Forms.TextBox();
             this.grpBanVe = new System.Windows.Forms.GroupBox();
-            this.dgvVe = new System.Windows.Forms.DataGridView();
+            this.btnInVe = new System.Windows.Forms.Button();
+            this.gridViewVe = new System.Windows.Forms.DataGridView();
             this.cboHangVe = new System.Windows.Forms.ComboBox();
             this.btnXacNhanMua = new System.Windows.Forms.Button();
             this.btnHuyBo = new System.Windows.Forms.Button();
@@ -40,9 +41,8 @@
             this.lblHoTen = new System.Windows.Forms.Label();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.btnXacNhanDat = new System.Windows.Forms.Button();
-            this.btnInVe = new System.Windows.Forms.Button();
             this.grpBanVe.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewVe)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCMND
@@ -61,7 +61,7 @@
             this.grpBanVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBanVe.Controls.Add(this.btnInVe);
-            this.grpBanVe.Controls.Add(this.dgvVe);
+            this.grpBanVe.Controls.Add(this.gridViewVe);
             this.grpBanVe.Controls.Add(this.cboHangVe);
             this.grpBanVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBanVe.Location = new System.Drawing.Point(3, 4);
@@ -71,23 +71,36 @@
             this.grpBanVe.TabStop = false;
             this.grpBanVe.Text = "Bán vé";
             // 
-            // dgvVe
+            // btnInVe
             // 
-            this.dgvVe.AllowUserToAddRows = false;
-            this.dgvVe.AllowUserToDeleteRows = false;
-            this.dgvVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnInVe.Enabled = false;
+            this.btnInVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInVe.Location = new System.Drawing.Point(780, 17);
+            this.btnInVe.Name = "btnInVe";
+            this.btnInVe.Size = new System.Drawing.Size(75, 23);
+            this.btnInVe.TabIndex = 2;
+            this.btnInVe.Text = "In vé";
+            this.btnInVe.UseVisualStyleBackColor = true;
+            this.btnInVe.Click += new System.EventHandler(this.btnInVe_Click);
+            // 
+            // gridViewVe
+            // 
+            this.gridViewVe.AllowUserToAddRows = false;
+            this.gridViewVe.AllowUserToDeleteRows = false;
+            this.gridViewVe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvVe.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dgvVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVe.Location = new System.Drawing.Point(6, 46);
-            this.dgvVe.MultiSelect = false;
-            this.dgvVe.Name = "dgvVe";
+            this.gridViewVe.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.gridViewVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridViewVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridViewVe.Location = new System.Drawing.Point(6, 46);
+            this.gridViewVe.MultiSelect = false;
+            this.gridViewVe.Name = "gridViewVe";
+            this.gridViewVe.ReadOnly = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.dgvVe.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVe.Size = new System.Drawing.Size(849, 305);
-            this.dgvVe.TabIndex = 1;
+            this.gridViewVe.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridViewVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridViewVe.Size = new System.Drawing.Size(849, 305);
+            this.gridViewVe.TabIndex = 1;
             // 
             // cboHangVe
             // 
@@ -172,17 +185,6 @@
             this.btnXacNhanDat.UseVisualStyleBackColor = true;
             this.btnXacNhanDat.Click += new System.EventHandler(this.btnXacNhanDat_Click);
             // 
-            // btnInVe
-            // 
-            this.btnInVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInVe.Location = new System.Drawing.Point(780, 17);
-            this.btnInVe.Name = "btnInVe";
-            this.btnInVe.Size = new System.Drawing.Size(75, 23);
-            this.btnInVe.TabIndex = 2;
-            this.btnInVe.Text = "In vé";
-            this.btnInVe.UseVisualStyleBackColor = true;
-            this.btnInVe.Click += new System.EventHandler(this.btnInVe_Click);
-            // 
             // BanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,7 +204,7 @@
             this.Text = "Bán vé";
             this.Load += new System.EventHandler(this.BanVe_Load);
             this.grpBanVe.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewVe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,7 +213,7 @@
         #endregion
         private System.Windows.Forms.GroupBox grpBanVe;
         private System.Windows.Forms.ComboBox cboHangVe;
-        private System.Windows.Forms.DataGridView dgvVe;
+        private System.Windows.Forms.DataGridView gridViewVe;
         private System.Windows.Forms.TextBox txtCMND;
         private System.Windows.Forms.Button btnXacNhanMua;
         private System.Windows.Forms.Button btnHuyBo;

@@ -46,9 +46,6 @@ namespace DAO
 
                 SqlParameter parameter;
 
-                parameter = new SqlParameter("@MaCB", cb.MaCB);
-                command.Parameters.Add(parameter);
-
                 parameter = new SqlParameter("@TenSBDi", cb.MaSBDi);
                 command.Parameters.Add(parameter);
 

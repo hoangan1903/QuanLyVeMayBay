@@ -16,7 +16,7 @@ namespace InVe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmInVe());
+            Application.Run(new frmInVe(string.Empty));
         }
     }
 }

@@ -19,6 +19,7 @@ namespace QuanLyBanVe
         BUS_KhachHang busKhachHang = new BUS_KhachHang();
         BUS_PhieuDatMua busPhieuDatMua = new BUS_PhieuDatMua();
         private string maCB;
+        private string maVe;
 
         public BanVe(string MaCB)
         {
@@ -28,8 +29,8 @@ namespace QuanLyBanVe
 
         private void BanVe_Load(object sender, EventArgs e)
         {
-            dgvVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvVe.DataSource = busVe.LietKeVe(this.maCB);
+            gridViewVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
         }
 
         private void cboHangVe_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,47 +39,47 @@ namespace QuanLyBanVe
             {
                 if (cboHangVe.SelectedItem.ToString() == "Hạng 1")
                 {
-                    dgvVe.DataSource = busVe.ChonHangVe("HV001", this.maCB);
+                    gridViewVe.DataSource = busVe.ChonHangVe("HV001", this.maCB);
 
                     int demVeDaBan = 0;
 
-                    for (int i = 0; i < dgvVe.Rows.Count; i++)
+                    for (int i = 0; i < gridViewVe.Rows.Count; i++)
                     {
-                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
+                        if (gridViewVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
                             break;
                         else
                             demVeDaBan++;
                     }
 
-                    if (demVeDaBan == dgvVe.Rows.Count)
+                    if (demVeDaBan == gridViewVe.Rows.Count)
                     {
                         MessageBox.Show("Tất cả các vé hạng 1 đã được đặt/mua.", "Thông báo", MessageBoxButtons.OK);
-                        dgvVe.DataSource = busVe.LietKeVe(this.maCB);
+                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
                     }
                 }
                 else if (cboHangVe.SelectedItem.ToString() == "Hạng 2")
                 {
-                    dgvVe.DataSource = busVe.ChonHangVe("HV002", this.maCB);
+                    gridViewVe.DataSource = busVe.ChonHangVe("HV002", this.maCB);
 
                     int demVeDaBan = 0;
 
-                    for (int i = 0; i < dgvVe.Rows.Count; i++)
+                    for (int i = 0; i < gridViewVe.Rows.Count; i++)
                     {
-                        if (dgvVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
+                        if (gridViewVe["TÌNH TRẠNG", i].Value.ToString() == "Còn trống")
                             break;
                         else
                             demVeDaBan++;
                     }
 
-                    if (demVeDaBan == dgvVe.Rows.Count)
+                    if (demVeDaBan == gridViewVe.Rows.Count)
                     {
                         MessageBox.Show("Tất cả các vé hạng 2 đã được đặt/mua.", "Thông báo", MessageBoxButtons.OK);
-                        dgvVe.DataSource = busVe.LietKeVe(this.maCB);
+                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
                     }
                 }
                 else if (cboHangVe.SelectedItem.ToString() == "Tất cả")
                 {
-                    dgvVe.DataSource = busVe.LietKeVe(this.maCB);
+                    gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
                 }
             }
             catch (Exception exception)
@@ -107,26 +108,26 @@ namespace QuanLyBanVe
                     DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim());
                     int demVe = 0;
 
-                    for (int i = 0; i < dgvVe.Rows.Count; ++i)
+                    for (int i = 0; i < gridViewVe.Rows.Count; ++i)
                     {
-                        if (dgvVe[0, i].Selected)
+                        if (gridViewVe[0, i].Selected)
                         {
                             // Kiểm tra vé đã bán hay chưa
-                            if (dgvVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
+                            if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
                             {
                                 MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
                             }
                             else
                             {
-                                if (busVe.CapNhatVe(dgvVe["MAVE", i].Value.ToString(), "TT001"))
+                                if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT001"))
                                 {
                                     DataRow KH = dt.Rows[dt.Rows.Count - 1];
 
-                                    if (busPhieuDatMua.TaoPhieuDatMua(dgvVe[1, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, true))
+                                    if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, true))
                                     {
+                                        this.maVe = gridViewVe["MAVE", i].Value.ToString();
                                         MessageBox.Show("Bán vé thành công !", "Thông báo", MessageBoxButtons.OK);
-                                        dgvVe.DataSource = busVe.LietKeVe(this.maCB);
-
+                                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
                                         demVe++;
                                     }
                                 }
@@ -134,12 +135,12 @@ namespace QuanLyBanVe
 
                         }
                     }
-
                     if (demVe == 0)
                         MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
 
                 }
             }
+            btnInVe.Enabled = true;
         }
 
 
@@ -158,44 +159,41 @@ namespace QuanLyBanVe
                     DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim());
                     int demVe = 0;
 
-                    for (int i = 0; i < dgvVe.Rows.Count; ++i)
+                    for (int i = 0; i < gridViewVe.Rows.Count; ++i)
                     {
-                        if (dgvVe[0, i].Selected)
+                        if (gridViewVe[0, i].Selected)
                         {
                             // Kiểm tra vé đã đặt hay chưa
-                            if (dgvVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
+                            if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
                             {
                                 MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
                             }
                             else
                             {
-                                if (busVe.CapNhatVe(dgvVe["MAVE", i].Value.ToString(), "TT002"))
+                                if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT002"))
                                 {
                                     DataRow KH = dt.Rows[dt.Rows.Count - 1];
 
-                                    if (busPhieuDatMua.TaoPhieuDatMua(dgvVe[1, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, false))
+                                    if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, false))
                                     {
                                         MessageBox.Show("Đặt vé thành công !", "Thông báo", MessageBoxButtons.OK);
-                                        dgvVe.DataSource = busVe.LietKeVe(this.maCB);
+                                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
 
                                         demVe++;
                                     }
                                 }
                             }
-
                         }
                     }
-
                     if (demVe == 0)
                         MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
-
                 }
             }
         }
 
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Properties.Resources.localConnectionString_CamTu))
+            if (KiemTraCMND(txtCMND.Text.Trim()))
             {
                 DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim(), txtHoTen.Text.Trim());
 
@@ -209,11 +207,29 @@ namespace QuanLyBanVe
                     ttv.ShowDialog();
                 }
             }
+            else
+                MessageBox.Show("CMND không hợp lệ");
         }
+        private bool KiemTraCMND(string ID)
+        {
+            int count = 0;
 
+            foreach (char num in ID)
+            {
+                if ((int)num < 48 || (int)num > 57)
+                    return false;
+                else
+                    count++;
+            }
+
+            if (count != 9 && count != 12)
+                return false;
+
+            return true;
+        }
         private void btnInVe_Click(object sender, EventArgs e)
         {
-            frmInVe frmInVe = new frmInVe();
+            frmInVe frmInVe = new frmInVe(this.maVe);
             frmInVe.ShowDialog();
         }
     }
