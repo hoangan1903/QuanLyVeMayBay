@@ -183,7 +183,7 @@ AS
 BEGIN
 	DECLARE @MaKH char(5)
 	SELECT @MaKH = dbo.AutoID_KH()
-	INSERT INTO KHACHHANG(MaKH, HoTen,Tuoi,GioiTinh,CMND,DiaChi, SDT)
+	INSERT INTO KHACHHANG(MaKH, HoTen,NAMSINH,GioiTinh,CMND,DiaChi, SDT)
 	VALUES (@MaKH, @HoTen,@Tuoi,@GioiTinh,@CMND,@DiaChi, @SDT)
 END
 
@@ -344,6 +344,7 @@ BEGIN
 				ON D.MACB = CB.MACB
 	WHERE CB.MACB = @MaCB
 END
+
 ------------- Procedure Ve -----------
 Create Function AutoID_VE()
 	Returns varchar(5)

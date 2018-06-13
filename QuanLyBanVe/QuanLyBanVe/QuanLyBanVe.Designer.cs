@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnInVe = new System.Windows.Forms.Button();
             this.btnHoanVe = new System.Windows.Forms.Button();
@@ -221,10 +221,12 @@
             // 
             this.gridViewCapNhatVe.AllowUserToAddRows = false;
             this.gridViewCapNhatVe.AllowUserToDeleteRows = false;
+            this.gridViewCapNhatVe.AllowUserToResizeRows = false;
             this.gridViewCapNhatVe.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridViewCapNhatVe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridViewCapNhatVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewCapNhatVe.Location = new System.Drawing.Point(6, 70);
+            this.gridViewCapNhatVe.MultiSelect = false;
             this.gridViewCapNhatVe.Name = "gridViewCapNhatVe";
             this.gridViewCapNhatVe.ReadOnly = true;
             this.gridViewCapNhatVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -319,10 +321,12 @@
             // 
             this.gridViewTraCuu.AllowUserToAddRows = false;
             this.gridViewTraCuu.AllowUserToDeleteRows = false;
+            this.gridViewTraCuu.AllowUserToResizeRows = false;
             this.gridViewTraCuu.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridViewTraCuu.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridViewTraCuu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridViewTraCuu.Location = new System.Drawing.Point(4, 51);
+            this.gridViewTraCuu.MultiSelect = false;
             this.gridViewTraCuu.Name = "gridViewTraCuu";
             this.gridViewTraCuu.ReadOnly = true;
             this.gridViewTraCuu.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
@@ -414,8 +418,9 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.gridViewChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
             // 
@@ -476,6 +481,7 @@
             // 
             // btnBanVe
             // 
+            this.btnBanVe.Enabled = false;
             this.btnBanVe.Location = new System.Drawing.Point(885, 0);
             this.btnBanVe.Name = "btnBanVe";
             this.btnBanVe.Size = new System.Drawing.Size(75, 26);
@@ -1031,7 +1037,7 @@
             this.thốngKêToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(243, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(363, 25);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1069,7 +1075,7 @@
             // 
             this.thêmChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.thêmChuyếnBayToolStripMenuItem.Name = "thêmChuyếnBayToolStripMenuItem";
-            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thêmChuyếnBayToolStripMenuItem.Text = "Thêm chuyến bay";
             this.thêmChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.thêmChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1078,7 +1084,7 @@
             this.sửaChuyếnBayToolStripMenuItem.Enabled = false;
             this.sửaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.sửaChuyếnBayToolStripMenuItem.Name = "sửaChuyếnBayToolStripMenuItem";
-            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sửaChuyếnBayToolStripMenuItem.Text = "Sửa chuyến bay";
             this.sửaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.sửaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1087,7 +1093,7 @@
             this.xóaChuyếnBayToolStripMenuItem.Enabled = false;
             this.xóaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.xóaChuyếnBayToolStripMenuItem.Name = "xóaChuyếnBayToolStripMenuItem";
-            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xóaChuyếnBayToolStripMenuItem.Text = "Xóa chuyến bay";
             this.xóaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.xóaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1095,15 +1101,17 @@
             // 
             this.traCứuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.traCứuToolStripMenuItem.Name = "traCứuToolStripMenuItem";
-            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.traCứuToolStripMenuItem.Text = "Tra cứu";
             this.traCứuToolStripMenuItem.Click += new System.EventHandler(this.traCứuToolStripMenuItem_Click);
             // 
             // thêmVéToolStripMenuItem
             // 
+            this.thêmVéToolStripMenuItem.Enabled = false;
             this.thêmVéToolStripMenuItem.Name = "thêmVéToolStripMenuItem";
-            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thêmVéToolStripMenuItem.Text = "Thêm vé";
+            this.thêmVéToolStripMenuItem.Click += new System.EventHandler(this.thêmVéToolStripMenuItem_Click);
             // 
             // véStripMenuItem
             // 
@@ -1121,7 +1129,7 @@
             this.bánVéToolStripMenuItem.Enabled = false;
             this.bánVéToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bánVéToolStripMenuItem.Name = "bánVéToolStripMenuItem";
-            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bánVéToolStripMenuItem.Text = "Bán vé";
             this.bánVéToolStripMenuItem.Click += new System.EventHandler(this.bánVéToolStripMenuItem_Click);
             // 
@@ -1129,8 +1137,9 @@
             // 
             this.cậpNhậtVéToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cậpNhậtVéToolStripMenuItem.Name = "cậpNhậtVéToolStripMenuItem";
-            this.cậpNhậtVéToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.cậpNhậtVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cậpNhậtVéToolStripMenuItem.Text = "Cập nhật vé";
+            this.cậpNhậtVéToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtVéToolStripMenuItem_Click);
             // 
             // thốngKêToolStripMenuItem
             // 
