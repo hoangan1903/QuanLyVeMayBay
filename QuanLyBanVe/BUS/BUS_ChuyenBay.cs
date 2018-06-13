@@ -23,7 +23,7 @@ namespace BUS
             return daoChuyenBay.GetChuyenBay();
         }
 
-        public bool ThemChuyenBay(DataGridViewRow row)
+        public bool ThemChuyenBay(DataGridViewRow row, string tenSBTG, int thoiGianDung)
         {
             DTO_ChuyenBay dtoChuyenBay = new DTO_ChuyenBay();
             dtoChuyenBay.MaCB = string.Empty;
@@ -35,10 +35,11 @@ namespace BUS
             dtoChuyenBay.SoGheHang1 = int.Parse(row.Cells[6].Value.ToString());
             dtoChuyenBay.SoGheHang2 = int.Parse(row.Cells[7].Value.ToString());
             dtoChuyenBay.GiaVe = int.Parse(row.Cells[8].Value.ToString());
-            return daoChuyenBay.ThemChuyenBay(dtoChuyenBay);
+
+            return daoChuyenBay.ThemChuyenBay(dtoChuyenBay, tenSBTG, thoiGianDung);
         }
 
-        public bool SuaChuyenBay(DataGridViewRow row)
+        public bool SuaChuyenBay(DataGridViewRow row, string tenSBTG, int thoiGianDung)
         {
             DTO_ChuyenBay dtoChuyenBay = new DTO_ChuyenBay();
             dtoChuyenBay.MaCB = row.Cells[0].Value.ToString();
@@ -50,7 +51,7 @@ namespace BUS
             dtoChuyenBay.SoGheHang1 = int.Parse(row.Cells[6].Value.ToString());
             dtoChuyenBay.SoGheHang2 = int.Parse(row.Cells[7].Value.ToString());
             dtoChuyenBay.GiaVe = int.Parse(row.Cells[8].Value.ToString());
-            return daoChuyenBay.SuaChuyenBay(dtoChuyenBay);
+            return daoChuyenBay.SuaChuyenBay(dtoChuyenBay, tenSBTG, thoiGianDung);
         }
 
         public bool XoaChuyenBay(DataGridViewRow row)

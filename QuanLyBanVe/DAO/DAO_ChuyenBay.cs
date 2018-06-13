@@ -34,7 +34,7 @@ namespace DAO
                 Connection.Close();
             }
         }
-        public bool ThemChuyenBay(DTO_ChuyenBay cb)
+        public bool ThemChuyenBay(DTO_ChuyenBay cb, string tenSBTG, int thoiGianDung)
         {
             try
             {
@@ -53,6 +53,12 @@ namespace DAO
                 command.Parameters.Add(parameter);
 
                 parameter = new SqlParameter("@TenHHK", cb.MaHHK);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBTG", tenSBTG);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianDung", thoiGianDung);
                 command.Parameters.Add(parameter);
 
                 parameter = new SqlParameter("@ThoiGianKhoiHanh", cb.ThoiGianKhoiHanh);
@@ -84,7 +90,7 @@ namespace DAO
             }
         }
         
-        public bool SuaChuyenBay(DTO_ChuyenBay cb)
+        public bool SuaChuyenBay(DTO_ChuyenBay cb, string tenSBTG, int thoiGianDung)
         {
             try
             {
@@ -107,6 +113,12 @@ namespace DAO
                 command.Parameters.Add(parameter);
 
                 parameter = new SqlParameter("@TenHHK", cb.MaHHK);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@TenSBTG", tenSBTG);
+                command.Parameters.Add(parameter);
+
+                parameter = new SqlParameter("@ThoiGianDung", thoiGianDung);
                 command.Parameters.Add(parameter);
 
                 parameter = new SqlParameter("@ThoiGianKhoiHanh", cb.ThoiGianKhoiHanh.ToString());

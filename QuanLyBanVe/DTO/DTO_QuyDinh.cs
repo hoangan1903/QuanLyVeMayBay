@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_ThamSo
+    public class DTO_QuyDinh
     {
-        private string maTS;
+        private string maQD;
 
-        public string MaTS
+        public string MaQD
         {
-            get { return maTS; }
-            set { maTS = value; }
+            get { return maQD; }
+            set { maQD = value; }
         }
-        private string tenTS;
+        private string tenQD;
 
-        public string TenTS
+        public string TenQD
         {
-            get { return tenTS; }
-            set { tenTS = value; }
+            get { return tenQD; }
+            set { tenQD = value; }
         }
         private int giaTri;
 
@@ -36,10 +36,10 @@ namespace DTO
             get { return ngayApDung; }
             set { ngayApDung = value; }
         }
-        public DTO_ThamSo(string maTS, string tenTS, int giaTri, DateTime ngayApDung)
+        public DTO_QuyDinh(string maQD, string tenQD, int giaTri, DateTime ngayApDung)
         {
-            this.maTS = maTS;
-            this.tenTS = tenTS;
+            this.maQD = maQD;
+            this.tenQD = tenQD;
             this.giaTri = giaTri;
             this.ngayApDung = ngayApDung;
         }

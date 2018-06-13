@@ -21,6 +21,7 @@ namespace QuanLyBanVe
         BUS_SanBay busSanBay = new BUS_SanBay();
         BUS_HHK busHHK = new BUS_HHK();
         BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
+        BUS_QuyDinh busQuyDinh = new BUS_QuyDinh();
 
         private List<DataGridViewRow> addedRows = new List<DataGridViewRow>();
         private List<DataGridViewRow> modifiedRows = new List<DataGridViewRow>();
@@ -127,11 +128,11 @@ namespace QuanLyBanVe
                     {
                         int count = gridViewLichCB.Rows.Count;
                         if (count < 10)
-                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB00" + count.ToString() + "'.\n";
+                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB00" + (count-1).ToString() + "'.\n";
                         else if(count>=10 && count <100)
-                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB0" + count.ToString() + "'.\n";
+                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB0" + (count-1).ToString() + "'.\n";
                         else if(count>=100)
-                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB" + count.ToString() + "'.\n";
+                            ChangeLog += "* Đã thêm bản ghi có MACB = 'CB" + (count-1).ToString() + "'.\n";
                     }
                     foreach (DataGridViewRow row in modifiedRows)
                     {
@@ -204,6 +205,10 @@ namespace QuanLyBanVe
             cbbMaSBDen.DisplayMember = "TENSANBAY";
             cbbMaSBDen.ValueMember = "TENSANBAY";
 
+            cbbSBTG.DataSource = busSanBay.LoadSanBay();
+            cbbSBTG.DisplayMember = "TENSANBAY";
+            cbbSBTG.ValueMember = "TENSANBAY";
+
             cbbHHK.DataSource = busHHK.LoadHangHangKhong();
             cbbHHK.DisplayMember = "TENHHK";
             cbbHHK.ValueMember = "TENHHK";
@@ -263,6 +268,7 @@ namespace QuanLyBanVe
             cbbMaSBDi.Text = string.Empty;
             cbbMaSBDen.Text = string.Empty;
             cbbHHK.Text = string.Empty;
+            cbbSBTG.Text = string.Empty;
             tbSoGheHang1.Text = string.Empty;
             tbSoGheHang2.Text = string.Empty;
             tbGiaVe.Text = string.Empty;
@@ -270,8 +276,7 @@ namespace QuanLyBanVe
             btnSave.Visible = true;
             btnCancelChanges.Visible = true;
             btnThemVe.Visible = false;
-            btnBanVe.Visible = false;
-                    
+            btnBanVe.Visible = false;            
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -318,8 +323,6 @@ namespace QuanLyBanVe
             btnCancelChanges.Visible = true;
             btnThemVe.Visible = false;
             btnBanVe.Visible = false;
-            
-
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -402,13 +405,13 @@ namespace QuanLyBanVe
 
                 foreach (DataGridViewRow row in addedRows)
                 {
-                    if (!busChuyenBay.ThemChuyenBay(row))
+                    if (!busChuyenBay.ThemChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
                         MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay CB0'" + row.Cells[0].Value.ToString() + "'.");
                 }
 
                 foreach (DataGridViewRow row in modifiedRows)
                 {
-                    if (!busChuyenBay.SuaChuyenBay(row))
+                    if (!busChuyenBay.SuaChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
                         MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
 
@@ -445,6 +448,13 @@ namespace QuanLyBanVe
         {
             if (departureTime.Value >= arrivalTime.Value)
                 MessageBox.Show("Thời gian đến không hợp lý!", "Lỗi", MessageBoxButtons.OK);
+            else if(Int32.Parse(txtWaitTime.Text) > busQuyDinh.GetQuyDinh("ThoiGianDungMax") ||
+                Int32.Parse(txtWaitTime.Text) < busQuyDinh.GetQuyDinh("ThoiGianDungMin"))
+            {
+                MessageBox.Show("Thời gian dừng phải lớn hơn " + busQuyDinh.GetQuyDinh("ThoiGianDungMin").ToString() + " và nhỏ hơn " 
+                    +busQuyDinh.GetQuyDinh("ThoiGianDungMax").ToString(), "Thòi gian dừng không hợp lệ", MessageBoxButtons.OK);
+            }
+
             else
             {
                 DataGridViewRow modifiedRow = gridViewLichCB.SelectedRows[0];
@@ -458,6 +468,10 @@ namespace QuanLyBanVe
                 modifiedRow.Cells[1].Value = cbbMaSBDi.Text;
                 modifiedRow.Cells[2].Value = cbbMaSBDen.Text;
                 modifiedRow.Cells[3].Value = cbbHHK.Text;
+
+                //modifiedRow.Cells[4].Value = cbbSBTG.Text;
+                //modifiedRow.Cells[5].Value = txtWaitTime.Text;
+
                 modifiedRow.Cells[4].Value = DateTime.ParseExact(departureTime.Text, "dd/MM/yyyy HH:mm", null);
                 modifiedRow.Cells[5].Value = DateTime.ParseExact(arrivalTime.Text, "dd/MM/yyyy HH:mm", null);
 

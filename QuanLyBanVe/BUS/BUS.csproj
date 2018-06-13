@@ -45,6 +45,7 @@
     <Compile Include="BUS_HHK.cs" />
     <Compile Include="BUS_KhachHang.cs" />
     <Compile Include="BUS_PhieuDatMua.cs" />
+    <Compile Include="BUS_QuyDinh.cs" />
     <Compile Include="BUS_SanBay.cs" />
     <Compile Include="BUS_Ve.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
