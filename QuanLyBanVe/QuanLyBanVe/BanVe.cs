@@ -18,6 +18,7 @@ namespace QuanLyBanVe
         BUS_Ve busVe = new BUS_Ve();
         BUS_KhachHang busKhachHang = new BUS_KhachHang();
         BUS_PhieuDatMua busPhieuDatMua = new BUS_PhieuDatMua();
+
         private string maCB;
         private string maVe;
 
@@ -95,7 +96,13 @@ namespace QuanLyBanVe
 
         private void btnXacNhanMua_Click(object sender, EventArgs e)
         {
-            if (txtCMND.Text == "" || txtHoTen.Text == "")
+            BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
+            TimeSpan timeSpan = DateTime.Parse(busChuyenBay.ChiTietCB(maCB).Rows[0][4].ToString()) - DateTime.Now;
+            if(timeSpan.Days <= 1)
+            {
+                MessageBox.Show("Đã quá thời gian mua vé cho chuyến bay này", "Thông báo", MessageBoxButtons.OK);
+            }
+            else if (txtCMND.Text == "" || txtHoTen.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập thông tin của khách hàng !", "Nhắc nhở", MessageBoxButtons.OK);
             }
@@ -137,7 +144,6 @@ namespace QuanLyBanVe
                     }
                     if (demVe == 0)
                         MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
-
                 }
             }
             btnInVe.Enabled = true;
@@ -146,7 +152,13 @@ namespace QuanLyBanVe
 
         private void btnXacNhanDat_Click(object sender, EventArgs e)
         {
-            if (txtCMND.Text == "" || txtHoTen.Text == "")
+            BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
+            TimeSpan timeSpan = DateTime.Parse(busChuyenBay.ChiTietCB(maCB).Rows[0][4].ToString()) - DateTime.Now;
+            if (timeSpan.Days <= 1)
+            {
+                MessageBox.Show("Đã quá thời gian đặt vé cho chuyến bay này", "Thông báo", MessageBoxButtons.OK);
+            }
+            else if (txtCMND.Text == "" || txtHoTen.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập thông tin của khách hàng !", "Nhắc nhở", MessageBoxButtons.OK);
             }

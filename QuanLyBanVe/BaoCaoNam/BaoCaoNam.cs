@@ -43,8 +43,16 @@ namespace BaoCaoNam
                     ReportParameter ParameterNam = new ReportParameter("ParameterNam", Text = cbbNam.Text);
                     this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterNam });
 
+                if (sum.ToString() == string.Empty)
+                {
+                    ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = "0");
+                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
+                }
+                else
+                {
                     ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
                     this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
+                }
             }
             catch (Exception)
             {

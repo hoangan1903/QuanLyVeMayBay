@@ -503,6 +503,7 @@ BEGIN
 			SANBAY SB INNER JOIN CHUYENBAY CB ON CB.MASBDEN = SB.MASB) AS B ON B.MASBDEN = CB.MASBDEN
 	WHERE VE.MaVe = @MaVe
 END
+
 -------------- Procedure San bay -------------
 CREATE PROCEDURE LoadSanBay
 	@MaSB char(5)

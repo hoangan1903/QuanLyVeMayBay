@@ -282,7 +282,8 @@ namespace QuanLyBanVe
             tbSoGheHang1.Text = string.Empty;
             tbSoGheHang2.Text = string.Empty;
             tbGiaVe.Text = string.Empty;
-
+            departureTime.Value = DateTime.Now;
+            arrivalTime.Value = DateTime.Now;
             btnSave.Visible = true;
             btnCancelChanges.Visible = true;
             btnThemVe.Visible = false;
@@ -805,6 +806,7 @@ namespace QuanLyBanVe
             sửaChuyếnBayToolStripMenuItem.Enabled = false;
             xóaChuyếnBayToolStripMenuItem.Enabled = false;
             bánVéToolStripMenuItem.Enabled = false;
+
             //QuanLy.LoadDuLieu(cbbMaCB, cbbMaVe);
             cbbMaVe.DataSource = busVe.LoadMaVe();
             cbbMaVe.ValueMember = "MAVE";

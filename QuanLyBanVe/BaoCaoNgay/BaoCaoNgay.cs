@@ -25,6 +25,8 @@ namespace BaoCaoNgay
             // TODO: This line of code loads data into the 'QLVeMayBayDataSet.BaoCao' table. You can move, or remove it, as needed.
             //this.BaoCaoTableAdapter.Fill(this.QLVeMayBayDataSet.BaoCao);
             //this.reportViewer1.RefreshReport();
+            dateDi.Value = DateTime.Now;
+            dateDen.Value = DateTime.Now;
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
@@ -32,7 +34,11 @@ namespace BaoCaoNgay
             BUS_BaoCao busBaoCao = new BUS_BaoCao();
             this.reportViewer1.Clear();
             this.QLVeMayBayDataSet.BaoCao.Clear();
-            try
+            if (dateDi.Value > dateDen.Value)
+            {
+                MessageBox.Show("Khoảng thời gian không hợp lệ", "Lỗi", MessageBoxButtons.OK);
+            }
+            else
             {
                 busBaoCao.BaoCaoNgay(dateDi.Value, dateDen.Value).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
 
@@ -46,15 +52,21 @@ namespace BaoCaoNgay
                 ReportParameter ParameterDateDen = new ReportParameter("ParameterDateDen", Text = dateDen.Text);
                 this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterDateDen });
 
-                ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
-                this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
-            }
-            catch (Exception)
-            {
+                if (sum.ToString() == string.Empty)
+                {
+                    ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = "0");
+                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
+                }
+                else
+                {
+                    ReportParameter ParameterSum = new ReportParameter("ParameterSum", Text = sum.ToString());
+                    this.reportViewer1.LocalReport.SetParameters(new ReportParameter[] { ParameterSum });
+                }
 
+                this.reportViewer1.RefreshReport();
+                btnThongKe.Enabled = false;
             }
-            this.reportViewer1.RefreshReport();
-            btnThongKe.Enabled = false;
+            
         }
 
         private void dateDi_ValueChanged(object sender, EventArgs e)
