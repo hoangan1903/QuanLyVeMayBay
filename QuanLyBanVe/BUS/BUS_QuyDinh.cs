@@ -11,9 +11,9 @@ namespace BUS
     public class BUS_QuyDinh
     {
         DAO_QuyDinh daoQuyDinh = new DAO_QuyDinh();
-        public int GetQuyDinh(string maQuyDinh)
+        public int GetQuyDinh(string maQuyDinh, DateTime ngayHienTai)
         {
-            return daoQuyDinh.GetQuyDinh(maQuyDinh);
+            return daoQuyDinh.GetQuyDinh(maQuyDinh, ngayHienTai);
         }
         public bool CapNhatQuyDinh(string maQuyDinh, int giaTri, DateTime thoiGianApDung)
         {

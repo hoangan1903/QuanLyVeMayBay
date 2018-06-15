@@ -10,7 +10,7 @@ namespace DAO
 {
     public class DAO_QuyDinh : DBConnect
     {
-        public int GetQuyDinh(string maQuyDinh)
+        public int GetQuyDinh(string maQuyDinh, DateTime ngayHienTai)
         {
             try
             {
@@ -21,13 +21,16 @@ namespace DAO
                 SqlParameter para = new SqlParameter("@MaQuyDinh", maQuyDinh);
                 comm.Parameters.Add(para);
 
+                para = new SqlParameter("@NgayHienTai", ngayHienTai);
+                comm.Parameters.Add(para);
+
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = comm;
 
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
 
-                
+
                 Connection.Close();
                 if (Int32.Parse(dataTable.Rows[0][0].ToString()) >= 0)
                     return Int32.Parse(dataTable.Rows[0][0].ToString());

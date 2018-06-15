@@ -76,7 +76,7 @@ namespace DAO
                 parameter = new SqlParameter("@GiaVe", cb.GiaVe);
                 command.Parameters.Add(parameter);
 
-                if (command.ExecuteNonQuery() != 0)
+                if (command.ExecuteNonQuery() > 0)
                     return true;
                 else return false;
             }

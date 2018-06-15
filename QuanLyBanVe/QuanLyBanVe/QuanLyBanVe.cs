@@ -400,11 +400,10 @@ namespace QuanLyBanVe
             {
                 /* Save the changes */
                 btnCancelChanges.Enabled = false;
-
                 foreach (DataGridViewRow row in addedRows)
                 {
                     if (!busChuyenBay.ThemChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
-                        MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay CB0'" + row.Cells[0].Value.ToString() + "'.");
+                        MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
                 }
 
                 foreach (DataGridViewRow row in modifiedRows)
@@ -439,13 +438,13 @@ namespace QuanLyBanVe
         {
             TimeSpan timeSpan = departureTime.Value - arrivalTime.Value;
 
-            if (departureTime.Value >= arrivalTime.Value && timeSpan.Minutes < busQuyDinh.GetQuyDinh("ThoiGianBayMin"))
-                MessageBox.Show("Thời gian bay tối thiểu là " + busQuyDinh.GetQuyDinh("ThoiGianBayMin") + " phút", "Lỗi", MessageBoxButtons.OK);
-            else if (Int32.Parse(txtWaitTime.Text) > busQuyDinh.GetQuyDinh("ThoiGianDungMax") ||
-                Int32.Parse(txtWaitTime.Text) < busQuyDinh.GetQuyDinh("ThoiGianDungMin"))
+            if (departureTime.Value >= arrivalTime.Value && timeSpan.Minutes < busQuyDinh.GetQuyDinh("ThoiGianBayMin", DateTime.Now))
+                MessageBox.Show("Thời gian bay tối thiểu là " + busQuyDinh.GetQuyDinh("ThoiGianBayMin", DateTime.Now) + " phút", "Lỗi", MessageBoxButtons.OK);
+            else if (Int32.Parse(txtWaitTime.Text) > busQuyDinh.GetQuyDinh("ThoiGianDungMax", DateTime.Now) ||
+                Int32.Parse(txtWaitTime.Text) < busQuyDinh.GetQuyDinh("ThoiGianDungMin", DateTime.Now))
             {
-                MessageBox.Show("Thời gian dừng phải lớn hơn " + busQuyDinh.GetQuyDinh("ThoiGianDungMin").ToString() + " phút và nhỏ hơn "
-                    + busQuyDinh.GetQuyDinh("ThoiGianDungMax").ToString() + " phút", "Thòi gian dừng không hợp lệ", MessageBoxButtons.OK);
+                MessageBox.Show("Thời gian dừng phải lớn hơn " + busQuyDinh.GetQuyDinh("ThoiGianDungMin", DateTime.Now).ToString() + " phút và nhỏ hơn "
+                    + busQuyDinh.GetQuyDinh("ThoiGianDungMax", DateTime.Now).ToString() + " phút", "Thòi gian dừng không hợp lệ", MessageBoxButtons.OK);
             }
             else if (cbbSBTG.Text == cbbMaSBDi.Text || cbbSBTG.Text == cbbMaSBDen.Text)
                 MessageBox.Show("Sân bay trung gian không được trùng với sân bay đi hoặc sân bay đến", "Lỗi", MessageBoxButtons.OK);
@@ -1004,6 +1003,50 @@ namespace QuanLyBanVe
         {
             QuyDinh formQuyDinh = new QuyDinh();
             formQuyDinh.ShowDialog();
+        }
+
+        private void ptbThemCB_Click(object sender, EventArgs e)
+        {
+            DataTable table = (DataTable)gridViewLichCB.DataSource;
+            table.Rows.Add(table.NewRow());
+            gridViewLichCB.DataSource = table;
+
+            DataGridViewRow newRow = gridViewLichCB.Rows[gridViewLichCB.Rows.Count - 1];
+            newRow.HeaderCell.Value = String.Format("{0}", newRow.Index + 1);
+
+            addedRows.Add(newRow);
+            newRow.DefaultCellStyle.BackColor = AddedRowColor;
+            gridViewLichCB.ClearSelection();
+            newRow.Selected = true;
+
+            LoadDuLieuVaoCombobox();
+            panel1.Visible = true;
+            splitContainer1.Panel1.Enabled = false;
+
+            themCB = true;
+            cbbMaSBDi.Text = string.Empty;
+            cbbMaSBDen.Text = string.Empty;
+            cbbHHK.Text = string.Empty;
+            cbbSBTG.Text = string.Empty;
+            tbSoGheHang1.Text = string.Empty;
+            tbSoGheHang2.Text = string.Empty;
+            tbGiaVe.Text = string.Empty;
+            departureTime.Value = DateTime.Now;
+            arrivalTime.Value = DateTime.Now;
+            btnSave.Visible = true;
+            btnCancelChanges.Visible = true;
+            btnThemVe.Visible = false;
+            btnBanVe.Visible = false;
+        }
+
+        private void ptbThemCB_MouseEnter(object sender, EventArgs e)
+        {
+            lbThemCB.Visible = true;
+        }
+
+        private void ptbThemCB_MouseLeave(object sender, EventArgs e)
+        {
+            lbThemCB.Visible = false;
         }
     }
 }

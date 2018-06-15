@@ -24,6 +24,7 @@ namespace QuanLyBanVe
             cbbTenQuyDinh.DataSource = busQuyDinh.LoadMaQuyDinh();
             cbbTenQuyDinh.DisplayMember = "TenQuyDinh";
             cbbTenQuyDinh.ValueMember = "TenQuyDinh";
+            gridViewQuyDinh.Columns["NGAYAPDUNG"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
         }
 
         private void FormatDgv(DataGridView dgv)

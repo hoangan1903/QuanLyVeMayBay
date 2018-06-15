@@ -98,7 +98,7 @@ namespace QuanLyBanVe
         {
             BUS_ChuyenBay busChuyenBay = new BUS_ChuyenBay();
             TimeSpan timeSpan = DateTime.Parse(busChuyenBay.ChiTietCB(maCB).Rows[0][4].ToString()) - DateTime.Now;
-            if(timeSpan.Days <= 1)
+            if (timeSpan.Days <= 1)
             {
                 MessageBox.Show("Đã quá thời gian mua vé cho chuyến bay này", "Thông báo", MessageBoxButtons.OK);
             }
@@ -112,38 +112,47 @@ namespace QuanLyBanVe
 
                 if (dialogResult == DialogResult.Yes)
                 {
+
                     DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim());
                     int demVe = 0;
-
-                    for (int i = 0; i < gridViewVe.Rows.Count; ++i)
+                    if (dt.Rows.Count != 0)
                     {
-                        if (gridViewVe[0, i].Selected)
+                        for (int i = 0; i < gridViewVe.Rows.Count; ++i)
                         {
-                            // Kiểm tra vé đã bán hay chưa
-                            if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
+                            if (gridViewVe[0, i].Selected)
                             {
-                                MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
-                            }
-                            else
-                            {
-                                if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT001"))
+                                // Kiểm tra vé đã bán hay chưa
+                                if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
                                 {
-                                    DataRow KH = dt.Rows[dt.Rows.Count - 1];
-
-                                    if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, true))
+                                    MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
+                                }
+                                else
+                                {
+                                    if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT001"))
                                     {
-                                        this.maVe = gridViewVe["MAVE", i].Value.ToString();
-                                        MessageBox.Show("Bán vé thành công !", "Thông báo", MessageBoxButtons.OK);
-                                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
-                                        demVe++;
+                                        DataRow KH = dt.Rows[dt.Rows.Count - 1];
+
+                                        if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, true))
+                                        {
+                                            this.maVe = gridViewVe["MAVE", i].Value.ToString();
+                                            MessageBox.Show("Bán vé thành công !", "Thông báo", MessageBoxButtons.OK);
+                                            gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
+                                            demVe++;
+                                        }
                                     }
                                 }
-                            }
 
+                            }
                         }
+                        if (demVe == 0)
+                            MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
                     }
-                    if (demVe == 0)
-                        MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
+                    else
+                    {
+                        MessageBox.Show("Chưa là thành viên! Vui lòng nhập thông tin!", "Kết quả kiểm tra", MessageBoxButtons.OK);
+                        TaoThanhVien ttv = new TaoThanhVien();
+                        ttv.ShowDialog();
+                    }
                 }
             }
             btnInVe.Enabled = true;
@@ -168,37 +177,47 @@ namespace QuanLyBanVe
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim());
+                    DataTable dt = busKhachHang.LoadKhachHang(txtCMND.Text.Trim(), txtHoTen.Text.Trim());
                     int demVe = 0;
-
-                    for (int i = 0; i < gridViewVe.Rows.Count; ++i)
+                    // Kiểm tra khách hàng đã là thành viên hay chưa
+                    if (dt.Rows.Count != 0)
                     {
-                        if (gridViewVe[0, i].Selected)
+                        for (int i = 0; i < gridViewVe.Rows.Count; ++i)
                         {
-                            // Kiểm tra vé đã đặt hay chưa
-                            if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
+                            if (gridViewVe[0, i].Selected)
                             {
-                                MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
-                            }
-                            else
-                            {
-                                if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT002"))
+                                // Kiểm tra vé đã đặt hay chưa
+                                if (gridViewVe["TÌNH TRẠNG", i].Value.ToString().Trim() != "Còn trống")
                                 {
-                                    DataRow KH = dt.Rows[dt.Rows.Count - 1];
-
-                                    if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, false))
+                                    MessageBox.Show("Vé này đã được đặt/mua. Hãy chọn lại một vé khác.", "Thông báo", MessageBoxButtons.OK);
+                                }
+                                else
+                                {
+                                    if (busVe.CapNhatVe(gridViewVe["MAVE", i].Value.ToString(), "TT002"))
                                     {
-                                        MessageBox.Show("Đặt vé thành công !", "Thông báo", MessageBoxButtons.OK);
-                                        gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
+                                        DataRow KH = dt.Rows[dt.Rows.Count - 1];
 
-                                        demVe++;
+                                        if (busPhieuDatMua.TaoPhieuDatMua(gridViewVe[0, i].Value.ToString(), KH["MAKH"].ToString(), DateTime.Now, false))
+                                        {
+                                            MessageBox.Show("Đặt vé thành công !", "Thông báo", MessageBoxButtons.OK);
+                                            gridViewVe.DataSource = busVe.LietKeVe(this.maCB);
+
+                                            demVe++;
+                                        }
                                     }
                                 }
                             }
+
                         }
+                        if (demVe == 0)
+                            MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
                     }
-                    if (demVe == 0)
-                        MessageBox.Show("Không có vé nào được chọn. Vui lòng chọn 01 vé.", "Cảnh báo", MessageBoxButtons.OK);
+                    else
+                    {
+                        MessageBox.Show("Chưa là thành viên! Vui lòng nhập thông tin!", "Kết quả kiểm tra", MessageBoxButtons.OK);
+                        TaoThanhVien ttv = new TaoThanhVien();
+                        ttv.ShowDialog();
+                    }
                 }
             }
         }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyBanVe));
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnInVe = new System.Windows.Forms.Button();
             this.btnHoanVe = new System.Windows.Forms.Button();
@@ -54,11 +55,12 @@
             this.gridViewChiTiet = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ptbThemCB = new System.Windows.Forms.PictureBox();
             this.btnThemVe = new System.Windows.Forms.Button();
             this.btnBanVe = new System.Windows.Forms.Button();
+            this.lbThemCB = new System.Windows.Forms.Label();
             this.btnCancelChanges = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.gridViewLichCB = new System.Windows.Forms.DataGridView();
@@ -144,6 +146,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbThemCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).BeginInit();
             this.panelThemVe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numHang2)).BeginInit();
@@ -448,11 +451,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ptbThemCB);
             this.splitContainer1.Panel1.Controls.Add(this.btnThemVe);
             this.splitContainer1.Panel1.Controls.Add(this.btnBanVe);
+            this.splitContainer1.Panel1.Controls.Add(this.lbThemCB);
             this.splitContainer1.Panel1.Controls.Add(this.btnCancelChanges);
             this.splitContainer1.Panel1.Controls.Add(this.btnSave);
-            this.splitContainer1.Panel1.Controls.Add(this.btnThem);
             this.splitContainer1.Panel1.Controls.Add(this.btnSua);
             this.splitContainer1.Panel1.Controls.Add(this.btnXoa);
             this.splitContainer1.Panel1.Controls.Add(this.gridViewLichCB);
@@ -470,10 +474,23 @@
             this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.TabIndex = 9;
             // 
+            // ptbThemCB
+            // 
+            this.ptbThemCB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ptbThemCB.BackgroundImage")));
+            this.ptbThemCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ptbThemCB.Location = new System.Drawing.Point(12, 3);
+            this.ptbThemCB.Name = "ptbThemCB";
+            this.ptbThemCB.Size = new System.Drawing.Size(38, 38);
+            this.ptbThemCB.TabIndex = 11;
+            this.ptbThemCB.TabStop = false;
+            this.ptbThemCB.Click += new System.EventHandler(this.ptbThemCB_Click);
+            this.ptbThemCB.MouseEnter += new System.EventHandler(this.ptbThemCB_MouseEnter);
+            this.ptbThemCB.MouseLeave += new System.EventHandler(this.ptbThemCB_MouseLeave);
+            // 
             // btnThemVe
             // 
             this.btnThemVe.Enabled = false;
-            this.btnThemVe.Location = new System.Drawing.Point(804, 0);
+            this.btnThemVe.Location = new System.Drawing.Point(798, 0);
             this.btnThemVe.Name = "btnThemVe";
             this.btnThemVe.Size = new System.Drawing.Size(75, 26);
             this.btnThemVe.TabIndex = 10;
@@ -484,13 +501,24 @@
             // btnBanVe
             // 
             this.btnBanVe.Enabled = false;
-            this.btnBanVe.Location = new System.Drawing.Point(885, 0);
+            this.btnBanVe.Location = new System.Drawing.Point(878, 0);
             this.btnBanVe.Name = "btnBanVe";
             this.btnBanVe.Size = new System.Drawing.Size(75, 26);
             this.btnBanVe.TabIndex = 9;
             this.btnBanVe.Text = "Bán vé";
             this.btnBanVe.UseVisualStyleBackColor = true;
             this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
+            // 
+            // lbThemCB
+            // 
+            this.lbThemCB.AutoSize = true;
+            this.lbThemCB.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbThemCB.Location = new System.Drawing.Point(20, 39);
+            this.lbThemCB.Name = "lbThemCB";
+            this.lbThemCB.Size = new System.Drawing.Size(95, 13);
+            this.lbThemCB.TabIndex = 12;
+            this.lbThemCB.Text = "Thêm chuyến bay";
+            this.lbThemCB.Visible = false;
             // 
             // btnCancelChanges
             // 
@@ -515,16 +543,6 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(-1, 0);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(75, 27);
-            this.btnThem.TabIndex = 6;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnSua
             // 
@@ -560,12 +578,12 @@
             this.gridViewLichCB.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.gridViewLichCB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gridViewLichCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewLichCB.Location = new System.Drawing.Point(0, 32);
+            this.gridViewLichCB.Location = new System.Drawing.Point(0, 53);
             this.gridViewLichCB.Name = "gridViewLichCB";
             this.gridViewLichCB.ReadOnly = true;
             this.gridViewLichCB.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.gridViewLichCB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewLichCB.Size = new System.Drawing.Size(954, 364);
+            this.gridViewLichCB.Size = new System.Drawing.Size(954, 343);
             this.gridViewLichCB.TabIndex = 5;
             this.gridViewLichCB.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewLichCB_CellDoubleClick);
             this.gridViewLichCB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
@@ -1236,7 +1254,7 @@
             // cácQuyĐịnhToolStripMenuItem
             // 
             this.cácQuyĐịnhToolStripMenuItem.Name = "cácQuyĐịnhToolStripMenuItem";
-            this.cácQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cácQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.cácQuyĐịnhToolStripMenuItem.Text = "Các quy định";
             this.cácQuyĐịnhToolStripMenuItem.Click += new System.EventHandler(this.cácQuyĐịnhToolStripMenuItem_Click);
             // 
@@ -1270,10 +1288,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbThemCB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).EndInit();
             this.panelThemVe.ResumeLayout(false);
             this.panelThemVe.PerformLayout();
@@ -1341,7 +1361,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnCancelChanges;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView gridViewLichCB;
@@ -1393,6 +1412,8 @@
         private System.Windows.Forms.ComboBox cbbSBTG;
         private System.Windows.Forms.ToolStripMenuItem quyĐịnhToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácQuyĐịnhToolStripMenuItem;
+        private System.Windows.Forms.Label lbThemCB;
+        private System.Windows.Forms.PictureBox ptbThemCB;
     }
 }
 
