@@ -16,16 +16,6 @@ namespace QuanLyBanVe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DangNhap loginForm = new DangNhap();
-            Application.Run(loginForm);
-            if (loginForm.LoginResult == DialogResult.OK)
-            {
-                Application.Run(new QuanLyBanVe());
-            }
-            else
-            {
-                Application.Exit();
-            }
         }
     }
 }

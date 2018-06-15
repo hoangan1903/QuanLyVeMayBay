@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_QuyDinh : DBConnect
+    public class DAO_QuyDinh
     {
         public int GetQuyDinh(string maQuyDinh, DateTime ngayHienTai)
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("GetQuyDinh", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("GetQuyDinh", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaQuyDinh", maQuyDinh);
@@ -31,7 +31,7 @@ namespace DAO
                 dataAdapter.Fill(dataTable);
 
 
-                Connection.Close();
+                Connect.connection.Close();
                 if (Int32.Parse(dataTable.Rows[0][0].ToString()) >= 0)
                     return Int32.Parse(dataTable.Rows[0][0].ToString());
                 return -1;
@@ -45,8 +45,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("CapNhatQuyDinh", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("CapNhatQuyDinh", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaQuyDinh", maQuyDinh);
@@ -71,7 +71,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -80,8 +80,8 @@ namespace DAO
             DataTable result = new DataTable();
             try
             {
-                Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT TenQuyDinh FROM QUYDINH", Connection);
+                Connect.connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT TenQuyDinh FROM QUYDINH", Connect.connection);
                 adapter.Fill(result);
                 return result;
             }
@@ -91,7 +91,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -101,8 +101,8 @@ namespace DAO
             string commandText = "SELECT * FROM QUYDINH WHERE MaQuyDinh = (SELECT DISTINCT MaQuyDinh FROM QUYDINH WHERE TenQuyDinh = N'" + tenQuyDinh + "')";
             try
             {
-                Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(commandText, Connection);
+                Connect.connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(commandText, Connect.connection);
                 adapter.Fill(result);
                 return result;
             }
@@ -112,7 +112,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
     }

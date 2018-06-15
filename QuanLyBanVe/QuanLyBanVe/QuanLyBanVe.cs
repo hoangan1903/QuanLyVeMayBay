@@ -227,8 +227,9 @@ namespace QuanLyBanVe
                 ptbBanVe.Enabled = true;
                 ptbThemVe.Enabled = true;
                 sửaChuyếnBayToolStripMenuItem.Enabled = true;
-                thêmChuyếnBayToolStripMenuItem.Enabled = true;
+                xóaChuyếnBayToolStripMenuItem.Enabled = true;
                 bánVéToolStripMenuItem.Enabled = true;
+                thêmVéToolStripMenuItem.Enabled = true;
             }
             else
             {
@@ -236,7 +237,8 @@ namespace QuanLyBanVe
                 ptbBanVe.Enabled = false;
                 ptbThemVe.Enabled = false;
                 sửaChuyếnBayToolStripMenuItem.Enabled = false;
-                thêmChuyếnBayToolStripMenuItem.Enabled = false;
+                xóaChuyếnBayToolStripMenuItem.Enabled = false;
+                thêmVéToolStripMenuItem.Enabled = false;
                 bánVéToolStripMenuItem.Enabled = false;
             }
         }
@@ -782,6 +784,8 @@ namespace QuanLyBanVe
             ptbHuyThayDoiCB.Visible = true;
             ptbThemVe.Visible = false;
             ptbBanVe.Visible = false;
+            ptbLuuCB.Visible = true;
+            ptbHuyThayDoiCB.Visible = true;
         }
 
         private void ptbSuaCB_Click(object sender, EventArgs e)

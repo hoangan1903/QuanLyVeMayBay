@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 using DTO;
 namespace DAO
 {
-    public class DAO_ChuyenBay :DBConnect
+    public class DAO_ChuyenBay
     {
         public DataTable GetChuyenBay()
         {
             try
             {
                 DataTable table = new DataTable();
-                Connection.Open();
-                SqlCommand cmd = new SqlCommand("LietKeCB", Connection)
+                Connect.connection.Open();
+                SqlCommand cmd = new SqlCommand("LietKeCB", Connect.connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(table);
-                Connection.Close();
+                Connect.connection.Close();
                 return table;
             }
             catch
@@ -31,15 +31,15 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
         public bool ThemChuyenBay(DTO_ChuyenBay cb, string tenSBTG, int thoiGianDung)
         {
             try
             {
-                Connection.Open();
-                SqlCommand command = new SqlCommand("ThemCB", Connection)
+                Connect.connection.Open();
+                SqlCommand command = new SqlCommand("ThemCB", Connect.connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -86,7 +86,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
         
@@ -94,9 +94,9 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
+                Connect.connection.Open();
 
-                SqlCommand command = new SqlCommand("SuaCB", Connection)
+                SqlCommand command = new SqlCommand("SuaCB", Connect.connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -144,7 +144,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -152,8 +152,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand command = new SqlCommand("XoaCB", Connection)
+                Connect.connection.Open();
+                SqlCommand command = new SqlCommand("XoaCB", Connect.connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
@@ -170,7 +170,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -178,8 +178,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("TraCuu", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("TraCuu", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaSBDi", maSBDi);
@@ -203,7 +203,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -211,8 +211,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("ChiTietChuyenBay", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("ChiTietChuyenBay", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -222,7 +222,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Connection.Close();
+                Connect.connection.Close();
                 return dataTable;
             }
             catch
@@ -235,11 +235,11 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", Connection);
+                Connect.connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MACB FROM CHUYENBAY", Connect.connection);
                 DataTable datb = new DataTable();
                 adapter.Fill(datb);
-                Connection.Close();
+                Connect.connection.Close();
                 return datb;
 
             }

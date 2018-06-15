@@ -51,12 +51,6 @@
     <Compile Include="BanVe.Designer.cs">
       <DependentUpon>BanVe.cs</DependentUpon>
     </Compile>
-    <Compile Include="DangNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DangNhap.Designer.cs">
-      <DependentUpon>DangNhap.cs</DependentUpon>
-    </Compile>
     <Compile Include="DanhSachKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,9 +90,6 @@
     </Compile>
     <EmbeddedResource Include="BanVe.resx">
       <DependentUpon>BanVe.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DangNhap.resx">
-      <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanhSachKhachHang.resx">
       <DependentUpon>DanhSachKhachHang.cs</DependentUpon>
@@ -165,9 +156,6 @@
       <Project>{05f87416-d07c-4677-a0c8-0c4f69352dcd}</Project>
       <Name>InVe</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kyo-Tux-Delikate-Add.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Images\edit.png" />

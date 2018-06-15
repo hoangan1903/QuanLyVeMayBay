@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaoCaoNam", "BaoCaoNam\BaoC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InVe", "InVe\InVe.csproj", "{05F87416-D07C-4677-A0C8-0C4F69352DCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DangNhap", "DangNhap\DangNhap.csproj", "{762132DD-C6D1-4BB6-8A15-336F64A6684B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{05F87416-D07C-4677-A0C8-0C4F69352DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05F87416-D07C-4677-A0C8-0C4F69352DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05F87416-D07C-4677-A0C8-0C4F69352DCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762132DD-C6D1-4BB6-8A15-336F64A6684B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762132DD-C6D1-4BB6-8A15-336F64A6684B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762132DD-C6D1-4BB6-8A15-336F64A6684B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762132DD-C6D1-4BB6-8A15-336F64A6684B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

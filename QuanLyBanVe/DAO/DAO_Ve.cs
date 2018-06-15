@@ -9,25 +9,25 @@ using DTO;
 
 namespace DAO
 {
-    public class DAO_Ve : DBConnect
+    public class DAO_Ve
     {
         DTO_HangVe dtoHangVe = new DTO_HangVe();
 
         public DataTable LoadMaVe()
         {
-            Connection.Open();
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT MAVE FROM VE", Connection);
+            Connect.connection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT MAVE FROM VE", Connect.connection);
             DataTable datb = new DataTable();
             adapter.Fill(datb);
-            Connection.Close();
+            Connect.connection.Close();
             return datb;
         }
         public DataTable LoadVeCapNhat(string maCB, string maVe)
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("LoadVeCapNhat", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("LoadVeCapNhat", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -41,7 +41,7 @@ namespace DAO
                 DataTable datb = new DataTable();
                 adapter.Fill(datb);
 
-                Connection.Close();
+                Connect.connection.Close();
 
                 return datb;
             }
@@ -52,9 +52,9 @@ namespace DAO
         }
         public DataTable LietKeVe(string maCB)
         {
-            Connection.Open();
+            Connect.connection.Open();
 
-            SqlCommand comm = new SqlCommand("LietKeVe", Connection);
+            SqlCommand comm = new SqlCommand("LietKeVe", Connect.connection);
             comm.CommandType = CommandType.StoredProcedure;
             comm.Parameters.AddWithValue("@MaCB", maCB);
 
@@ -63,14 +63,14 @@ namespace DAO
             DataTable datb = new DataTable();
             adapter.Fill(datb);
 
-            Connection.Close();
+            Connect.connection.Close();
             return datb;
         }
         public DataTable ChonHangVe(string maHV, string maCB)
         {
-            Connection.Open();
+            Connect.connection.Open();
 
-            SqlCommand comm = new SqlCommand("ChonHangVe", Connection);
+            SqlCommand comm = new SqlCommand("ChonHangVe", Connect.connection);
             comm.CommandType = CommandType.StoredProcedure;
 
             SqlParameter para = new SqlParameter("@MaHangVe", maHV);
@@ -85,7 +85,7 @@ namespace DAO
             DataTable dt = new DataTable();
 
             adapter.Fill(dt);
-            Connection.Close();
+            Connect.connection.Close();
 
             return dt;
         }
@@ -93,8 +93,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("ThanhToan", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("ThanhToan", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
@@ -113,7 +113,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
             return false;
         }
@@ -121,8 +121,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("HoanVe", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("HoanVe", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter();
@@ -141,7 +141,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
             return false;
         }
@@ -149,9 +149,9 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
+                Connect.connection.Open();
 
-                SqlCommand cmd = new SqlCommand("UpdateTinhTrangVe", Connection);
+                SqlCommand cmd = new SqlCommand("UpdateTinhTrangVe", Connect.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@MaTT", maTinhTrang);
@@ -166,7 +166,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
             return false;
         }
@@ -175,8 +175,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("VeHang1Trong", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("VeHang1Trong", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -186,7 +186,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Connection.Close();
+                Connect.connection.Close();
                 return dataTable;
             }
             catch
@@ -198,8 +198,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("VeHang2Trong", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("VeHang2Trong", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -209,7 +209,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Connection.Close();
+                Connect.connection.Close();
                 return dataTable;
             }
             catch
@@ -222,8 +222,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("CountVeHang1", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("CountVeHang1", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -233,7 +233,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Connection.Close();
+                Connect.connection.Close();
                 return dataTable;
             }
             catch
@@ -246,8 +246,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("CountVeHang2", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("CountVeHang2", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", maCB);
@@ -257,7 +257,7 @@ namespace DAO
                 adapter.SelectCommand = comm;
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                Connection.Close();
+                Connect.connection.Close();
                 return dataTable;
             }
             catch
@@ -269,8 +269,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("ThemVe", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("ThemVe", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaCB", dtoVe.MaCB);
@@ -298,7 +298,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
 
@@ -306,8 +306,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("InVe", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("InVe", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@MaVe", maVe);
@@ -316,7 +316,7 @@ namespace DAO
                 SqlDataAdapter dataAdapter = new SqlDataAdapter();
                 dataAdapter.SelectCommand = comm;
 
-                Connection.Close();
+                Connect.connection.Close();
                 return dataAdapter;
             }
             catch

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyBanVe));
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ptbInVe = new System.Windows.Forms.PictureBox();
@@ -190,6 +190,7 @@
             // 
             // ptbInVe
             // 
+            this.ptbInVe.Enabled = false;
             this.ptbInVe.Image = global::QuanLyBanVe.Properties.Resources.print2;
             this.ptbInVe.Location = new System.Drawing.Point(913, 24);
             this.ptbInVe.Name = "ptbInVe";
@@ -197,6 +198,7 @@
             this.ptbInVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ptbInVe.TabIndex = 8;
             this.ptbInVe.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbInVe, "In vé");
             this.ptbInVe.Click += new System.EventHandler(this.ptbInVe_Click);
             // 
             // ptbTim
@@ -208,6 +210,7 @@
             this.ptbTim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbTim.TabIndex = 7;
             this.ptbTim.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbTim, "Tìm kiếm");
             this.ptbTim.Click += new System.EventHandler(this.ptbTim_Click);
             // 
             // btnHoanVe
@@ -338,6 +341,7 @@
             this.ptbBanVe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbBanVe2.TabIndex = 11;
             this.ptbBanVe2.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbBanVe2, "Bán vé");
             this.ptbBanVe2.Click += new System.EventHandler(this.ptbBanVe2_Click);
             // 
             // ptbTraCuu
@@ -349,6 +353,7 @@
             this.ptbTraCuu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbTraCuu.TabIndex = 10;
             this.ptbTraCuu.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbTraCuu, "Tìm kiếm");
             this.ptbTraCuu.Click += new System.EventHandler(this.ptbTraCuu_Click);
             // 
             // label4
@@ -439,8 +444,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gridViewChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
@@ -495,7 +500,7 @@
             this.ptbBanVe.Image = global::QuanLyBanVe.Properties.Resources.sell_ticket2;
             this.ptbBanVe.Location = new System.Drawing.Point(908, 5);
             this.ptbBanVe.Name = "ptbBanVe";
-            this.ptbBanVe.Size = new System.Drawing.Size(42, 42);
+            this.ptbBanVe.Size = new System.Drawing.Size(40, 40);
             this.ptbBanVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbBanVe.TabIndex = 17;
             this.ptbBanVe.TabStop = false;
@@ -508,7 +513,7 @@
             this.ptbThemVe.Image = global::QuanLyBanVe.Properties.Resources.add_ticket;
             this.ptbThemVe.Location = new System.Drawing.Point(860, 5);
             this.ptbThemVe.Name = "ptbThemVe";
-            this.ptbThemVe.Size = new System.Drawing.Size(42, 42);
+            this.ptbThemVe.Size = new System.Drawing.Size(40, 40);
             this.ptbThemVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbThemVe.TabIndex = 16;
             this.ptbThemVe.TabStop = false;
@@ -517,28 +522,28 @@
             // 
             // ptbHuyThayDoiCB
             // 
-            this.ptbHuyThayDoiCB.Enabled = false;
             this.ptbHuyThayDoiCB.Image = global::QuanLyBanVe.Properties.Resources.cancel;
-            this.ptbHuyThayDoiCB.Location = new System.Drawing.Point(235, 5);
+            this.ptbHuyThayDoiCB.Location = new System.Drawing.Point(235, 4);
             this.ptbHuyThayDoiCB.Name = "ptbHuyThayDoiCB";
-            this.ptbHuyThayDoiCB.Size = new System.Drawing.Size(38, 38);
+            this.ptbHuyThayDoiCB.Size = new System.Drawing.Size(39, 39);
             this.ptbHuyThayDoiCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbHuyThayDoiCB.TabIndex = 15;
             this.ptbHuyThayDoiCB.TabStop = false;
             this.toolTip1.SetToolTip(this.ptbHuyThayDoiCB, "Hủy thay đổi");
+            this.ptbHuyThayDoiCB.Visible = false;
             this.ptbHuyThayDoiCB.Click += new System.EventHandler(this.ptbHuyThayDoiCB_Click);
             // 
             // ptbLuuCB
             // 
-            this.ptbLuuCB.Enabled = false;
             this.ptbLuuCB.Image = global::QuanLyBanVe.Properties.Resources.save2;
-            this.ptbLuuCB.Location = new System.Drawing.Point(181, 0);
+            this.ptbLuuCB.Location = new System.Drawing.Point(181, 2);
             this.ptbLuuCB.Name = "ptbLuuCB";
-            this.ptbLuuCB.Size = new System.Drawing.Size(48, 48);
+            this.ptbLuuCB.Size = new System.Drawing.Size(42, 42);
             this.ptbLuuCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbLuuCB.TabIndex = 14;
             this.ptbLuuCB.TabStop = false;
             this.toolTip1.SetToolTip(this.ptbLuuCB, "Lưu thay đổi");
+            this.ptbLuuCB.Visible = false;
             this.ptbLuuCB.Click += new System.EventHandler(this.ptbLuuCB_Click);
             // 
             // ptbXoaCB
@@ -547,7 +552,7 @@
             this.ptbXoaCB.Image = global::QuanLyBanVe.Properties.Resources.delete;
             this.ptbXoaCB.Location = new System.Drawing.Point(115, 3);
             this.ptbXoaCB.Name = "ptbXoaCB";
-            this.ptbXoaCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbXoaCB.Size = new System.Drawing.Size(39, 39);
             this.ptbXoaCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbXoaCB.TabIndex = 13;
             this.ptbXoaCB.TabStop = false;
@@ -560,7 +565,7 @@
             this.ptbSuaCB.Image = global::QuanLyBanVe.Properties.Resources.edit;
             this.ptbSuaCB.Location = new System.Drawing.Point(63, 3);
             this.ptbSuaCB.Name = "ptbSuaCB";
-            this.ptbSuaCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbSuaCB.Size = new System.Drawing.Size(39, 39);
             this.ptbSuaCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbSuaCB.TabIndex = 12;
             this.ptbSuaCB.TabStop = false;
@@ -573,7 +578,7 @@
             this.ptbThemCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ptbThemCB.Location = new System.Drawing.Point(12, 3);
             this.ptbThemCB.Name = "ptbThemCB";
-            this.ptbThemCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbThemCB.Size = new System.Drawing.Size(39, 39);
             this.ptbThemCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbThemCB.TabIndex = 11;
             this.ptbThemCB.TabStop = false;
@@ -1128,7 +1133,7 @@
             // 
             this.exitToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1149,7 +1154,7 @@
             // 
             this.thêmChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.thêmChuyếnBayToolStripMenuItem.Name = "thêmChuyếnBayToolStripMenuItem";
-            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thêmChuyếnBayToolStripMenuItem.Text = "Thêm chuyến bay";
             this.thêmChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.thêmChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1158,7 +1163,7 @@
             this.sửaChuyếnBayToolStripMenuItem.Enabled = false;
             this.sửaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.sửaChuyếnBayToolStripMenuItem.Name = "sửaChuyếnBayToolStripMenuItem";
-            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sửaChuyếnBayToolStripMenuItem.Text = "Sửa chuyến bay";
             this.sửaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.sửaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1167,7 +1172,7 @@
             this.xóaChuyếnBayToolStripMenuItem.Enabled = false;
             this.xóaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.xóaChuyếnBayToolStripMenuItem.Name = "xóaChuyếnBayToolStripMenuItem";
-            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.xóaChuyếnBayToolStripMenuItem.Text = "Xóa chuyến bay";
             this.xóaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.xóaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1175,7 +1180,7 @@
             // 
             this.traCứuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.traCứuToolStripMenuItem.Name = "traCứuToolStripMenuItem";
-            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.traCứuToolStripMenuItem.Text = "Tra cứu";
             this.traCứuToolStripMenuItem.Click += new System.EventHandler(this.traCứuToolStripMenuItem_Click);
             // 
@@ -1183,7 +1188,7 @@
             // 
             this.thêmVéToolStripMenuItem.Enabled = false;
             this.thêmVéToolStripMenuItem.Name = "thêmVéToolStripMenuItem";
-            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thêmVéToolStripMenuItem.Text = "Thêm vé";
             this.thêmVéToolStripMenuItem.Click += new System.EventHandler(this.thêmVéToolStripMenuItem_Click);
             // 

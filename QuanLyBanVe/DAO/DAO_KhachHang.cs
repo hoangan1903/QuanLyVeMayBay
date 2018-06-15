@@ -8,34 +8,34 @@ using System.Threading.Tasks;
 using DTO;
 namespace DAO
 {
-    public class DAO_KhachHang :DBConnect
+    public class DAO_KhachHang
     {
         public DataTable LoadKhachHang()
         {
-            Connection.Open();
+            Connect.connection.Open();
 
-            SqlDataAdapter adapter = new SqlDataAdapter("Select * From KHACHHANG", Connection);
+            SqlDataAdapter adapter = new SqlDataAdapter("Select * From KHACHHANG", Connect.connection);
             DataTable data = new DataTable();
 
             adapter.Fill(data);
 
-            Connection.Close();
+            Connect.connection.Close();
 
             return data;
         }
 
         public DataTable LoadKhachHang(string CMND)
         {
-            Connection.Open();
+            Connect.connection.Open();
             string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}'", CMND);
 
-            SqlDataAdapter da = new SqlDataAdapter(sql, Connection);
+            SqlDataAdapter da = new SqlDataAdapter(sql, Connect.connection);
 
             DataTable dt = new DataTable();
 
             da.Fill(dt);
 
-            Connection.Close();
+            Connect.connection.Close();
 
             return dt;
         }
@@ -44,15 +44,15 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
+                Connect.connection.Open();
                 string sql = string.Format("Select * From KHACHHANG Where CMND = '{0}' and HoTen = N'{1}'", CMND, hoTen);
 
-                SqlDataAdapter da = new SqlDataAdapter(sql, Connection);
+                SqlDataAdapter da = new SqlDataAdapter(sql, Connect.connection);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                Connection.Close();
+                Connect.connection.Close();
 
                 return dt;
             }
@@ -66,8 +66,8 @@ namespace DAO
         {
             try
             {
-                Connection.Open();
-                SqlCommand comm = new SqlCommand("TaoThanhVien", Connection);
+                Connect.connection.Open();
+                SqlCommand comm = new SqlCommand("TaoThanhVien", Connect.connection);
                 comm.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter para = new SqlParameter("@HoTen", dtoKhachHang.HoTen);
@@ -106,7 +106,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
     }

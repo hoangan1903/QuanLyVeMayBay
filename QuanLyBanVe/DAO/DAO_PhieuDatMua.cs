@@ -9,16 +9,16 @@ using DTO;
 
 namespace DAO
 {
-    public class DAO_PhieuDatMua:DBConnect
+    public class DAO_PhieuDatMua
     {
 
         public bool TaoPhieuDatMua(DTO_PhieuDatMua dtoPDM)
         {
             try
             {
-                Connection.Open();
+                Connect.connection.Open();
 
-                SqlCommand cmd = new SqlCommand("TaoPhieuDatMua", Connection);
+                SqlCommand cmd = new SqlCommand("TaoPhieuDatMua", Connect.connection);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@MaVe", dtoPDM.MaVe);
@@ -36,7 +36,7 @@ namespace DAO
             }
             finally
             {
-                Connection.Close();
+                Connect.connection.Close();
             }
         }
     }

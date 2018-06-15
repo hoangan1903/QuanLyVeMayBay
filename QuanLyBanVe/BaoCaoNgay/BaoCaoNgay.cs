@@ -40,7 +40,7 @@ namespace BaoCaoNgay
             }
             else
             {
-                busBaoCao.BaoCaoNgay(dateDi.Value, dateDen.Value).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
+                busBaoCao.BaoCaoNgay(Convert.ToDateTime(dateDi.Value.ToShortDateString()), Convert.ToDateTime(dateDen.Value.ToShortDateString())).Fill(this.QLVeMayBayDataSet.BaoCao); // Gốc: Convert.ToDateTime(...)
 
                 object sum;
                 DataTable datb = this.QLVeMayBayDataSet.Tables[0];

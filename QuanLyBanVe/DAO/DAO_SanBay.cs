@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class DAO_SanBay:DBConnect
+    public class DAO_SanBay
     {
 
         public DataTable LoadSanBay()
         {
             try
             {
-                Connection.Open();
+                Connect.connection.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", Connection);
+                SqlCommand cmd = new SqlCommand("SELECT TENSANBAY FROM SANBAY", Connect.connection);
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(cmd);
                 DataTable table = new DataTable();
                 dataAdapter.Fill(table);
-                Connection.Close();
+                Connect.connection.Close();
                 return table;
             }
             catch (Exception)
