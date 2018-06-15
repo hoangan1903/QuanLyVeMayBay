@@ -169,6 +169,60 @@
   <ItemGroup>
     <None Include="Resources\Kyo-Tux-Delikate-Add.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\ticket-add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\save2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\add_ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\sell_ticket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\sell_ticket2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\lookup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\lookup2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\print2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\purchase1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\purchase2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\return1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\return2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\purchase3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

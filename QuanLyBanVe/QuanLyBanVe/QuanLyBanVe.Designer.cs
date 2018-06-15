@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyBanVe));
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnInVe = new System.Windows.Forms.Button();
+            this.ptbInVe = new System.Windows.Forms.PictureBox();
+            this.ptbTim = new System.Windows.Forms.PictureBox();
             this.btnHoanVe = new System.Windows.Forms.Button();
             this.btnThanhToan = new System.Windows.Forms.Button();
-            this.btnTim = new System.Windows.Forms.Button();
             this.gridViewCapNhatVe = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,26 +43,25 @@
             this.cbbMaCB = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.splitContainerTraCuu = new System.Windows.Forms.SplitContainer();
+            this.ptbBanVe2 = new System.Windows.Forms.PictureBox();
+            this.ptbTraCuu = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.gridViewTraCuu = new System.Windows.Forms.DataGridView();
-            this.btnBanVe2 = new System.Windows.Forms.Button();
             this.dateTraCuu = new System.Windows.Forms.DateTimePicker();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnTraCuu = new System.Windows.Forms.Button();
             this.cbbNoiDi = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbbNoiDen = new System.Windows.Forms.ComboBox();
             this.gridViewChiTiet = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.ptbBanVe = new System.Windows.Forms.PictureBox();
+            this.ptbThemVe = new System.Windows.Forms.PictureBox();
+            this.ptbHuyThayDoiCB = new System.Windows.Forms.PictureBox();
+            this.ptbLuuCB = new System.Windows.Forms.PictureBox();
+            this.ptbXoaCB = new System.Windows.Forms.PictureBox();
+            this.ptbSuaCB = new System.Windows.Forms.PictureBox();
             this.ptbThemCB = new System.Windows.Forms.PictureBox();
-            this.btnThemVe = new System.Windows.Forms.Button();
-            this.btnBanVe = new System.Windows.Forms.Button();
-            this.lbThemCB = new System.Windows.Forms.Label();
-            this.btnCancelChanges = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.gridViewLichCB = new System.Windows.Forms.DataGridView();
             this.panelThemVe = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -132,13 +131,18 @@
             this.danhSáchKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cácQuyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbInVe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).BeginInit();
             this.splitContainerTraCuu.Panel1.SuspendLayout();
             this.splitContainerTraCuu.Panel2.SuspendLayout();
             this.splitContainerTraCuu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBanVe2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTraCuu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTraCuu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -146,6 +150,12 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBanVe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbThemVe)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHuyThayDoiCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbLuuCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbXoaCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbSuaCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbThemCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).BeginInit();
             this.panelThemVe.SuspendLayout();
@@ -161,10 +171,10 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnInVe);
+            this.tabPage3.Controls.Add(this.ptbInVe);
+            this.tabPage3.Controls.Add(this.ptbTim);
             this.tabPage3.Controls.Add(this.btnHoanVe);
             this.tabPage3.Controls.Add(this.btnThanhToan);
-            this.tabPage3.Controls.Add(this.btnTim);
             this.tabPage3.Controls.Add(this.gridViewCapNhatVe);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.label1);
@@ -178,49 +188,55 @@
             this.tabPage3.Text = "Cập nhật vé";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnInVe
+            // ptbInVe
             // 
-            this.btnInVe.Enabled = false;
-            this.btnInVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInVe.Location = new System.Drawing.Point(787, 31);
-            this.btnInVe.Name = "btnInVe";
-            this.btnInVe.Size = new System.Drawing.Size(75, 23);
-            this.btnInVe.TabIndex = 6;
-            this.btnInVe.Text = "In vé";
-            this.btnInVe.UseVisualStyleBackColor = true;
-            this.btnInVe.Click += new System.EventHandler(this.btnInVe_Click);
+            this.ptbInVe.Image = global::QuanLyBanVe.Properties.Resources.print2;
+            this.ptbInVe.Location = new System.Drawing.Point(913, 24);
+            this.ptbInVe.Name = "ptbInVe";
+            this.ptbInVe.Size = new System.Drawing.Size(42, 42);
+            this.ptbInVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbInVe.TabIndex = 8;
+            this.ptbInVe.TabStop = false;
+            this.ptbInVe.Click += new System.EventHandler(this.ptbInVe_Click);
+            // 
+            // ptbTim
+            // 
+            this.ptbTim.Image = global::QuanLyBanVe.Properties.Resources.lookup2;
+            this.ptbTim.Location = new System.Drawing.Point(285, 24);
+            this.ptbTim.Name = "ptbTim";
+            this.ptbTim.Size = new System.Drawing.Size(36, 36);
+            this.ptbTim.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTim.TabIndex = 7;
+            this.ptbTim.TabStop = false;
+            this.ptbTim.Click += new System.EventHandler(this.ptbTim_Click);
             // 
             // btnHoanVe
             // 
             this.btnHoanVe.Enabled = false;
-            this.btnHoanVe.Location = new System.Drawing.Point(766, 396);
+            this.btnHoanVe.Image = global::QuanLyBanVe.Properties.Resources.return2;
+            this.btnHoanVe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHoanVe.Location = new System.Drawing.Point(871, 396);
             this.btnHoanVe.Name = "btnHoanVe";
-            this.btnHoanVe.Size = new System.Drawing.Size(83, 32);
+            this.btnHoanVe.Size = new System.Drawing.Size(87, 32);
             this.btnHoanVe.TabIndex = 5;
             this.btnHoanVe.Text = "Hoàn vé";
+            this.btnHoanVe.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHoanVe.UseVisualStyleBackColor = true;
             this.btnHoanVe.Click += new System.EventHandler(this.btnHoanVe_Click);
             // 
             // btnThanhToan
             // 
             this.btnThanhToan.Enabled = false;
-            this.btnThanhToan.Location = new System.Drawing.Point(673, 396);
+            this.btnThanhToan.Image = global::QuanLyBanVe.Properties.Resources.purchase3;
+            this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThanhToan.Location = new System.Drawing.Point(757, 396);
             this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(87, 32);
+            this.btnThanhToan.Size = new System.Drawing.Size(108, 32);
             this.btnThanhToan.TabIndex = 4;
             this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThanhToan.UseVisualStyleBackColor = true;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // btnTim
-            // 
-            this.btnTim.Location = new System.Drawing.Point(323, 32);
-            this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(66, 27);
-            this.btnTim.TabIndex = 2;
-            this.btnTim.Text = "Tìm";
-            this.btnTim.UseVisualStyleBackColor = true;
-            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // gridViewCapNhatVe
             // 
@@ -235,14 +251,14 @@
             this.gridViewCapNhatVe.Name = "gridViewCapNhatVe";
             this.gridViewCapNhatVe.ReadOnly = true;
             this.gridViewCapNhatVe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridViewCapNhatVe.Size = new System.Drawing.Size(856, 320);
+            this.gridViewCapNhatVe.Size = new System.Drawing.Size(952, 320);
             this.gridViewCapNhatVe.TabIndex = 3;
             this.gridViewCapNhatVe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewCapNhatVe_CellClick);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 12);
+            this.label2.Location = new System.Drawing.Point(152, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 15);
             this.label2.TabIndex = 3;
@@ -251,7 +267,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 13);
+            this.label1.Location = new System.Drawing.Point(7, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 15);
             this.label1.TabIndex = 2;
@@ -262,7 +278,7 @@
             this.cbbMaVe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbbMaVe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbMaVe.FormattingEnabled = true;
-            this.cbbMaVe.Location = new System.Drawing.Point(184, 32);
+            this.cbbMaVe.Location = new System.Drawing.Point(154, 33);
             this.cbbMaVe.Name = "cbbMaVe";
             this.cbbMaVe.Size = new System.Drawing.Size(121, 23);
             this.cbbMaVe.TabIndex = 1;
@@ -272,7 +288,7 @@
             this.cbbMaCB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbbMaCB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbMaCB.FormattingEnabled = true;
-            this.cbbMaCB.Location = new System.Drawing.Point(35, 32);
+            this.cbbMaCB.Location = new System.Drawing.Point(10, 33);
             this.cbbMaCB.Name = "cbbMaCB";
             this.cbbMaCB.Size = new System.Drawing.Size(121, 23);
             this.cbbMaCB.TabIndex = 0;
@@ -296,12 +312,12 @@
             // 
             // splitContainerTraCuu.Panel1
             // 
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.ptbBanVe2);
+            this.splitContainerTraCuu.Panel1.Controls.Add(this.ptbTraCuu);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.label4);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.gridViewTraCuu);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnBanVe2);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.dateTraCuu);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.label14);
-            this.splitContainerTraCuu.Panel1.Controls.Add(this.btnTraCuu);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDi);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.label3);
             this.splitContainerTraCuu.Panel1.Controls.Add(this.cbbNoiDen);
@@ -312,6 +328,28 @@
             this.splitContainerTraCuu.Size = new System.Drawing.Size(933, 558);
             this.splitContainerTraCuu.SplitterDistance = 430;
             this.splitContainerTraCuu.TabIndex = 10;
+            // 
+            // ptbBanVe2
+            // 
+            this.ptbBanVe2.Image = global::QuanLyBanVe.Properties.Resources.sell_ticket2;
+            this.ptbBanVe2.Location = new System.Drawing.Point(887, 3);
+            this.ptbBanVe2.Name = "ptbBanVe2";
+            this.ptbBanVe2.Size = new System.Drawing.Size(42, 42);
+            this.ptbBanVe2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbBanVe2.TabIndex = 11;
+            this.ptbBanVe2.TabStop = false;
+            this.ptbBanVe2.Click += new System.EventHandler(this.ptbBanVe2_Click);
+            // 
+            // ptbTraCuu
+            // 
+            this.ptbTraCuu.Image = global::QuanLyBanVe.Properties.Resources.lookup2;
+            this.ptbTraCuu.Location = new System.Drawing.Point(424, 12);
+            this.ptbTraCuu.Name = "ptbTraCuu";
+            this.ptbTraCuu.Size = new System.Drawing.Size(36, 36);
+            this.ptbTraCuu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbTraCuu.TabIndex = 10;
+            this.ptbTraCuu.TabStop = false;
+            this.ptbTraCuu.Click += new System.EventHandler(this.ptbTraCuu_Click);
             // 
             // label4
             // 
@@ -341,18 +379,6 @@
             this.gridViewTraCuu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewTraCuu_CellClick);
             this.gridViewTraCuu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
-            // btnBanVe2
-            // 
-            this.btnBanVe2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBanVe2.Enabled = false;
-            this.btnBanVe2.Location = new System.Drawing.Point(855, 4);
-            this.btnBanVe2.Name = "btnBanVe2";
-            this.btnBanVe2.Size = new System.Drawing.Size(75, 27);
-            this.btnBanVe2.TabIndex = 4;
-            this.btnBanVe2.Text = "Bán vé";
-            this.btnBanVe2.UseVisualStyleBackColor = true;
-            this.btnBanVe2.Click += new System.EventHandler(this.btnBanVe2_Click);
-            // 
             // dateTraCuu
             // 
             this.dateTraCuu.CustomFormat = "dd/MM/yyyy";
@@ -371,16 +397,6 @@
             this.label14.Size = new System.Drawing.Size(91, 15);
             this.label14.TabIndex = 9;
             this.label14.Text = "Ngày khởi hành";
-            // 
-            // btnTraCuu
-            // 
-            this.btnTraCuu.Location = new System.Drawing.Point(425, 21);
-            this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(69, 23);
-            this.btnTraCuu.TabIndex = 3;
-            this.btnTraCuu.Text = "Tìm";
-            this.btnTraCuu.UseVisualStyleBackColor = true;
-            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // cbbNoiDi
             // 
@@ -451,14 +467,13 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.ptbBanVe);
+            this.splitContainer1.Panel1.Controls.Add(this.ptbThemVe);
+            this.splitContainer1.Panel1.Controls.Add(this.ptbHuyThayDoiCB);
+            this.splitContainer1.Panel1.Controls.Add(this.ptbLuuCB);
+            this.splitContainer1.Panel1.Controls.Add(this.ptbXoaCB);
+            this.splitContainer1.Panel1.Controls.Add(this.ptbSuaCB);
             this.splitContainer1.Panel1.Controls.Add(this.ptbThemCB);
-            this.splitContainer1.Panel1.Controls.Add(this.btnThemVe);
-            this.splitContainer1.Panel1.Controls.Add(this.btnBanVe);
-            this.splitContainer1.Panel1.Controls.Add(this.lbThemCB);
-            this.splitContainer1.Panel1.Controls.Add(this.btnCancelChanges);
-            this.splitContainer1.Panel1.Controls.Add(this.btnSave);
-            this.splitContainer1.Panel1.Controls.Add(this.btnSua);
-            this.splitContainer1.Panel1.Controls.Add(this.btnXoa);
             this.splitContainer1.Panel1.Controls.Add(this.gridViewLichCB);
             this.splitContainer1.Panel1MinSize = 280;
             // 
@@ -474,97 +489,96 @@
             this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.TabIndex = 9;
             // 
+            // ptbBanVe
+            // 
+            this.ptbBanVe.Enabled = false;
+            this.ptbBanVe.Image = global::QuanLyBanVe.Properties.Resources.sell_ticket2;
+            this.ptbBanVe.Location = new System.Drawing.Point(908, 5);
+            this.ptbBanVe.Name = "ptbBanVe";
+            this.ptbBanVe.Size = new System.Drawing.Size(42, 42);
+            this.ptbBanVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbBanVe.TabIndex = 17;
+            this.ptbBanVe.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbBanVe, "Bán vé");
+            this.ptbBanVe.Click += new System.EventHandler(this.ptbBanVe_Click);
+            // 
+            // ptbThemVe
+            // 
+            this.ptbThemVe.Enabled = false;
+            this.ptbThemVe.Image = global::QuanLyBanVe.Properties.Resources.add_ticket;
+            this.ptbThemVe.Location = new System.Drawing.Point(860, 5);
+            this.ptbThemVe.Name = "ptbThemVe";
+            this.ptbThemVe.Size = new System.Drawing.Size(42, 42);
+            this.ptbThemVe.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbThemVe.TabIndex = 16;
+            this.ptbThemVe.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbThemVe, "Thêm vé");
+            this.ptbThemVe.Click += new System.EventHandler(this.ptbThemVe_Click);
+            // 
+            // ptbHuyThayDoiCB
+            // 
+            this.ptbHuyThayDoiCB.Enabled = false;
+            this.ptbHuyThayDoiCB.Image = global::QuanLyBanVe.Properties.Resources.cancel;
+            this.ptbHuyThayDoiCB.Location = new System.Drawing.Point(235, 5);
+            this.ptbHuyThayDoiCB.Name = "ptbHuyThayDoiCB";
+            this.ptbHuyThayDoiCB.Size = new System.Drawing.Size(38, 38);
+            this.ptbHuyThayDoiCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbHuyThayDoiCB.TabIndex = 15;
+            this.ptbHuyThayDoiCB.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbHuyThayDoiCB, "Hủy thay đổi");
+            this.ptbHuyThayDoiCB.Click += new System.EventHandler(this.ptbHuyThayDoiCB_Click);
+            // 
+            // ptbLuuCB
+            // 
+            this.ptbLuuCB.Enabled = false;
+            this.ptbLuuCB.Image = global::QuanLyBanVe.Properties.Resources.save2;
+            this.ptbLuuCB.Location = new System.Drawing.Point(181, 0);
+            this.ptbLuuCB.Name = "ptbLuuCB";
+            this.ptbLuuCB.Size = new System.Drawing.Size(48, 48);
+            this.ptbLuuCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbLuuCB.TabIndex = 14;
+            this.ptbLuuCB.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbLuuCB, "Lưu thay đổi");
+            this.ptbLuuCB.Click += new System.EventHandler(this.ptbLuuCB_Click);
+            // 
+            // ptbXoaCB
+            // 
+            this.ptbXoaCB.Enabled = false;
+            this.ptbXoaCB.Image = global::QuanLyBanVe.Properties.Resources.delete;
+            this.ptbXoaCB.Location = new System.Drawing.Point(115, 3);
+            this.ptbXoaCB.Name = "ptbXoaCB";
+            this.ptbXoaCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbXoaCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbXoaCB.TabIndex = 13;
+            this.ptbXoaCB.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbXoaCB, "Xóa chuyến bay");
+            this.ptbXoaCB.Click += new System.EventHandler(this.ptbXoaCB_Click);
+            // 
+            // ptbSuaCB
+            // 
+            this.ptbSuaCB.Enabled = false;
+            this.ptbSuaCB.Image = global::QuanLyBanVe.Properties.Resources.edit;
+            this.ptbSuaCB.Location = new System.Drawing.Point(63, 3);
+            this.ptbSuaCB.Name = "ptbSuaCB";
+            this.ptbSuaCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbSuaCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbSuaCB.TabIndex = 12;
+            this.ptbSuaCB.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbSuaCB, "Sửa chuyến bay");
+            this.ptbSuaCB.Click += new System.EventHandler(this.ptbSuaCB_Click);
+            // 
             // ptbThemCB
             // 
             this.ptbThemCB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ptbThemCB.BackgroundImage")));
             this.ptbThemCB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ptbThemCB.Location = new System.Drawing.Point(12, 3);
             this.ptbThemCB.Name = "ptbThemCB";
-            this.ptbThemCB.Size = new System.Drawing.Size(38, 38);
+            this.ptbThemCB.Size = new System.Drawing.Size(42, 42);
+            this.ptbThemCB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbThemCB.TabIndex = 11;
             this.ptbThemCB.TabStop = false;
+            this.toolTip1.SetToolTip(this.ptbThemCB, "Thêm chuyến bay");
             this.ptbThemCB.Click += new System.EventHandler(this.ptbThemCB_Click);
-            this.ptbThemCB.MouseEnter += new System.EventHandler(this.ptbThemCB_MouseEnter);
-            this.ptbThemCB.MouseLeave += new System.EventHandler(this.ptbThemCB_MouseLeave);
-            // 
-            // btnThemVe
-            // 
-            this.btnThemVe.Enabled = false;
-            this.btnThemVe.Location = new System.Drawing.Point(798, 0);
-            this.btnThemVe.Name = "btnThemVe";
-            this.btnThemVe.Size = new System.Drawing.Size(75, 26);
-            this.btnThemVe.TabIndex = 10;
-            this.btnThemVe.Text = "Thêm vé";
-            this.btnThemVe.UseVisualStyleBackColor = true;
-            this.btnThemVe.Click += new System.EventHandler(this.btnThemVe_Click);
-            // 
-            // btnBanVe
-            // 
-            this.btnBanVe.Enabled = false;
-            this.btnBanVe.Location = new System.Drawing.Point(878, 0);
-            this.btnBanVe.Name = "btnBanVe";
-            this.btnBanVe.Size = new System.Drawing.Size(75, 26);
-            this.btnBanVe.TabIndex = 9;
-            this.btnBanVe.Text = "Bán vé";
-            this.btnBanVe.UseVisualStyleBackColor = true;
-            this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
-            // 
-            // lbThemCB
-            // 
-            this.lbThemCB.AutoSize = true;
-            this.lbThemCB.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbThemCB.Location = new System.Drawing.Point(20, 39);
-            this.lbThemCB.Name = "lbThemCB";
-            this.lbThemCB.Size = new System.Drawing.Size(95, 13);
-            this.lbThemCB.TabIndex = 12;
-            this.lbThemCB.Text = "Thêm chuyến bay";
-            this.lbThemCB.Visible = false;
-            // 
-            // btnCancelChanges
-            // 
-            this.btnCancelChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelChanges.Location = new System.Drawing.Point(855, 0);
-            this.btnCancelChanges.Name = "btnCancelChanges";
-            this.btnCancelChanges.Size = new System.Drawing.Size(100, 27);
-            this.btnCancelChanges.TabIndex = 8;
-            this.btnCancelChanges.Text = "Hủy thay đổi";
-            this.btnCancelChanges.UseVisualStyleBackColor = true;
-            this.btnCancelChanges.Visible = false;
-            this.btnCancelChanges.Click += new System.EventHandler(this.btnCancelChanges_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(774, 0);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Visible = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Enabled = false;
-            this.btnSua.Location = new System.Drawing.Point(80, 0);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(75, 27);
-            this.btnSua.TabIndex = 0;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Enabled = false;
-            this.btnXoa.Location = new System.Drawing.Point(161, 0);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 27);
-            this.btnXoa.TabIndex = 1;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // gridViewLichCB
             // 
@@ -1277,6 +1291,8 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.QuanLyBanVe_KeyDown);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbInVe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.splitContainerTraCuu.Panel1.ResumeLayout(false);
@@ -1284,15 +1300,22 @@
             this.splitContainerTraCuu.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTraCuu)).EndInit();
             this.splitContainerTraCuu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBanVe2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbTraCuu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewTraCuu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewChiTiet)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbBanVe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbThemVe)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbHuyThayDoiCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbLuuCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbXoaCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbSuaCB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptbThemCB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewLichCB)).EndInit();
             this.panelThemVe.ResumeLayout(false);
@@ -1314,7 +1337,6 @@
 
         #endregion
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.DataGridView gridViewCapNhatVe;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -1325,13 +1347,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbbNoiDen;
         private System.Windows.Forms.ComboBox cbbNoiDi;
-        private System.Windows.Forms.Button btnTraCuu;
         private System.Windows.Forms.DateTimePicker dateTraCuu;
         private System.Windows.Forms.DataGridView gridViewTraCuu;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnBanVe2;
         private System.Windows.Forms.ContextMenuStrip rowContextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem modifyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
@@ -1359,16 +1379,10 @@
         private System.Windows.Forms.SplitContainer splitContainerTraCuu;
         private System.Windows.Forms.DataGridView gridViewChiTiet;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button btnCancelChanges;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.DataGridView gridViewLichCB;
         private System.Windows.Forms.Label lblUpdateStatus;
         private System.Windows.Forms.ToolStripMenuItem themToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.Button btnBanVe;
-        private System.Windows.Forms.Button btnThemVe;
         private System.Windows.Forms.Panel panelThemVe;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLuu;
@@ -1396,7 +1410,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cbbMaSBDi;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnInVe;
         private System.Windows.Forms.ToolStripMenuItem thêmChuyếnBayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sửaChuyếnBayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xóaChuyếnBayToolStripMenuItem;
@@ -1412,8 +1425,18 @@
         private System.Windows.Forms.ComboBox cbbSBTG;
         private System.Windows.Forms.ToolStripMenuItem quyĐịnhToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cácQuyĐịnhToolStripMenuItem;
-        private System.Windows.Forms.Label lbThemCB;
         private System.Windows.Forms.PictureBox ptbThemCB;
+        private System.Windows.Forms.PictureBox ptbSuaCB;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.PictureBox ptbXoaCB;
+        private System.Windows.Forms.PictureBox ptbLuuCB;
+        private System.Windows.Forms.PictureBox ptbHuyThayDoiCB;
+        private System.Windows.Forms.PictureBox ptbThemVe;
+        private System.Windows.Forms.PictureBox ptbBanVe;
+        private System.Windows.Forms.PictureBox ptbTraCuu;
+        private System.Windows.Forms.PictureBox ptbBanVe2;
+        private System.Windows.Forms.PictureBox ptbTim;
+        private System.Windows.Forms.PictureBox ptbInVe;
     }
 }
 

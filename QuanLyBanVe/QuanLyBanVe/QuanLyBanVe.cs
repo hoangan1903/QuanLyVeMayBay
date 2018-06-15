@@ -218,220 +218,27 @@ namespace QuanLyBanVe
         private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             if (gridViewLichCB.SelectedRows.Count != 0)
-                btnXoa.Enabled = true;
-            else btnXoa.Enabled = false;
+                ptbXoaCB.Enabled = true;
+            else ptbXoaCB.Enabled = false;
 
             if (gridViewLichCB.SelectedRows.Count == 1)
             {
-                btnSua.Enabled = true;
-                btnBanVe.Enabled = true;
-                btnThemVe.Enabled = true;
+                ptbSuaCB.Enabled = true;
+                ptbBanVe.Enabled = true;
+                ptbThemVe.Enabled = true;
                 sửaChuyếnBayToolStripMenuItem.Enabled = true;
                 thêmChuyếnBayToolStripMenuItem.Enabled = true;
                 bánVéToolStripMenuItem.Enabled = true;
             }
             else
             {
-                btnSua.Enabled = false;
-                btnBanVe.Enabled = false;
-                btnThemVe.Enabled = false;
+                ptbSuaCB.Enabled = false;
+                ptbBanVe.Enabled = false;
+                ptbThemVe.Enabled = false;
                 sửaChuyếnBayToolStripMenuItem.Enabled = false;
                 thêmChuyếnBayToolStripMenuItem.Enabled = false;
                 bánVéToolStripMenuItem.Enabled = false;
             }
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            DataTable table = (DataTable)gridViewLichCB.DataSource;
-            table.Rows.Add(table.NewRow());
-            gridViewLichCB.DataSource = table;
-
-            DataGridViewRow newRow = gridViewLichCB.Rows[gridViewLichCB.Rows.Count - 1];
-            newRow.HeaderCell.Value = String.Format("{0}", newRow.Index + 1);
-
-            addedRows.Add(newRow);
-            newRow.DefaultCellStyle.BackColor = AddedRowColor;
-            gridViewLichCB.ClearSelection();
-            newRow.Selected = true;
-
-            LoadDuLieuVaoCombobox();
-            panel1.Visible = true;
-            splitContainer1.Panel1.Enabled = false;
-
-            themCB = true;
-            cbbMaSBDi.Text = string.Empty;
-            cbbMaSBDen.Text = string.Empty;
-            cbbHHK.Text = string.Empty;
-            cbbSBTG.Text = string.Empty;
-            tbSoGheHang1.Text = string.Empty;
-            tbSoGheHang2.Text = string.Empty;
-            tbGiaVe.Text = string.Empty;
-            departureTime.Value = DateTime.Now;
-            arrivalTime.Value = DateTime.Now;
-            btnSave.Visible = true;
-            btnCancelChanges.Visible = true;
-            btnThemVe.Visible = false;
-            btnBanVe.Visible = false;            
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow rowToModify = gridViewLichCB.SelectedRows[0];
-            splitContainer1.Panel1.Enabled = false;
-
-            //if (string.Empty != rowToModify.Cells[0].Value.ToString())
-            //    tbMaCB.Text = rowToModify.Cells[0].Value.ToString();
-            //else
-            //    tbMaCB.Text = string.Empty;
-            //if (rowToModify.DefaultCellStyle.BackColor == AddedRowColor)
-            //{
-            //    tbMaCB.Enabled = true;
-            //}
-            //else
-            //    tbMaCB.Enabled = false;
-
-            LoadDuLieuVaoCombobox();
-            //cbbMaSBDi.DataSource = busSanBay.LoadSanBay();
-            //cbbMaSBDi.DisplayMember = "TENSANBAY";
-            //cbbMaSBDi.ValueMember = "TENSANBAY";
-            cbbMaSBDi.Text = rowToModify.Cells[1].Value.ToString();
-
-            //cbbMaSBDen.DataSource = busSanBay.LoadSanBay();
-            //cbbMaSBDen.DisplayMember = "TENSANBAY";
-            //cbbMaSBDen.ValueMember = "TENSANBAY";
-            cbbMaSBDen.Text = rowToModify.Cells[2].Value.ToString();
-
-            cbbSBTG.Text = busChuyenBay.ChiTietCB(rowToModify.Cells[0].Value.ToString()).Rows[0][6].ToString();
-            txtWaitTime.Text = busChuyenBay.ChiTietCB(rowToModify.Cells[0].Value.ToString()).Rows[0][7].ToString();
-            //cbbHHK.DataSource = busHHK.LoadHangHangKhong();
-            //cbbHHK.DisplayMember = "TENHHK";
-            //cbbHHK.ValueMember = "TENHHK";
-            cbbHHK.Text = rowToModify.Cells[3].Value.ToString();
-
-            departureTime.Text = rowToModify.Cells[4].Value.ToString();
-            arrivalTime.Text = rowToModify.Cells[5].Value.ToString();
-            tbSoGheHang1.Text = rowToModify.Cells[6].Value.ToString();
-            tbSoGheHang2.Text = rowToModify.Cells[7].Value.ToString();
-            tbGiaVe.Text = rowToModify.Cells[8].Value.ToString();
-
-           // panel1.Location = new Point(splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18, 0);
-            panel1.Visible = true;
-            btnSave.Visible = true;
-            btnCancelChanges.Visible = true;
-            btnThemVe.Visible = false;
-            btnBanVe.Visible = false;
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa " + gridViewLichCB.SelectedRows.Count + " hàng đã chọn? Thay đổi này không thể hoàn tác.", "Xóa chuyến bay", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                addedRows.Clear();
-                modifiedRows.Clear();
-
-                int succeeded = 0, failed = 0;
-                string tempLog = "";
-
-                ChangeLog = "Cập nhật bảng [CHUYENBAY] - ";
-                foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
-                {
-                    if (row.DefaultCellStyle.BackColor == AddedRowColor)
-                        continue;
-
-                    if (busChuyenBay.XoaChuyenBay(row))
-                    {
-                        succeeded++;
-                        tempLog += "* Đã xóa chuyến bay '" + row.Cells[0].Value.ToString() + "'.\n";
-                    }
-                    else
-                    {
-                        failed++;
-                        tempLog += "* Xóa chuyến bay '" + row.Cells[0].Value.ToString() + "' không thành công.\n";
-                    }
-                }
-                ChangeLog += "Xóa " + (succeeded + failed).ToString() + " hàng (" + succeeded + " thành công và " + failed + " không thành công).\n" + tempLog;
-                lblUpdateStatus.ForeColor = ChangeLogColor;
-                lblUpdateStatus.Text = ChangeLog;
-                LoadDataToDataGridView(gridViewLichCB);
-                btnSave.Enabled = false;
-                saveToolStripMenuItem.Enabled = false;
-            }
-
-            //foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
-            //{
-            //    if (row.DefaultCellStyle.BackColor != RemovedRowColor)
-            //    {
-            //        row.ReadOnly = true;
-            //        if (row.DefaultCellStyle.BackColor == AddedRowColor)
-            //        {
-            //            row.DefaultCellStyle.BackColor = RemovedRowColor;
-            //            addedRows.Remove(row);
-            //            continue;
-            //        }
-            //        if (row.DefaultCellStyle.BackColor == ModifiedRowColor)
-            //        {
-            //            removedRows.Add(row);
-            //            row.DefaultCellStyle.BackColor = RemovedRowColor;
-            //            modifiedRows.Remove(row);
-            //            continue;
-            //        }
-            //        removedRows.Add(row);
-            //        row.DefaultCellStyle.BackColor = RemovedRowColor;
-            //    }
-            //}
-            //gridViewLichCB.ClearSelection();
-            //btnSave.Enabled = true;
-            //btnCancelChanges.Enabled = true;
-        }
-
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (!CheckAffectedRows(gridViewLichCB))
-            {
-                /* Show error(s) to the user */
-                MessageBox.Show("Có lỗi khi cập nhật dữ liệu vào CDSL. Vui lòng kiểm tra lại các thay đổi của bạn.", "Cập nhật không thành công");
-                lblUpdateStatus.ForeColor = Color.Red;
-                lblUpdateStatus.Text = ErrorText;
-                errors.Clear();
-            }
-            else
-            {
-                /* Save the changes */
-                btnCancelChanges.Enabled = false;
-                foreach (DataGridViewRow row in addedRows)
-                {
-                    if (!busChuyenBay.ThemChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
-                        MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
-                }
-
-                foreach (DataGridViewRow row in modifiedRows)
-                {
-                    if (!busChuyenBay.SuaChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
-                        MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
-                }
-
-                lblUpdateStatus.ForeColor = ChangeLogColor;
-                lblUpdateStatus.Text = ChangeLog;
-                addedRows.Clear();
-                modifiedRows.Clear();
-                LoadDataToDataGridView(gridViewLichCB);
-                btnSave.Visible = false;
-                btnCancelChanges.Visible = false;
-                btnThemVe.Visible = true;
-                btnBanVe.Visible = true;
-            }
-        }
-        private void btnCancelChanges_Click(object sender, EventArgs e)
-        {
-            btnSave.Visible = false;
-            btnCancelChanges.Visible = false;
-            btnThemVe.Visible = true;
-            btnBanVe.Visible = true;
-            addedRows.Clear();
-            modifiedRows.Clear();
-            LoadDataToDataGridView(gridViewLichCB);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -491,8 +298,8 @@ namespace QuanLyBanVe
 
                 panel1.Visible = false;
                 splitContainer1.Panel1.Enabled = true;
-                btnSave.Enabled = true;
-                btnCancelChanges.Enabled = true;
+                ptbLuuCB.Enabled = true;
+                ptbHuyThayDoiCB.Enabled = true;
                 themCB = false;
             }
         }
@@ -528,17 +335,17 @@ namespace QuanLyBanVe
 
         private void gridViewLichCB_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            btnSua_Click(sender, e);
+            ptbSuaCB_Click(sender, e);
         }
 
         private void modifyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnSua_Click(sender, e);
+            ptbSuaCB_Click(sender, e);
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnXoa_Click(sender, e);
+            ptbXoaCB_Click(sender, e);
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -569,8 +376,8 @@ namespace QuanLyBanVe
                 modifiedRow.Cells[i].Value = duplicate.Cells[i].Value;
             }
             gridViewLichCB.ClearSelection();
-            btnSave.Enabled = true;
-            btnCancelChanges.Enabled = true;
+            ptbLuuCB.Enabled = true;
+            ptbHuyThayDoiCB.Enabled = true;
         }
 
         /* contextMenuStrip1 */
@@ -578,24 +385,24 @@ namespace QuanLyBanVe
         {
             if (e.Button == MouseButtons.Right)
             {
-                saveToolStripMenuItem.Enabled = btnSave.Enabled;
+                saveToolStripMenuItem.Enabled = ptbLuuCB.Enabled;
                 contextMenuStrip1.Show(MousePosition);
             }
         }
 
         private void themToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnThem_Click(sender, e);
+            ptbThemCB_Click(sender, e);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnSave_Click(sender, e);
+            ptbLuuCB_Click(sender, e);
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnCancelChanges_Click(sender, e);
+            ptbHuyThayDoiCB_Click(sender, e);
         }
 
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
@@ -618,7 +425,7 @@ namespace QuanLyBanVe
             }
             else if (gridViewLichCB.SelectedRows.Count != 0 && e.KeyCode == Keys.Delete)
             {
-                btnXoa_Click(sender, e);
+                ptbXoaCB_Click(sender, e);
             }
         }
 
@@ -665,29 +472,13 @@ namespace QuanLyBanVe
         {
             btnThanhToan.Enabled = true;
             btnHoanVe.Enabled = true;
-            btnInVe.Enabled = true;
-        }
-        private void btnTraCuu_Click(object sender, EventArgs e)
-        {
-            if (cbbNoiDen.Text == cbbNoiDi.Text || cbbNoiDi.Text == null || cbbNoiDen.Text == null)
-            {
-                MessageBox.Show("Không thể tra cứu");
-            }
-            else
-            {
-                gridViewTraCuu.DataSource = busChuyenBay.TraCuu(cbbNoiDi.Text, cbbNoiDen.Text, dateTraCuu.Value);
-                gridViewTraCuu.RowHeadersVisible = false;
-                gridViewTraCuu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                gridViewTraCuu.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-                gridViewTraCuu.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-                gridViewTraCuu.ClearSelection();
-            }
+            ptbInVe.Enabled = true;
         }
 
         private void gridViewTraCuu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             bánVéToolStripMenuItem.Enabled = true;
-            btnBanVe2.Enabled = true;
+            ptbBanVe2.Enabled = true;
             gridViewChiTiet.DataSource = busChuyenBay.ChiTietCB(getMaCB(gridViewTraCuu));
             gridViewChiTiet.RowHeadersVisible = false;
             gridViewChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -699,12 +490,6 @@ namespace QuanLyBanVe
             gridViewChiTiet.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             gridViewChiTiet.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
 
-        }
-
-        private void btnBanVe2_Click(object sender, EventArgs e)
-        {          
-            BanVe formBanVe = new BanVe(getMaCB(gridViewTraCuu));
-            formBanVe.ShowDialog();
         }
 
         private string getMaCB(DataGridView dataGridView1)
@@ -732,12 +517,12 @@ namespace QuanLyBanVe
 
         private void bánVéToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            btnBanVe2_Click(sender, e);
+            ptbBanVe2_Click(sender, e);
         }
 
         private void làmMớiToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            btnTraCuu_Click(sender, e);
+            ptbTraCuu_Click(sender, e);
         }
 
         private void báoCáoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -750,15 +535,6 @@ namespace QuanLyBanVe
         {
             BaoCaoNam.BaoCaoNam baoCaoNam = new BaoCaoNam.BaoCaoNam();
             baoCaoNam.Show();
-        }
-
-        private void btnTim_Click(object sender, EventArgs e)
-        {
-            //QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
-            gridViewCapNhatVe.RowHeadersVisible = false;
-            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
-            gridViewCapNhatVe.ClearSelection();
         }
 
         private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -820,7 +596,7 @@ namespace QuanLyBanVe
 
                 gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
                 gridViewCapNhatVe.ClearSelection();
-                btnInVe.Enabled = true;
+                ptbInVe.Enabled = true;
             }
         }
 
@@ -853,32 +629,8 @@ namespace QuanLyBanVe
 
                 gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
                 gridViewCapNhatVe.ClearSelection();
-                btnInVe.Enabled = false;
+                ptbInVe.Enabled = false;
             }
-        }
-
-        private void btnBanVe_Click(object sender, EventArgs e)
-        {
-            BanVe formBanVe = new BanVe(getMaCB(gridViewLichCB));
-            formBanVe.ShowDialog();
-            btnBanVe.Enabled = false;
-        }
-
-        private void btnThemVe_Click(object sender, EventArgs e)
-        {
-            panelThemVe.Visible = true;
-            splitContainer1.Panel1.Enabled = false;
-            btnThemVe.Enabled = false;
-
-            if (busVe.VeHang1Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
-                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString()) - Decimal.Parse(busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
-            else
-                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString());
-
-            if (busVe.VeHang2Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
-                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString()) - Decimal.Parse(busVe.TongVeHang2(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
-            else
-                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString());
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -938,28 +690,21 @@ namespace QuanLyBanVe
             numHang2.Value = 0;
         }
 
-        private void btnInVe_Click(object sender, EventArgs e)
-        {
-            frmInVe frmInVe = new frmInVe(gridViewCapNhatVe.CurrentRow.Cells[0].Value.ToString());
-            frmInVe.ShowDialog();
-            btnInVe.Enabled = false;
-        }
-
         private void thêmChuyếnBayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabControl1.TabPages[0];
-            btnThem_Click(sender, e);
+            ptbThemCB_Click(sender, e);
         }
 
         private void sửaChuyếnBayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnSua_Click(sender, e);
+            ptbSuaCB_Click(sender, e);
             sửaChuyếnBayToolStripMenuItem.Enabled = false;
         }
 
         private void xóaChuyếnBayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnXoa_Click(sender, e);
+            ptbXoaCB_Click(sender, e);
             xóaChuyếnBayToolStripMenuItem.Enabled = false;
         }
 
@@ -990,7 +735,7 @@ namespace QuanLyBanVe
 
         private void thêmVéToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnThemVe_Click(sender, e);
+            ptbThemVe_Click(sender, e);
             thêmChuyếnBayToolStripMenuItem.Enabled = false;
         }
 
@@ -1033,20 +778,206 @@ namespace QuanLyBanVe
             tbGiaVe.Text = string.Empty;
             departureTime.Value = DateTime.Now;
             arrivalTime.Value = DateTime.Now;
-            btnSave.Visible = true;
-            btnCancelChanges.Visible = true;
-            btnThemVe.Visible = false;
-            btnBanVe.Visible = false;
+            ptbSuaCB.Visible = true;
+            ptbHuyThayDoiCB.Visible = true;
+            ptbThemVe.Visible = false;
+            ptbBanVe.Visible = false;
         }
 
-        private void ptbThemCB_MouseEnter(object sender, EventArgs e)
+        private void ptbSuaCB_Click(object sender, EventArgs e)
         {
-            lbThemCB.Visible = true;
+            DataGridViewRow rowToModify = gridViewLichCB.SelectedRows[0];
+            splitContainer1.Panel1.Enabled = false;
+
+            //if (string.Empty != rowToModify.Cells[0].Value.ToString())
+            //    tbMaCB.Text = rowToModify.Cells[0].Value.ToString();
+            //else
+            //    tbMaCB.Text = string.Empty;
+            //if (rowToModify.DefaultCellStyle.BackColor == AddedRowColor)
+            //{
+            //    tbMaCB.Enabled = true;
+            //}
+            //else
+            //    tbMaCB.Enabled = false;
+
+            LoadDuLieuVaoCombobox();
+            //cbbMaSBDi.DataSource = busSanBay.LoadSanBay();
+            //cbbMaSBDi.DisplayMember = "TENSANBAY";
+            //cbbMaSBDi.ValueMember = "TENSANBAY";
+            cbbMaSBDi.Text = rowToModify.Cells[1].Value.ToString();
+
+            //cbbMaSBDen.DataSource = busSanBay.LoadSanBay();
+            //cbbMaSBDen.DisplayMember = "TENSANBAY";
+            //cbbMaSBDen.ValueMember = "TENSANBAY";
+            cbbMaSBDen.Text = rowToModify.Cells[2].Value.ToString();
+
+            cbbSBTG.Text = busChuyenBay.ChiTietCB(rowToModify.Cells[0].Value.ToString()).Rows[0][6].ToString();
+            txtWaitTime.Text = busChuyenBay.ChiTietCB(rowToModify.Cells[0].Value.ToString()).Rows[0][7].ToString();
+            //cbbHHK.DataSource = busHHK.LoadHangHangKhong();
+            //cbbHHK.DisplayMember = "TENHHK";
+            //cbbHHK.ValueMember = "TENHHK";
+            cbbHHK.Text = rowToModify.Cells[3].Value.ToString();
+
+            departureTime.Text = rowToModify.Cells[4].Value.ToString();
+            arrivalTime.Text = rowToModify.Cells[5].Value.ToString();
+            tbSoGheHang1.Text = rowToModify.Cells[6].Value.ToString();
+            tbSoGheHang2.Text = rowToModify.Cells[7].Value.ToString();
+            tbGiaVe.Text = rowToModify.Cells[8].Value.ToString();
+
+            // panel1.Location = new Point(splitContainer1.Panel2.Size.Width - panel1.Size.Width - 18, 0);
+            panel1.Visible = true;
+            ptbLuuCB.Visible = true;
+            ptbHuyThayDoiCB.Visible = true;
+            ptbThemVe.Visible = false;
+            ptbBanVe.Visible = false;
         }
 
-        private void ptbThemCB_MouseLeave(object sender, EventArgs e)
+        private void ptbXoaCB_Click(object sender, EventArgs e)
         {
-            lbThemCB.Visible = false;
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa " + gridViewLichCB.SelectedRows.Count + " hàng đã chọn? Thay đổi này không thể hoàn tác.", "Xóa chuyến bay", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                addedRows.Clear();
+                modifiedRows.Clear();
+
+                int succeeded = 0, failed = 0;
+                string tempLog = "";
+
+                ChangeLog = "Cập nhật bảng [CHUYENBAY] - ";
+                foreach (DataGridViewRow row in gridViewLichCB.SelectedRows)
+                {
+                    if (row.DefaultCellStyle.BackColor == AddedRowColor)
+                        continue;
+
+                    if (busChuyenBay.XoaChuyenBay(row))
+                    {
+                        succeeded++;
+                        tempLog += "* Đã xóa chuyến bay '" + row.Cells[0].Value.ToString() + "'.\n";
+                    }
+                    else
+                    {
+                        failed++;
+                        tempLog += "* Xóa chuyến bay '" + row.Cells[0].Value.ToString() + "' không thành công.\n";
+                    }
+                }
+                ChangeLog += "Xóa " + (succeeded + failed).ToString() + " hàng (" + succeeded + " thành công và " + failed + " không thành công).\n" + tempLog;
+                lblUpdateStatus.ForeColor = ChangeLogColor;
+                lblUpdateStatus.Text = ChangeLog;
+                LoadDataToDataGridView(gridViewLichCB);
+                ptbLuuCB.Enabled = false;
+                saveToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void ptbLuuCB_Click(object sender, EventArgs e)
+        {
+            if (!CheckAffectedRows(gridViewLichCB))
+            {
+                /* Show error(s) to the user */
+                MessageBox.Show("Có lỗi khi cập nhật dữ liệu vào CDSL. Vui lòng kiểm tra lại các thay đổi của bạn.", "Cập nhật không thành công");
+                lblUpdateStatus.ForeColor = Color.Red;
+                lblUpdateStatus.Text = ErrorText;
+                errors.Clear();
+            }
+            else
+            {
+                /* Save the changes */
+                ptbHuyThayDoiCB.Enabled = false;
+                foreach (DataGridViewRow row in addedRows)
+                {
+                    if (!busChuyenBay.ThemChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
+                        MessageBox.Show("Có lỗi không xác định xảy ra khi thêm chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
+                }
+
+                foreach (DataGridViewRow row in modifiedRows)
+                {
+                    if (!busChuyenBay.SuaChuyenBay(row, cbbSBTG.Text, Int32.Parse(txtWaitTime.Text)))
+                        MessageBox.Show("Có lỗi không xác định xảy ra khi cập nhật dữ liệu của chuyến bay '" + row.Cells[0].Value.ToString() + "'.");
+                }
+
+                lblUpdateStatus.ForeColor = ChangeLogColor;
+                lblUpdateStatus.Text = ChangeLog;
+                addedRows.Clear();
+                modifiedRows.Clear();
+                LoadDataToDataGridView(gridViewLichCB);
+                ptbLuuCB.Visible = false;
+                ptbHuyThayDoiCB.Visible = false;
+                ptbThemVe.Visible = true;
+                ptbBanVe.Visible = true;
+            }
+        }
+
+        private void ptbHuyThayDoiCB_Click(object sender, EventArgs e)
+        {
+            ptbLuuCB.Visible = false;
+            ptbHuyThayDoiCB.Visible = false;
+            ptbThemVe.Visible = true;
+            ptbBanVe.Visible = true;
+            addedRows.Clear();
+            modifiedRows.Clear();
+            LoadDataToDataGridView(gridViewLichCB);
+        }
+
+        private void ptbThemVe_Click(object sender, EventArgs e)
+        {
+            panelThemVe.Visible = true;
+            splitContainer1.Panel1.Enabled = false;
+            ptbThemVe.Enabled = false;
+
+            if (busVe.VeHang1Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString()) - Decimal.Parse(busVe.TongVeHang1(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                numHang1.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[6].Value.ToString());
+
+            if (busVe.VeHang2Trong(getMaCB(gridViewLichCB)).Rows.Count != 0)
+                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString()) - Decimal.Parse(busVe.TongVeHang2(getMaCB(gridViewLichCB)).Rows[0][0].ToString());
+            else
+                numHang2.Maximum = Decimal.Parse(gridViewLichCB.CurrentRow.Cells[7].Value.ToString());
+        }
+
+        private void ptbBanVe_Click(object sender, EventArgs e)
+        {
+            BanVe formBanVe = new BanVe(getMaCB(gridViewLichCB));
+            formBanVe.ShowDialog();
+            ptbBanVe.Enabled = false;
+        }
+
+        private void ptbBanVe2_Click(object sender, EventArgs e)
+        {
+            BanVe formBanVe = new BanVe(getMaCB(gridViewTraCuu));
+            formBanVe.ShowDialog();
+        }
+
+        private void ptbTraCuu_Click(object sender, EventArgs e)
+        {
+            if (cbbNoiDen.Text == cbbNoiDi.Text || cbbNoiDi.Text == null || cbbNoiDen.Text == null)
+            {
+                MessageBox.Show("Không thể tra cứu");
+            }
+            else
+            {
+                gridViewTraCuu.DataSource = busChuyenBay.TraCuu(cbbNoiDi.Text, cbbNoiDen.Text, dateTraCuu.Value);
+                gridViewTraCuu.RowHeadersVisible = false;
+                gridViewTraCuu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                gridViewTraCuu.Columns["THỜI GIAN KHỞI HÀNH"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                gridViewTraCuu.Columns["THỜI GIAN ĐẾN"].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+                gridViewTraCuu.ClearSelection();
+            }
+        }
+
+        private void ptbTim_Click(object sender, EventArgs e)
+        {
+            //QuanLy.CapNhatVe(gridViewCapNhatVe, cbbMaCB, cbbMaVe);
+            gridViewCapNhatVe.RowHeadersVisible = false;
+            gridViewCapNhatVe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            gridViewCapNhatVe.DataSource = busVe.LoadVeCapNhat(cbbMaCB.Text, cbbMaVe.Text);
+            gridViewCapNhatVe.ClearSelection();
+        }
+
+        private void ptbInVe_Click(object sender, EventArgs e)
+        {
+            frmInVe frmInVe = new frmInVe(gridViewCapNhatVe.CurrentRow.Cells[0].Value.ToString());
+            frmInVe.ShowDialog();
+            ptbInVe.Enabled = false;
         }
     }
 }
