@@ -44,9 +44,9 @@ namespace QuanLyBanVe
             DateTime ngayApDung = Convert.ToDateTime(gridViewQuyDinh.Rows[0].Cells[3].Value.ToString());
 
             if (busQuyDinh.CapNhatQuyDinh(maQuyDinh, giaTri, ngayApDung))
-                MessageBox.Show("Cập nhật quy định thành công.");
+                MessageBox.Show("Cập nhật quy định thành công.", "Cập nhật quy định");
             else
-                MessageBox.Show("Cập nhật quy định không thành công.");
+                MessageBox.Show("Cập nhật quy định không thành công.", "Cập nhật quy định");
         }
 
         private void gridViewQuyDinh_CellEndEdit(object sender, DataGridViewCellEventArgs e)

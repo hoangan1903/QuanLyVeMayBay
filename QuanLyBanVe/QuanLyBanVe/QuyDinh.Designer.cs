@@ -77,7 +77,7 @@
             this.cbbMaQuyDinh.FormattingEnabled = true;
             this.cbbMaQuyDinh.Location = new System.Drawing.Point(13, 30);
             this.cbbMaQuyDinh.Name = "cbbMaQuyDinh";
-            this.cbbMaQuyDinh.Size = new System.Drawing.Size(236, 23);
+            this.cbbMaQuyDinh.Size = new System.Drawing.Size(190, 23);
             this.cbbMaQuyDinh.TabIndex = 3;
             this.cbbMaQuyDinh.TextChanged += new System.EventHandler(this.cbbMaQuyDinh_TextChanged);
             // 
@@ -105,6 +105,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "QuyDinh";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quy định";
             this.Load += new System.EventHandler(this.QuyDinh_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewQuyDinh)).EndInit();
