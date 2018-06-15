@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnInVe = new System.Windows.Forms.Button();
             this.btnHoanVe = new System.Windows.Forms.Button();
@@ -70,6 +70,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtWaitTime = new System.Windows.Forms.TextBox();
+            this.lbWaitTime = new System.Windows.Forms.Label();
+            this.cbbSBTG = new System.Windows.Forms.ComboBox();
+            this.lbSBTG = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbGiaVe = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -124,10 +128,8 @@
             this.báoCáoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.báoCáoNămToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.danhSáchKháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbSBTG = new System.Windows.Forms.Label();
-            this.cbbSBTG = new System.Windows.Forms.ComboBox();
-            this.lbWaitTime = new System.Windows.Forms.Label();
-            this.txtWaitTime = new System.Windows.Forms.TextBox();
+            this.quyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cácQuyĐịnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCapNhatVe)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -418,8 +420,8 @@
             this.gridViewChiTiet.Location = new System.Drawing.Point(3, 3);
             this.gridViewChiTiet.Name = "gridViewChiTiet";
             this.gridViewChiTiet.ReadOnly = true;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.gridViewChiTiet.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewChiTiet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewChiTiet.Size = new System.Drawing.Size(926, 95);
             this.gridViewChiTiet.TabIndex = 0;
@@ -565,9 +567,9 @@
             this.gridViewLichCB.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewLichCB.Size = new System.Drawing.Size(954, 364);
             this.gridViewLichCB.TabIndex = 5;
+            this.gridViewLichCB.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridViewLichCB_CellDoubleClick);
             this.gridViewLichCB.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             this.gridViewLichCB.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridView1_RowStateChanged);
-            this.gridViewLichCB.DoubleClick += new System.EventHandler(this.gridViewLichCB_DoubleClick);
             this.gridViewLichCB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // panelThemVe
@@ -670,6 +672,45 @@
             this.panel1.Size = new System.Drawing.Size(698, 131);
             this.panel1.TabIndex = 7;
             this.panel1.Visible = false;
+            // 
+            // txtWaitTime
+            // 
+            this.txtWaitTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtWaitTime.Location = new System.Drawing.Point(509, 47);
+            this.txtWaitTime.Name = "txtWaitTime";
+            this.txtWaitTime.Size = new System.Drawing.Size(90, 23);
+            this.txtWaitTime.TabIndex = 48;
+            // 
+            // lbWaitTime
+            // 
+            this.lbWaitTime.AutoSize = true;
+            this.lbWaitTime.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lbWaitTime.Location = new System.Drawing.Point(506, 31);
+            this.lbWaitTime.Name = "lbWaitTime";
+            this.lbWaitTime.Size = new System.Drawing.Size(86, 13);
+            this.lbWaitTime.TabIndex = 47;
+            this.lbWaitTime.Text = "Thời gian dừng";
+            // 
+            // cbbSBTG
+            // 
+            this.cbbSBTG.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbSBTG.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbbSBTG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cbbSBTG.FormattingEnabled = true;
+            this.cbbSBTG.Location = new System.Drawing.Point(393, 47);
+            this.cbbSBTG.Name = "cbbSBTG";
+            this.cbbSBTG.Size = new System.Drawing.Size(110, 23);
+            this.cbbSBTG.TabIndex = 46;
+            // 
+            // lbSBTG
+            // 
+            this.lbSBTG.AutoSize = true;
+            this.lbSBTG.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.lbSBTG.Location = new System.Drawing.Point(390, 31);
+            this.lbSBTG.Name = "lbSBTG";
+            this.lbSBTG.Size = new System.Drawing.Size(105, 13);
+            this.lbSBTG.TabIndex = 45;
+            this.lbSBTG.Text = "Sân bay trung gian";
             // 
             // label9
             // 
@@ -1034,10 +1075,11 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.véStripMenuItem,
-            this.thốngKêToolStripMenuItem});
+            this.thốngKêToolStripMenuItem,
+            this.quyĐịnhToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(363, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(304, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1045,16 +1087,16 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.fileToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 21);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -1066,16 +1108,16 @@
             this.xóaChuyếnBayToolStripMenuItem,
             this.traCứuToolStripMenuItem,
             this.thêmVéToolStripMenuItem});
-            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(87, 21);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.editToolStripMenuItem.Text = "Chuyến bay";
             // 
             // thêmChuyếnBayToolStripMenuItem
             // 
             this.thêmChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.thêmChuyếnBayToolStripMenuItem.Name = "thêmChuyếnBayToolStripMenuItem";
-            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thêmChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.thêmChuyếnBayToolStripMenuItem.Text = "Thêm chuyến bay";
             this.thêmChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.thêmChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1084,7 +1126,7 @@
             this.sửaChuyếnBayToolStripMenuItem.Enabled = false;
             this.sửaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.sửaChuyếnBayToolStripMenuItem.Name = "sửaChuyếnBayToolStripMenuItem";
-            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sửaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.sửaChuyếnBayToolStripMenuItem.Text = "Sửa chuyến bay";
             this.sửaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.sửaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1093,7 +1135,7 @@
             this.xóaChuyếnBayToolStripMenuItem.Enabled = false;
             this.xóaChuyếnBayToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.xóaChuyếnBayToolStripMenuItem.Name = "xóaChuyếnBayToolStripMenuItem";
-            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xóaChuyếnBayToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.xóaChuyếnBayToolStripMenuItem.Text = "Xóa chuyến bay";
             this.xóaChuyếnBayToolStripMenuItem.Click += new System.EventHandler(this.xóaChuyếnBayToolStripMenuItem_Click);
             // 
@@ -1101,7 +1143,7 @@
             // 
             this.traCứuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.traCứuToolStripMenuItem.Name = "traCứuToolStripMenuItem";
-            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.traCứuToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.traCứuToolStripMenuItem.Text = "Tra cứu";
             this.traCứuToolStripMenuItem.Click += new System.EventHandler(this.traCứuToolStripMenuItem_Click);
             // 
@@ -1109,7 +1151,7 @@
             // 
             this.thêmVéToolStripMenuItem.Enabled = false;
             this.thêmVéToolStripMenuItem.Name = "thêmVéToolStripMenuItem";
-            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thêmVéToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.thêmVéToolStripMenuItem.Text = "Thêm vé";
             this.thêmVéToolStripMenuItem.Click += new System.EventHandler(this.thêmVéToolStripMenuItem_Click);
             // 
@@ -1119,7 +1161,7 @@
             this.véStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bánVéToolStripMenuItem,
             this.cậpNhậtVéToolStripMenuItem});
-            this.véStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.véStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.véStripMenuItem.Name = "véStripMenuItem";
             this.véStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.véStripMenuItem.Text = "Vé";
@@ -1129,7 +1171,7 @@
             this.bánVéToolStripMenuItem.Enabled = false;
             this.bánVéToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.bánVéToolStripMenuItem.Name = "bánVéToolStripMenuItem";
-            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.bánVéToolStripMenuItem.Text = "Bán vé";
             this.bánVéToolStripMenuItem.Click += new System.EventHandler(this.bánVéToolStripMenuItem_Click);
             // 
@@ -1137,7 +1179,7 @@
             // 
             this.cậpNhậtVéToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.cậpNhậtVéToolStripMenuItem.Name = "cậpNhậtVéToolStripMenuItem";
-            this.cậpNhậtVéToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cậpNhậtVéToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.cậpNhậtVéToolStripMenuItem.Text = "Cập nhật vé";
             this.cậpNhậtVéToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtVéToolStripMenuItem_Click);
             // 
@@ -1148,7 +1190,7 @@
             this.danhSáchKháchHàngToolStripMenuItem});
             this.thốngKêToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
-            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(69, 21);
+            this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
             // 
             // báoCáoToolStripMenuItem
@@ -1183,44 +1225,20 @@
             this.danhSáchKháchHàngToolStripMenuItem.Text = "Danh sách khách hàng";
             this.danhSáchKháchHàngToolStripMenuItem.Click += new System.EventHandler(this.danhSáchKháchHàngToolStripMenuItem_Click);
             // 
-            // lbSBTG
+            // quyĐịnhToolStripMenuItem
             // 
-            this.lbSBTG.AutoSize = true;
-            this.lbSBTG.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbSBTG.Location = new System.Drawing.Point(390, 31);
-            this.lbSBTG.Name = "lbSBTG";
-            this.lbSBTG.Size = new System.Drawing.Size(105, 13);
-            this.lbSBTG.TabIndex = 45;
-            this.lbSBTG.Text = "Sân bay trung gian";
+            this.quyĐịnhToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cácQuyĐịnhToolStripMenuItem});
+            this.quyĐịnhToolStripMenuItem.Name = "quyĐịnhToolStripMenuItem";
+            this.quyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.quyĐịnhToolStripMenuItem.Text = "Quy định";
             // 
-            // cbbSBTG
+            // cácQuyĐịnhToolStripMenuItem
             // 
-            this.cbbSBTG.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbbSBTG.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbbSBTG.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cbbSBTG.FormattingEnabled = true;
-            this.cbbSBTG.Location = new System.Drawing.Point(393, 47);
-            this.cbbSBTG.Name = "cbbSBTG";
-            this.cbbSBTG.Size = new System.Drawing.Size(110, 23);
-            this.cbbSBTG.TabIndex = 46;
-            // 
-            // lbWaitTime
-            // 
-            this.lbWaitTime.AutoSize = true;
-            this.lbWaitTime.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lbWaitTime.Location = new System.Drawing.Point(506, 31);
-            this.lbWaitTime.Name = "lbWaitTime";
-            this.lbWaitTime.Size = new System.Drawing.Size(86, 13);
-            this.lbWaitTime.TabIndex = 47;
-            this.lbWaitTime.Text = "Thời gian dừng";
-            // 
-            // txtWaitTime
-            // 
-            this.txtWaitTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtWaitTime.Location = new System.Drawing.Point(509, 47);
-            this.txtWaitTime.Name = "txtWaitTime";
-            this.txtWaitTime.Size = new System.Drawing.Size(90, 23);
-            this.txtWaitTime.TabIndex = 48;
+            this.cácQuyĐịnhToolStripMenuItem.Name = "cácQuyĐịnhToolStripMenuItem";
+            this.cácQuyĐịnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cácQuyĐịnhToolStripMenuItem.Text = "Các quy định";
+            this.cácQuyĐịnhToolStripMenuItem.Click += new System.EventHandler(this.cácQuyĐịnhToolStripMenuItem_Click);
             // 
             // QuanLyBanVe
             // 
@@ -1373,6 +1391,8 @@
         private System.Windows.Forms.TextBox txtWaitTime;
         private System.Windows.Forms.Label lbWaitTime;
         private System.Windows.Forms.ComboBox cbbSBTG;
+        private System.Windows.Forms.ToolStripMenuItem quyĐịnhToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cácQuyĐịnhToolStripMenuItem;
     }
 }
 

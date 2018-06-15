@@ -83,6 +83,5 @@ namespace BUS
         {
             return daoChuyenBay.LoadMaCB();
         }
-
     }
 }

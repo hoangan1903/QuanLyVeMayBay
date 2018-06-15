@@ -71,5 +71,45 @@ namespace DAO
                 Connection.Close();
             }
         }
+
+        public DataTable LoadMaQuyDinh()
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                Connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MaQuyDinh FROM QUYDINH", Connection);
+                adapter.Fill(result);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+
+        public DataTable LoadQuyDinh(string MaQuyDinh)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                Connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM QUYDINH WHERE MaQuyDinh = '" + MaQuyDinh +"'", Connection);
+                adapter.Fill(result);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
     }
 }
