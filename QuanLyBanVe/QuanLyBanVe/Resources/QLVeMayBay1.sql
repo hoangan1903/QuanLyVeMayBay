@@ -600,12 +600,13 @@ END
 
 ----Procedure QuyDinh
 CREATE PROCEDURE GetQuyDinh
-	@MaQuyDinh varchar(50)
+	@MaQuyDinh varchar(50),
+	@NgayHienTai smalldatetime
 AS
 BEGIN
 	SELECT TOP 1 GiaTri
 	FROM QUYDINH
-	WHERE (MaQuyDinh = @MaQuyDinh)
+	WHERE (MaQuyDinh = @MaQuyDinh) AND (NgayApDung <= @NgayHienTai)
 	ORDER BY NgayApDung DESC		 
 END
 

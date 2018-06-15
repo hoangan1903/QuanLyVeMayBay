@@ -78,7 +78,7 @@ namespace DAO
             try
             {
                 Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT MaQuyDinh FROM QUYDINH", Connection);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT TenQuyDinh FROM QUYDINH", Connection);
                 adapter.Fill(result);
                 return result;
             }
@@ -92,13 +92,14 @@ namespace DAO
             }
         }
 
-        public DataTable LoadQuyDinh(string MaQuyDinh)
+        public DataTable LoadQuyDinh(string tenQuyDinh)
         {
             DataTable result = new DataTable();
+            string commandText = "SELECT * FROM QUYDINH WHERE MaQuyDinh = (SELECT DISTINCT MaQuyDinh FROM QUYDINH WHERE TenQuyDinh = N'" + tenQuyDinh + "')";
             try
             {
                 Connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM QUYDINH WHERE MaQuyDinh = '" + MaQuyDinh +"'", Connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(commandText, Connection);
                 adapter.Fill(result);
                 return result;
             }

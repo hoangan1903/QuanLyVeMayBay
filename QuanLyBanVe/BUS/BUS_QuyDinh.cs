@@ -25,9 +25,9 @@ namespace BUS
             return daoQuyDinh.LoadMaQuyDinh();
         }
 
-        public DataTable LoadQuyDinh(string MaQuyDinh)
+        public DataTable LoadQuyDinh(string tenQuyDinh)
         {
-            return daoQuyDinh.LoadQuyDinh(MaQuyDinh);
+            return daoQuyDinh.LoadQuyDinh(tenQuyDinh);
         }
     }
 }

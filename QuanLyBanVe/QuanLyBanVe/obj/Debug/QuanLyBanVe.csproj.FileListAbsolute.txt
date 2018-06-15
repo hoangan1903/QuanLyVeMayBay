@@ -208,3 +208,4 @@ D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBa
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\bin\Debug\InVe.exe.config
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.frmDanhSachKhachHang.resources
 D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.QuyDinh.resources
+D:\Documents\Học tập\Bài giảng\term4\CNPM\Project\QuanLyVeMayBay\QuanLyBanVe\QuanLyBanVe\obj\Debug\QuanLyBanVe.SuaQuyDinh.resources
